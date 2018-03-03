@@ -4,6 +4,7 @@ import com.asiainfo.latte.app.ConfigType;
 import com.asiainfo.latte.app.Latte;
 import com.asiainfo.latte.net.scalars.ScalarsConverterFactory;
 
+import java.util.WeakHashMap;
 import java.util.concurrent.TimeUnit;
 
 import okhttp3.OkHttpClient;
@@ -15,9 +16,18 @@ import retrofit2.Retrofit;
 
 public class RestCreator {
 
+    public static WeakHashMap<String, Object> getParams() {
+        return ParamsHolder.PARAMS;
+    }
 
     public static RestService getRestService() {
         return RetrofitHolder.RestServiceHolder.REST_SERVICE;
+    }
+
+    // 惰性加载
+    private static final class ParamsHolder {
+        public static final WeakHashMap<String, Object> PARAMS = new WeakHashMap<>();
+
     }
 
     private static final class RetrofitHolder {
