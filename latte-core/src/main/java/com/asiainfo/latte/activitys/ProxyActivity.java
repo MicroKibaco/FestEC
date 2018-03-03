@@ -10,12 +10,14 @@ import com.asiainfo.latte.delegates.LatteDelegate;
 import me.yokeyword.fragmentation.SupportActivity;
 
 /**
- * Created by MicroKibaco on 03/03/2018.
+ * 基础Activity
  */
 
 public abstract class ProxyActivity extends SupportActivity {
 
-
+    /**
+     * Fragment对象
+     */
     public abstract LatteDelegate setRootDelegate();
 
 
@@ -25,6 +27,10 @@ public abstract class ProxyActivity extends SupportActivity {
         initContainer(savedInstanceState);
     }
 
+    /**
+     * 布局容器
+     * @param savedInstanceState
+     */
     private void initContainer(@Nullable Bundle savedInstanceState) {
 
 
@@ -43,7 +49,9 @@ public abstract class ProxyActivity extends SupportActivity {
 
     }
 
-
+    /**
+     * 垃圾回收,降低资源在页面销毁后的销毁
+     */
     @Override
     protected void onDestroy() {
         super.onDestroy();

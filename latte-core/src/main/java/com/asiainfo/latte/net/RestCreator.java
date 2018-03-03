@@ -11,7 +11,7 @@ import okhttp3.OkHttpClient;
 import retrofit2.Retrofit;
 
 /**
- * Created by MicroKibaco on 03/03/2018.
+ * Restful 孵化器
  */
 
 public class RestCreator {
@@ -24,12 +24,15 @@ public class RestCreator {
         return RetrofitHolder.RestServiceHolder.REST_SERVICE;
     }
 
-    // 惰性加载
+    // 惰性加载,持久化存储对象
     private static final class ParamsHolder {
         public static final WeakHashMap<String, Object> PARAMS = new WeakHashMap<>();
 
     }
 
+    /**
+     * Retrofit 孵化器
+     */
     private static final class RetrofitHolder {
 
         private static final String BASE_URL = (String) Latte.getConfigurations().get(ConfigType.API_HOST.name());
@@ -41,9 +44,12 @@ public class RestCreator {
                 .addConverterFactory(ScalarsConverterFactory.create())
                 .build();
 
+        /**
+         * OkHttp 请求连接器
+         */
         private static final class OkHttpHolder {
 
-            private static final int TIME_OUT = 60;
+            private static final int TIME_OUT = 60; // 超时时间
 
             private static final OkHttpClient OK_HTTP_CLIENT = new OkHttpClient
                     .Builder()
@@ -52,7 +58,9 @@ public class RestCreator {
 
         }
 
-
+        /**
+         * 仅限本类使用,严禁继承
+         */
         private static final class RestServiceHolder {
 
             private static final RestService REST_SERVICE =

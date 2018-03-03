@@ -12,7 +12,7 @@ import okhttp3.MediaType;
 import okhttp3.RequestBody;
 
 /**
- * Created by MicroKibaco on 03/03/2018.
+ * Restful 构建器
  */
 
 public class RestClientBuilder {

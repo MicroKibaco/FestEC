@@ -18,7 +18,7 @@ import retrofit2.http.Streaming;
 import retrofit2.http.Url;
 
 /**
- * Created by MicroKibaco on 03/03/2018.
+ * retrofit2 请求方式回调接口
  */
 
 public interface RestService {
@@ -39,7 +39,7 @@ public interface RestService {
     @DELETE
     Call<String> delete(@Url String url, @QueryMap Map<String, Object> params);
 
-    @Streaming
+    @Streaming // 防止下载文件过大内存溢出
     @GET
     Call<ResponseBody> download(@Url String url, @QueryMap Map<String, Object> params);
 

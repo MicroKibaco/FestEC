@@ -3,6 +3,7 @@
           xmlns:tools="http://schemas.android.com/tools"
           package="com.asiainfo.festec">
 
+
     <application
             android:name=".ExampleApp"
             android:allowBackup="true"

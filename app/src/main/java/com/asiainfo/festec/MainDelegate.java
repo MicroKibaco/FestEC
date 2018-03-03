@@ -3,6 +3,7 @@ package com.asiainfo.festec;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.View;
+import android.widget.Toast;
 
 import com.asiainfo.latte.delegates.LatteDelegate;
 import com.asiainfo.latte.net.RestClient;
@@ -23,7 +24,7 @@ public class MainDelegate extends LatteDelegate {
 
     @Override
     public void onBindView(@Nullable Bundle savedInstanceState, View rootView) {
-
+        testRestClient();
     }
 
     private void testRestClient() {
@@ -34,7 +35,7 @@ public class MainDelegate extends LatteDelegate {
                 .success(new ISuccess() {
                     @Override
                     public void onSuccess(String response) {
-
+                        Toast.makeText(getContext(), response, Toast.LENGTH_LONG).show();
                     }
                 })
                 .failure(new IFailure() {

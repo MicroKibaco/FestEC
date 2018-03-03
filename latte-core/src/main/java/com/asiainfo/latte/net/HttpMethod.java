@@ -1,7 +1,12 @@
 package com.asiainfo.latte.net;
 
 /**
- * Created by MicroKibaco on 03/03/2018.
+ * Http请求枚举
+ * @see java.lang.Enum  GET
+ * @see java.lang.Enum  POST
+ * @see java.lang.Enum  POST_RAW
+ * @see java.lang.Enum  DELETE
+ * @see java.lang.Enum  UPLOAD
  */
 
 public enum HttpMethod {

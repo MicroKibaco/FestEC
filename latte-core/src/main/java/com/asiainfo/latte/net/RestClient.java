@@ -4,14 +4,17 @@ import com.asiainfo.latte.net.callback.IError;
 import com.asiainfo.latte.net.callback.IFailure;
 import com.asiainfo.latte.net.callback.IRequest;
 import com.asiainfo.latte.net.callback.ISuccess;
+import com.asiainfo.latte.net.callback.RequestCallBacks;
 
 import java.util.Map;
 import java.util.WeakHashMap;
 
 import okhttp3.RequestBody;
+import retrofit2.Call;
+import retrofit2.Callback;
 
 /**
- * 请求的具体实现类
+ * Restful请求的具体实现类
  */
 
 public class RestClient {
@@ -44,4 +47,82 @@ public class RestClient {
     public static RestClientBuilder builder() {
         return new RestClientBuilder();
     }
+
+    /**
+     * request 请求产业园
+     */
+    private void request(HttpMethod method) {
+
+        final RestService service = RestCreator.getRestService();
+        Call<String> call = null;
+        if (REQUEST != null) {
+
+            REQUEST.onRequestStart();
+
+        }
+
+
+        switch (method) {
+
+            case GET:
+                call = service.get(URL, PARAMS);
+                break;
+            case POST:
+                call = service.post(URL, PARAMS);
+                break;
+            case PUT:
+                call = service.put(URL, PARAMS);
+                break;
+            case DELETE:
+                call = service.delete(URL, PARAMS);
+                break;
+            default:
+                break;
+
+        }
+
+
+        if (call != null) {
+
+            call.enqueue(getRequestCallback());
+
+        }
+    }
+
+    private Callback<String> getRequestCallback() {
+        return new RequestCallBacks(
+                SUCCESS,
+                ERROR,
+                FAILURE,
+                REQUEST
+        );
+    }
+
+
+    public final void get() {
+
+        request(HttpMethod.GET);
+
+    }
+
+    public final void post() {
+
+        request(HttpMethod.POST);
+
+    }
+
+    public final void put() {
+
+        request(HttpMethod.PUT);
+
+    }
+
+    public final void delete() {
+
+        request(HttpMethod.DELETE);
+
+    }
+
 }
+
+
