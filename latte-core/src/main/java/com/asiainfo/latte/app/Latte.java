@@ -28,4 +28,11 @@ public final class Latte {
         return Configurator.getInstance().getLatteConfigs();
     }
 
+    /**
+     * 获取配置管理器全局上下文
+     */
+    public static Context getApplicationContext() {
+        return (Context) getConfigurations().get(ConfigType.APPLICATION_CONTEXT.name());
+    }
+
 }
