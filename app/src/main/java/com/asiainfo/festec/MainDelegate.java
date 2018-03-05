@@ -30,8 +30,7 @@ public class MainDelegate extends LatteDelegate {
     private void testRestClient() {
 
         RestClient.builder()
-                .url("")
-                .params("", "")
+                .url("http://news.baidu.com")
                 .success(new ISuccess() {
                     @Override
                     public void onSuccess(String response) {
@@ -50,7 +49,8 @@ public class MainDelegate extends LatteDelegate {
 
                     }
                 })
-                .build();
+                .build()
+                .get();
 
     }
 }

@@ -53,7 +53,7 @@ public class Configurator {
 
         final boolean isReady = (boolean) LATTE_CONFIGS.get(ConfigType.CONFIG_READY.name());
 
-        // TODO: 待校验
+
         if (!isReady) {
 
             throw new RuntimeException("Configuration is not ready,call configure");
