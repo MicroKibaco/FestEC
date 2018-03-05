@@ -47,4 +47,7 @@ dependencies {
 
     // 网络请求
     compile 'com.squareup.retrofit2:retrofit:2.3.0'
+
+    // loading 动画
+    compile 'com.wang.avi:library:2.1.3'
 }

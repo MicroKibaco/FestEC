@@ -1,5 +1,7 @@
 package com.asiainfo.latte.net;
 
+import android.util.Log;
+
 import com.asiainfo.latte.net.callback.IError;
 import com.asiainfo.latte.net.callback.IFailure;
 import com.asiainfo.latte.net.callback.IRequest;
@@ -80,6 +82,8 @@ public class RestClient {
                 break;
 
         }
+
+        Log.e("URL", URL);
 
 
         if (call != null) {
