@@ -1,13 +1,13 @@
 package com.asiainfo.latte.net;
 
 import android.content.Context;
-import android.util.Log;
 
 import com.asiainfo.latte.net.callback.IError;
 import com.asiainfo.latte.net.callback.IFailure;
 import com.asiainfo.latte.net.callback.IRequest;
 import com.asiainfo.latte.net.callback.ISuccess;
 import com.asiainfo.latte.net.callback.RequestCallBacks;
+import com.asiainfo.latte.net.download.DownloadHandler;
 import com.asiainfo.latte.ui.LatteLoader;
 import com.asiainfo.latte.ui.LoaderStyle;
 
@@ -39,6 +39,9 @@ public class RestClient {
     private final LoaderStyle LOADER_STYLE;
     private final Context CONTEXT;
     private final File FILE;
+    private final String DOWNLOAD_DIR;
+    private final String EXTENSION;
+    private final String NAME;
 
 
     public RestClient(String url,
@@ -49,7 +52,10 @@ public class RestClient {
                       RequestBody body,
                       LoaderStyle style,
                       Context context,
-                      File file) {
+                      File file,
+                      String dir,
+                      String extension,
+                      String name) {
         this.URL = url;
         PARAMS.putAll(params);
         this.REQUEST = request;
@@ -60,6 +66,9 @@ public class RestClient {
         this.LOADER_STYLE = style;
         this.CONTEXT = context;
         this.FILE = file;
+        this.DOWNLOAD_DIR = dir;
+        this.EXTENSION = extension;
+        this.NAME = name;
     }
 
     public static RestClientBuilder builder() {
@@ -113,12 +122,11 @@ public class RestClient {
                         MultipartBody.Part.createFormData("file", FILE.getName(), requestBody);
                 call = RestCreator.getRestService().upload(URL, body);
                 break;
+
             default:
                 break;
 
         }
-
-        Log.e("URL", URL);
 
 
         if (call != null) {
@@ -176,6 +184,16 @@ public class RestClient {
 
         request(HttpMethod.DELETE);
 
+    }
+
+    public final void upload() {
+
+        request(HttpMethod.UPLOAD);
+
+    }
+
+    public final void download() {
+        new DownloadHandler(URL, REQUEST, SUCCESS, ERROR, FAILURE, DOWNLOAD_DIR, EXTENSION, NAME).handleDownload();
     }
 
 }
