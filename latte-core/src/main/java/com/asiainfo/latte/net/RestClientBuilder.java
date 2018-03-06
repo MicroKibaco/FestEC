@@ -8,6 +8,7 @@ import com.asiainfo.latte.net.callback.IRequest;
 import com.asiainfo.latte.net.callback.ISuccess;
 import com.asiainfo.latte.ui.LoaderStyle;
 
+import java.io.File;
 import java.util.Map;
 import java.util.WeakHashMap;
 
@@ -29,6 +30,7 @@ public class RestClientBuilder {
     private RequestBody mBody = null;
     private LoaderStyle mloaderStyle = null;
     private Context mContext = null;
+    private File mFile = null;
 
     RestClientBuilder() {
 
@@ -46,6 +48,16 @@ public class RestClientBuilder {
 
     public final RestClientBuilder params(String key, Object value) {
         PARAMS.put(key, value);
+        return this;
+    }
+
+    public final RestClientBuilder file(File file) {
+        this.mFile = file;
+        return this;
+    }
+
+    public final RestClientBuilder file(String file) {
+        this.mFile = new File(file);
         return this;
     }
 
@@ -94,7 +106,8 @@ public class RestClientBuilder {
                 mIFailure,
                 mBody,
                 mloaderStyle,
-                mContext);
+                mContext,
+                mFile);
 
     }
 
