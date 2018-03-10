@@ -10,7 +10,7 @@
 
 ## 应用部分截图
 
-### 封装
+## 封装
 ![项目目录结构](http://p2je16s75.bkt.clouddn.com/project.png)
 ### 一.Fragment基类
 
@@ -287,5 +287,35 @@ public abstract class BaseInterceptor implements Interceptor {
 
 - [文件下载](https://github.com/MicroKibaco/FestEC/blob/master/latte-core/src/main/java/com/asiainfo/latte/net/download/SaveFileTask.java): SaveFileTask类
 ### 业务开发
+
+## 第三方服务
+- [支付宝]()
+- [ShareSDK]()
+- [JPush]()
+- [二维码]()
+
+## 框架
+感谢这些开源框架的大力支持
+
+- [BRAVH](https://github.com/CymChad/BaseRecyclerViewAdapterHelper) ： 功能强大的RecyclerViewAdapter封装库
+- [picasso](https://github.com/squareup/picasso) : 图片加载
+- [GreenDAO](https://github.com/greenrobot/greendao) : 数据库框架
+- [Retrofit](https://github.com/square/retrofit) : 代码简洁，接口解耦
+- [OkHttp](https://github.com/square/okhttp) : 网络请求
+- [RxJava](https://github.com/ReactiveX/RxJava) : 快捷的线程切换，简洁的代码，清晰的逻辑，和Retrofit配合很爽
+- [iconify](https://github.com/joanzapata/iconify) : 字体图标
+- [fragmentation](https://github.com/yokeyword/fragmentation) ：协助构建UI框架
+- [fastjson](https://github.com/alibaba/fastjson) ： JSON序列化
+- [ButterKnife](https://github.com/Tencent/VasSonic) : 黄牛刀,一键findViewById
+- [avi](https://github.com/wang/avi/library) :loading 加载动画
+- [StatusBarCompat](https://github.com/niorgai/StatusBarCompat) : 沉浸式状态栏
+- [ucrop](https://github.com/yalantis/ucrop) : 图片剪裁
+
+
+## TODO
+- bmob管理后台系统
+- Tinker 热修复
+- Small插件化
+
 
 
