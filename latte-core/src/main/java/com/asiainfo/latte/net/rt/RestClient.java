@@ -1,7 +1,9 @@
-package com.asiainfo.latte.net;
+package com.asiainfo.latte.net.rt;
 
 import android.content.Context;
 
+import com.asiainfo.latte.net.HttpMethod;
+import com.asiainfo.latte.net.RestCreator;
 import com.asiainfo.latte.net.callback.IError;
 import com.asiainfo.latte.net.callback.IFailure;
 import com.asiainfo.latte.net.callback.IRequest;

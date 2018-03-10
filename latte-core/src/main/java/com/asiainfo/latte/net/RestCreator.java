@@ -2,6 +2,7 @@ package com.asiainfo.latte.net;
 
 import com.asiainfo.latte.app.ConfigKeys;
 import com.asiainfo.latte.app.Latte;
+import com.asiainfo.latte.net.rt.RestService;
 import com.asiainfo.latte.net.rx.RxRestService;
 
 import java.util.ArrayList;

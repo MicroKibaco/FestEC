@@ -21,7 +21,7 @@ import retrofit2.http.Streaming;
 import retrofit2.http.Url;
 
 /**
- * retrofit2 请求方式回调接口
+ * RxJava 请求方式回调接口
  */
 
 public interface RxRestService {

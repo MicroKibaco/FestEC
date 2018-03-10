@@ -37,7 +37,7 @@ dependencies {
     // 动态权限申请
     compile 'com.github.hotchemi:permissionsdispatcher:3.1.0'
     annotationProcessor "com.github.hotchemi:permissionsdispatcher-processor:3.1.0"
-
+// https://www.zhihu.com/question/39662488
     // Fragment依赖
     compile 'me.yokeyword:fragmentation:1.2.7'
     compile 'me.yokeyword:fragmentation-swipeback:1.2.7'
