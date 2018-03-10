@@ -3,18 +3,32 @@ package com.asiainfo.festec;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.View;
+import android.widget.Toast;
 
 import com.asiainfo.latte.delegates.LatteDelegate;
 import com.asiainfo.latte.net.RestClient;
+import com.asiainfo.latte.net.RestCreator;
 import com.asiainfo.latte.net.callback.IError;
 import com.asiainfo.latte.net.callback.IFailure;
 import com.asiainfo.latte.net.callback.ISuccess;
+import com.asiainfo.latte.net.rx.RxRestClient;
+
+import java.util.WeakHashMap;
+
+import io.reactivex.Observable;
+import io.reactivex.Observer;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.annotations.NonNull;
+import io.reactivex.disposables.Disposable;
+import io.reactivex.schedulers.Schedulers;
 
 /**
  * Created by MicroKibaco on 03/03/2018.
  */
 
 public class MainDelegate extends LatteDelegate {
+
+    private static final String URL = "index";
 
     @Override
     public Object setLayout() {
@@ -23,13 +37,76 @@ public class MainDelegate extends LatteDelegate {
 
     @Override
     public void onBindView(@Nullable Bundle savedInstanceState, View rootView) {
-        testRestClient();
+        //  onCallRxGet();
+        // testRestClient();
+        onCallRestClient();
+    }
+
+    private void onCallRestClient() {
+
+
+        RxRestClient.builder().url(URL).build().get().subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Observer<String>() {
+                    @Override
+                    public void onSubscribe(@NonNull Disposable d) {
+
+                    }
+
+                    @Override
+                    public void onNext(@NonNull String s) {
+                        Toast.makeText(getContext(), s, Toast.LENGTH_LONG).show();
+                    }
+
+                    @Override
+                    public void onError(@NonNull Throwable e) {
+
+                    }
+
+                    @Override
+                    public void onComplete() {
+
+                    }
+                });
+
+    }
+
+    private void onCallRxGet() {
+
+
+        final WeakHashMap<String, Object> params = new WeakHashMap<>();
+
+        final Observable<String> observable = RestCreator.getRxRestService().get(URL, params);
+        observable.subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Observer<String>() {
+                    @Override
+                    public void onSubscribe(@NonNull Disposable d) {
+
+                    }
+
+                    @Override
+                    public void onNext(@NonNull String s) {
+                        Toast.makeText(getContext(), s, Toast.LENGTH_LONG).show();
+                    }
+
+                    @Override
+                    public void onError(@NonNull Throwable e) {
+
+                    }
+
+                    @Override
+                    public void onComplete() {
+
+                    }
+                });
+
+
     }
 
     private void testRestClient() {
-
         RestClient.builder()
-                .url("http://127.0.0.1/index")
+                .url("http://127.0.0.1/" + URL)
                 .loader(getContext())
                 .success(new ISuccess() {
                     @Override
@@ -52,5 +129,8 @@ public class MainDelegate extends LatteDelegate {
                 .build()
                 .get();
 
+
     }
+
+
 }

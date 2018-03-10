@@ -2,7 +2,7 @@ package com.asiainfo.latte.net;
 
 import com.asiainfo.latte.app.ConfigKeys;
 import com.asiainfo.latte.app.Latte;
-import com.asiainfo.latte.net.scalars.ScalarsConverterFactory;
+import com.asiainfo.latte.net.rx.RxRestService;
 
 import java.util.ArrayList;
 import java.util.WeakHashMap;
@@ -11,6 +11,8 @@ import java.util.concurrent.TimeUnit;
 import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
 import retrofit2.Retrofit;
+import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
+import retrofit2.converter.scalars.ScalarsConverterFactory;
 
 /**
  * Restful 孵化器
@@ -24,6 +26,11 @@ public class RestCreator {
 
     public static RestService getRestService() {
         return RetrofitHolder.RestServiceHolder.REST_SERVICE;
+
+    }
+
+    public static RxRestService getRxRestService() {
+        return RetrofitHolder.RxRestSeiceHolder.REST_SERVICE;
 
     }
 
@@ -45,6 +52,7 @@ public class RestCreator {
                 .baseUrl(BASE_URL)
                 .client(OkHttpHolder.OK_HTTP_CLIENT)
                 .addConverterFactory(ScalarsConverterFactory.create())
+                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .build();
 
         /**
@@ -77,6 +85,16 @@ public class RestCreator {
 
             private static final RestService REST_SERVICE =
                     RetrofitHolder.RETROFIT_CLIENT.create(RestService.class);
+
+        }
+
+        /**
+         * 仅限本类使用,严禁继承
+         */
+        private static final class RxRestSeiceHolder {
+
+            private static final RxRestService REST_SERVICE =
+                    RetrofitHolder.RETROFIT_CLIENT.create(RxRestService.class);
 
         }
 
