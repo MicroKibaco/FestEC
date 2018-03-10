@@ -4,9 +4,11 @@ import com.asiainfo.latte.app.ConfigKeys;
 import com.asiainfo.latte.app.Latte;
 import com.asiainfo.latte.net.scalars.ScalarsConverterFactory;
 
+import java.util.ArrayList;
 import java.util.WeakHashMap;
 import java.util.concurrent.TimeUnit;
 
+import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
 import retrofit2.Retrofit;
 
@@ -51,11 +53,20 @@ public class RestCreator {
         private static final class OkHttpHolder {
 
             private static final int TIME_OUT = 60; // 超时时间
-
-            private static final OkHttpClient OK_HTTP_CLIENT = new OkHttpClient
-                    .Builder()
+            private static final OkHttpClient.Builder BUILDER = new OkHttpClient.Builder();
+            private static final ArrayList<Interceptor> INTERCEPTORS = Latte.getConfiguration(ConfigKeys.INTERCEPTOR);
+            private static final OkHttpClient OK_HTTP_CLIENT = addInterceptor()
                     .connectTimeout(TIME_OUT, TimeUnit.SECONDS)
                     .build();
+
+            private static OkHttpClient.Builder addInterceptor() {
+                if (INTERCEPTORS != null && !INTERCEPTORS.isEmpty()) {
+                    for (Interceptor interceptor : INTERCEPTORS) {
+                        BUILDER.addInterceptor(interceptor);
+                    }
+                }
+                return BUILDER;
+            }
 
         }
 
