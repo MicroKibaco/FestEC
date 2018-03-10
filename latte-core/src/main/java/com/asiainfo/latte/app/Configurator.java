@@ -24,7 +24,7 @@ public class Configurator {
      * 初始化配置开关OFF
      */
     private Configurator() {
-        LATTE_CONFIGS.put(ConfigKeys.CONFIG_READY.name(), false);
+        LATTE_CONFIGS.put(ConfigKeys.CONFIG_READY, false);
     }
 
     /**
@@ -44,7 +44,7 @@ public class Configurator {
      */
     public final void configure() {
         initIcons();
-        LATTE_CONFIGS.put(ConfigKeys.CONFIG_READY.name(), true);
+        LATTE_CONFIGS.put(ConfigKeys.CONFIG_READY, true);
     }
 
     /**
@@ -60,7 +60,7 @@ public class Configurator {
      */
     private void checkConfiguration() {
 
-        final boolean isReady = (boolean) LATTE_CONFIGS.get(ConfigKeys.CONFIG_READY.name());
+        final boolean isReady = (boolean) LATTE_CONFIGS.get(ConfigKeys.CONFIG_READY);
 
 
         if (!isReady) {

@@ -4,6 +4,7 @@ import android.app.Application;
 
 import com.asiainfo.latte.app.Latte;
 import com.asiainfo.latte.ec.icon.FontEcModel;
+import com.asiainfo.latte.net.interceptors.DebugInterceptor;
 import com.joanzapata.iconify.fonts.FontAwesomeModule;
 
 /**
@@ -20,6 +21,7 @@ public class MyApplication extends Application {
                 .withIcon(new FontAwesomeModule())
                 .withLoaderDelayed(2000)
                 .withIcon(new FontEcModel())
+                .withInterceptor(new DebugInterceptor("index", R.raw.test))
                 .configure();
     }
 }

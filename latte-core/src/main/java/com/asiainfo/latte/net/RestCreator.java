@@ -29,7 +29,7 @@ public class RestCreator {
 
     // 惰性加载,持久化存储对象
     private static final class ParamsHolder {
-        public static final WeakHashMap<String, Object> PARAMS = new WeakHashMap<>();
+        private static final WeakHashMap<String, Object> PARAMS = new WeakHashMap<>();
 
     }
 
