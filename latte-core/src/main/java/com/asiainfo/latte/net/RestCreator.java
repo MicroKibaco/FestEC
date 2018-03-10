@@ -22,6 +22,7 @@ public class RestCreator {
 
     public static RestService getRestService() {
         return RetrofitHolder.RestServiceHolder.REST_SERVICE;
+
     }
 
     // 惰性加载,持久化存储对象
@@ -35,7 +36,7 @@ public class RestCreator {
      */
     private static final class RetrofitHolder {
 
-        private static final String BASE_URL = (String) Latte.getConfigurations().get(ConfigKeys.API_HOST.name());
+        private static final String BASE_URL = Latte.getConfiguration(ConfigKeys.API_HOST);
 
         private static final Retrofit RETROFIT_CLIENT = new Retrofit
                 .Builder()

@@ -51,7 +51,7 @@ public class Configurator {
      * 配置选项ip路由器
      */
     public final Configurator withApiHost(String host) {
-        LATTE_CONFIGS.put(ConfigKeys.API_HOST.name(), host);
+        LATTE_CONFIGS.put(ConfigKeys.API_HOST, host);
         return this;
     }
 
@@ -75,9 +75,9 @@ public class Configurator {
      * 获取指定配置类型的value值
      */
     @SuppressWarnings("unchecked")
-    final <T> T getConfiguration(Enum<ConfigKeys> key) {
+    final <T> T getConfiguration(Object key) {
         checkConfiguration();
-        return (T) LATTE_CONFIGS.get(key.name());
+        return (T) LATTE_CONFIGS.get(key);
     }
 
     public final Configurator withInterceptor(Interceptor interceptor) {
@@ -97,6 +97,11 @@ public class Configurator {
         ICONS.add(descriptor);
         return this;
 
+    }
+
+    public final Configurator withLoaderDelayed(long delayed) {
+        LATTE_CONFIGS.put(ConfigKeys.LOADER_DELAYED, delayed);
+        return this;
     }
 
     private void initIcons() {
