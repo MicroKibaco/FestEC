@@ -1,6 +1,12 @@
 package com.asiainfo.latte.app;
 
+import com.joanzapata.iconify.IconFontDescriptor;
+import com.joanzapata.iconify.Iconify;
+
+import java.util.ArrayList;
 import java.util.WeakHashMap;
+
+import okhttp3.Interceptor;
 
 /**
  * 项目配置文件
@@ -10,13 +16,15 @@ public class Configurator {
     /*
     参数集容器
      */
-    private static final WeakHashMap<String, Object> LATTE_CONFIGS = new WeakHashMap<>();
+    private static final WeakHashMap<Object, Object> LATTE_CONFIGS = new WeakHashMap<>();
+    private static final ArrayList<IconFontDescriptor> ICONS = new ArrayList<>();
+    private ArrayList<Interceptor> INTERCEPTORS = new ArrayList<>();
 
     /**
      * 初始化配置开关OFF
      */
     private Configurator() {
-        LATTE_CONFIGS.put(ConfigType.CONFIG_READY.name(), false);
+        LATTE_CONFIGS.put(ConfigKeys.CONFIG_READY.name(), false);
     }
 
     /**
@@ -27,7 +35,7 @@ public class Configurator {
     }
 
 
-    final WeakHashMap<String, Object> getLatteConfigs() {
+    final WeakHashMap<Object, Object> getLatteConfigs() {
         return LATTE_CONFIGS;
     }
 
@@ -35,14 +43,15 @@ public class Configurator {
      * 打开配置选项闸
      */
     public final void configure() {
-        LATTE_CONFIGS.put(ConfigType.CONFIG_READY.name(), true);
+        initIcons();
+        LATTE_CONFIGS.put(ConfigKeys.CONFIG_READY.name(), true);
     }
 
     /**
      * 配置选项ip路由器
      */
     public final Configurator withApiHost(String host) {
-        LATTE_CONFIGS.put(ConfigType.API_HOST.name(), host);
+        LATTE_CONFIGS.put(ConfigKeys.API_HOST.name(), host);
         return this;
     }
 
@@ -51,7 +60,7 @@ public class Configurator {
      */
     private void checkConfiguration() {
 
-        final boolean isReady = (boolean) LATTE_CONFIGS.get(ConfigType.CONFIG_READY.name());
+        final boolean isReady = (boolean) LATTE_CONFIGS.get(ConfigKeys.CONFIG_READY.name());
 
 
         if (!isReady) {
@@ -66,9 +75,38 @@ public class Configurator {
      * 获取指定配置类型的value值
      */
     @SuppressWarnings("unchecked")
-    final <T> T getConfiguration(Enum<ConfigType> key) {
+    final <T> T getConfiguration(Enum<ConfigKeys> key) {
         checkConfiguration();
         return (T) LATTE_CONFIGS.get(key.name());
+    }
+
+    public final Configurator withInterceptor(Interceptor interceptor) {
+        INTERCEPTORS.add(interceptor);
+        LATTE_CONFIGS.put(ConfigKeys.INTERCEPTOR, INTERCEPTORS);
+        return this;
+    }
+
+    public final Configurator withInterceptors(ArrayList<Interceptor> interceptors) {
+        INTERCEPTORS.addAll(interceptors);
+        LATTE_CONFIGS.put(ConfigKeys.INTERCEPTOR, INTERCEPTORS);
+        return this;
+    }
+
+    public final Configurator withIcon(IconFontDescriptor descriptor) {
+
+        ICONS.add(descriptor);
+        return this;
+
+    }
+
+    private void initIcons() {
+
+        if (ICONS.size() > 0) {
+            final Iconify.IconifyInitializer initializer = Iconify.with(ICONS.get(0));
+            for (int i = 0; i < ICONS.size(); i++) {
+                initializer.with(ICONS.get(i));
+            }
+        }
     }
 
     /**
@@ -77,6 +115,4 @@ public class Configurator {
     private static class Holder {
         private static final Configurator INSTANCE = new Configurator();
     }
-
-
 }
