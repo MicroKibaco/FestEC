@@ -18,12 +18,10 @@ import me.yokeyword.fragmentation_swipeback.SwipeBackFragment;
 public abstract class BaseDelegate extends SwipeBackFragment {
 
     private Unbinder mUnbinder = null;
-
     /**
      * 指定Fragment布局资源: ①xml布局资源 ②自定义控件
      */
     public abstract Object setLayout();
-
     /**
      * Fragment布局填充器
      */
