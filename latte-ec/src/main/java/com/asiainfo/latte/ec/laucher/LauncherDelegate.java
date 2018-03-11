@@ -11,6 +11,7 @@ import com.asiainfo.latte.util.timer.ITimerListener;
 import com.asiainfo.latte_ec.R;
 import com.asiainfo.latte_ec.R2;
 
+import java.text.MessageFormat;
 import java.util.Timer;
 
 import butterknife.BindView;
@@ -29,7 +30,21 @@ public class LauncherDelegate extends LatteDelegate implements ITimerListener {
 
     @Override
     public void onTimer() {
-
+        getProxyActivity().runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                if (mTvTimer != null) {
+                    mTvTimer.setText(MessageFormat.format("跳过\n{0}s", mCount));
+                    mCount--;
+                    if (mCount < 0) {
+                        if (mTimer != null) {
+                            mTimer.cancel();
+                            mTimer = null;
+                        }
+                    }
+                }
+            }
+        });
     }
 
     @Override
@@ -52,12 +67,17 @@ public class LauncherDelegate extends LatteDelegate implements ITimerListener {
 
 
     @OnClick(R2.id.tv_launcher_timer)
-    private void onViewClicked() {
+    public void onClickTimerView() {
 
         if (mTimer != null) {
             mTimer.cancel();
             mTimer = null;
         }
+
+    }
+
+    @Override
+    public void post(Runnable runnable) {
 
     }
 }
