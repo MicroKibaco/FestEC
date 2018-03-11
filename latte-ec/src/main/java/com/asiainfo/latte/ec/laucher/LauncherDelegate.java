@@ -61,7 +61,7 @@ public class LauncherDelegate extends LatteDelegate implements ITimerListener {
 
         mTimer = new Timer();
         final BaseTimerTask task = new BaseTimerTask(this);
-        mTimer.schedule(task, 0, 10000);
+        mTimer.schedule(task, 0, 1000);
 
     }
 
