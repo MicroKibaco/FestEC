@@ -1,6 +1,6 @@
 # FestEC
 ## 声明
-本项目内容撸自**傅猿猿**实战教程 ,纯练手之作，个人未从中获取任何利益，其所有内容均可在归于Imooc所有。内容可能会侵犯到Imooc的知识产权 ,若被告知需停止共享与使用，本人会立即删除整个项目。
+本项目内容撸自 **傅令杰** 实战教程 ,纯项目练手之作，个人未从中获取任何利益，其所有内容均可在归于 IMOOC 所有。内容可能会侵犯到 IMOOC 的知识产权 ,若被告知需停止共享与使用，本人会立即删除整个项目。
 ## 简介
 项目采用 RxJava2.0 + retrofit2.0 + GreenDao 开发
 所有功能已经完成，如果对你有帮助的话不妨star一个o(￣▽￣)ブ
@@ -284,8 +284,131 @@ public abstract class BaseInterceptor implements Interceptor {
 ```
 
 - [文件下载](https://github.com/MicroKibaco/FestEC/blob/master/latte-core/src/main/java/com/asiainfo/latte/net/download/SaveFileTask.java): SaveFileTask类
-### 业务开发
+### 三.业务开发
+#### 1. 计时器
+android中创建定时器有三种方式,分别是: Timer、CountDownTimer 和 handler.postDelayed,这里我们使用的是Timer
+```JAVA
+public class BaseTimerTask extends TimerTask {
 
+    private ITimerListener mListener = null;
+
+    public BaseTimerTask(ITimerListener listener) {
+        this.mListener = listener;
+    }
+
+    @Override
+    public void run() {
+        if (mListener != null) {
+            mListener.onTimer();
+        }
+    }
+}
+```
+使用接口回调的方式,订阅执行定时任务
+```JAVA
+public interface ITimerListener {
+   void onTimer();
+}
+```
+Timer 这个API 是线程安全的, 直接通过该对象的 schedule 方法延迟执行任务,
+值得一提的是:该计时器创建的是子线程,不能做耗时操作,所以要更新ui,必须借助handler处理.
+```JAVA
+public class LauncherDelegate extends LatteDelegate implements ITimerListener {
+    @BindView(R2.id.tv_launcher_timer)
+    AppCompatTextView mTvTimer;
+
+    private Timer mTimer = null;
+    private int mCount = 5;
+
+    @Override
+    public void onTimer() {
+        getProxyActivity().runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                if (mTvTimer != null) {
+                    mTvTimer.setText(MessageFormat.format("跳过\n{0}s", mCount));
+                    mCount--;
+                    if (mCount < 0) {
+                        if (mTimer != null) {
+                            mTimer.cancel();
+                            mTimer = null;
+                            checkIsShowScroll();
+                        }
+                    }
+                }
+            }
+        });
+    }
+
+    @Override
+    public Object setLayout() {
+        return R.layout.delegate_launcher;
+    }
+
+    @Override
+    public void onBindView(@Nullable Bundle savedInstanceState, View rootView) {
+        initTimer();
+    }
+
+    private void initTimer() {
+
+        mTimer = new Timer();
+        final BaseTimerTask task = new BaseTimerTask(this);
+        mTimer.schedule(task, 0, 1000);
+
+    }
+
+
+    // 判断是否展示欢迎页
+    private void checkIsShowScroll() {
+
+        if (!LattePreference.getAppFlag(ScrollLauncherTag.HAS_FIRST_LAUNCHER_APP.name())) {
+            getSupportDelegate().start(new LauncherScrollDelegate(), SINGLETASK);
+        } else {
+            // 检查用户是否已经登录App
+
+        }
+
+    }
+
+
+    @OnClick(R2.id.tv_launcher_timer)
+    public void onClickTimerView() {
+
+        if (mTimer != null) {
+            mTimer.cancel();
+            mTimer = null;
+            checkIsShowScroll();
+        }
+
+    }
+}
+
+```
+1.用户触发跳过,或计时器任务执行完毕,进入欢迎页.
+2.用户滑动到最后一张轮播图,记录当时的状态,作为下次启动程序是否开启欢迎页面的依据
+### 2. 闪屏页
+
+```java
+public class LauncherHolder implements Holder<Integer> {
+
+    private AppCompatImageView mImageView = null;
+
+    @Override
+    public View createView(Context context) {
+        mImageView = new AppCompatImageView(context);
+        mImageView.setScaleType(AppCompatImageView.ScaleType.FIT_XY);
+        return mImageView;
+    }
+
+    @Override
+    public void UpdateUI(Context context, int position, Integer data) {
+        mImageView.setBackgroundResource(data);
+    }
+
+
+}
+```
 ## 第三方服务
 - [支付宝]()
 - [ShareSDK]()
