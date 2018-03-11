@@ -10,8 +10,8 @@ import com.asiainfo.latte.net.callback.IRequest;
 import com.asiainfo.latte.net.callback.ISuccess;
 import com.asiainfo.latte.net.callback.RequestCallBacks;
 import com.asiainfo.latte.net.download.DownloadHandler;
-import com.asiainfo.latte.ui.LatteLoader;
-import com.asiainfo.latte.ui.LoaderStyle;
+import com.asiainfo.latte.ui.launcher.LatteLoader;
+import com.asiainfo.latte.ui.launcher.LoaderStyle;
 
 import java.io.File;
 import java.util.Map;

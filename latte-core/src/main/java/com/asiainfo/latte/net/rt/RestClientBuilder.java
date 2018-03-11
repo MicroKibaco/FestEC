@@ -7,7 +7,7 @@ import com.asiainfo.latte.net.callback.IError;
 import com.asiainfo.latte.net.callback.IFailure;
 import com.asiainfo.latte.net.callback.IRequest;
 import com.asiainfo.latte.net.callback.ISuccess;
-import com.asiainfo.latte.ui.LoaderStyle;
+import com.asiainfo.latte.ui.launcher.LoaderStyle;
 
 import java.io.File;
 import java.util.Map;

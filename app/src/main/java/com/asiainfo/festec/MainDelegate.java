@@ -133,8 +133,4 @@ public class MainDelegate extends LatteDelegate {
     }
 
 
-    @Override
-    public void post(Runnable runnable) {
-
-    }
 }

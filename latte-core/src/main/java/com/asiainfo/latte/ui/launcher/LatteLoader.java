@@ -1,4 +1,4 @@
-package com.asiainfo.latte.ui;
+package com.asiainfo.latte.ui.launcher;
 
 import android.content.Context;
 import android.support.v7.app.AppCompatDialog;

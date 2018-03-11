@@ -75,9 +75,4 @@ public class LauncherDelegate extends LatteDelegate implements ITimerListener {
         }
 
     }
-
-    @Override
-    public void post(Runnable runnable) {
-
-    }
 }

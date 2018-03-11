@@ -200,5 +200,8 @@ public abstract class BaseDelegate extends Fragment implements ISupportFragment 
         return (ProxyActivity) _mActivity;
     }
 
+    @Override
+    public void post(Runnable runnable) {
 
+    }
 }

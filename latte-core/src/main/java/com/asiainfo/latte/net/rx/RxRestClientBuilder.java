@@ -3,7 +3,7 @@ package com.asiainfo.latte.net.rx;
 import android.content.Context;
 
 import com.asiainfo.latte.net.RestCreator;
-import com.asiainfo.latte.ui.LoaderStyle;
+import com.asiainfo.latte.ui.launcher.LoaderStyle;
 
 import java.io.File;
 import java.util.Map;
