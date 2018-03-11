@@ -22,8 +22,6 @@
 
 1) 继承Fragmentation包下的SupportActivity,并不是每个妞都得泡,但是每个Activity子视图都有一个唯一id,SupportActivity的LoadRootFrgment方法 支持Fragment指定根布局加载
 2) 你那么孤单,却总说一个人挺好,每一块Fragment都不能独立存在,强制寻求与Fragment基类有血缘关系的子类,建立联系感(ProxyActivty),并将最终结果告诉Frgment的爸妈 MainActivity
-
-
 ![ProxyActivity](http://p5do3ypyn.bkt.clouddn.com/ProxyActivity.png)
 ### 三.网络请求
 1. 一个基于RxJava + Retrofit 的快速开发基类库 [latte-core](https://github.com/MicroKibaco/FestEC/tree/master/latte-core)

@@ -1,4 +1,6 @@
 apply plugin: 'com.android.library'
+apply plugin: 'com.jakewharton.butterknife'
+
 
 android {
     compileSdkVersion 26
@@ -25,4 +27,6 @@ dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
     testCompile 'junit:junit:4.12'
     compile project(':latte-core')
+    annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
+
 }
