@@ -6,6 +6,7 @@ import android.support.v7.widget.AppCompatTextView;
 import android.view.View;
 
 import com.asiainfo.latte.delegates.LatteDelegate;
+import com.asiainfo.latte.util.storage.LattePreference;
 import com.asiainfo.latte.util.timer.BaseTimerTask;
 import com.asiainfo.latte.util.timer.ITimerListener;
 import com.asiainfo.latte_ec.R;
@@ -40,6 +41,7 @@ public class LauncherDelegate extends LatteDelegate implements ITimerListener {
                         if (mTimer != null) {
                             mTimer.cancel();
                             mTimer = null;
+                            checkIsShowScroll();
                         }
                     }
                 }
@@ -66,12 +68,26 @@ public class LauncherDelegate extends LatteDelegate implements ITimerListener {
     }
 
 
+    // 判断是否展示欢迎页
+    private void checkIsShowScroll() {
+
+        if (!LattePreference.getAppFlag(ScrollLauncherTag.HAS_FIRST_LAUNCHER_APP.name())) {
+            getSupportDelegate().start(new LauncherScrollDelegate(), SINGLETASK);
+        } else {
+            // 检查用户是否已经登录App
+
+        }
+
+    }
+
+
     @OnClick(R2.id.tv_launcher_timer)
     public void onClickTimerView() {
 
         if (mTimer != null) {
             mTimer.cancel();
             mTimer = null;
+            checkIsShowScroll();
         }
 
     }

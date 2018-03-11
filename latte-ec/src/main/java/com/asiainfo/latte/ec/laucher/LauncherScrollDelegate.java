@@ -6,6 +6,7 @@ import android.view.View;
 
 import com.asiainfo.latte.delegates.LatteDelegate;
 import com.asiainfo.latte.ui.loader.LauncherHolderCreator;
+import com.asiainfo.latte.util.storage.LattePreference;
 import com.asiainfo.latte_ec.R;
 import com.bigkoo.convenientbanner.ConvenientBanner;
 import com.bigkoo.convenientbanner.listener.OnItemClickListener;
@@ -51,7 +52,11 @@ public class LauncherScrollDelegate extends LatteDelegate implements OnItemClick
 
     @Override
     public void onItemClick(int position) {
-
+        // 如果点击的是最后一个
+        if (position == INTEGERS.size() - 1) {
+            LattePreference.setAppFlag(ScrollLauncherTag.HAS_FIRST_LAUNCHER_APP.name(), true);
+            // 检查用户是否已经登录
+        }
     }
 
 
