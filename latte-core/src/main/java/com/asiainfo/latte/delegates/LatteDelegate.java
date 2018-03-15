@@ -5,6 +5,8 @@ package com.asiainfo.latte.delegates;
  */
 
 public abstract class LatteDelegate extends PermissionDelegate {
-
-
+    @SuppressWarnings("unchecked")
+    public <T extends LatteDelegate> T getParentDelegate() {
+        return (T) getParentFragment();
+    }
 }

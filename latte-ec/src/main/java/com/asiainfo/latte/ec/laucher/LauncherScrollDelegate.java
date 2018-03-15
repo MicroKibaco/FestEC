@@ -4,7 +4,9 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.View;
 
+import com.asiainfo.latte.app.AccountManager;
 import com.asiainfo.latte.delegates.LatteDelegate;
+import com.asiainfo.latte.ec.sign.SignInDelegate;
 import com.asiainfo.latte.ui.loader.LauncherHolderCreator;
 import com.asiainfo.latte.util.storage.LattePreference;
 import com.asiainfo.latte_ec.R;
@@ -56,6 +58,9 @@ public class LauncherScrollDelegate extends LatteDelegate implements OnItemClick
         if (position == INTEGERS.size() - 1) {
             LattePreference.setAppFlag(ScrollLauncherTag.HAS_FIRST_LAUNCHER_APP.name(), true);
             // 检查用户是否已经登录
+            if (!AccountManager.isSignIn()) {
+                getSupportDelegate().start(new SignInDelegate());
+            }
         }
     }
 

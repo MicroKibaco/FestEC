@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.v7.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
                                               android:orientation="vertical"
+                                              android:background="@android:color/white"
                                               android:layout_width="match_parent"
                                               android:layout_height="match_parent">
 
@@ -97,6 +98,20 @@
                         android:id="@+id/sign_up_edit_password"
                         android:hint="@string/sign_up_edit_password_hint"
                         />
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginTop="5dp">
+
+                <android.support.design.widget.TextInputEditText
+                        android:id="@+id/sign_up_edit_repassword"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/sign_up_edit_repassword_hint"
+                        android:inputType="textPassword"/>
             </android.support.design.widget.TextInputLayout>
 
             <android.support.v7.widget.AppCompatButton

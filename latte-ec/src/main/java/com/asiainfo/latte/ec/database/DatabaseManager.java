@@ -5,7 +5,7 @@ import android.content.Context;
 
 import org.greenrobot.greendao.database.Database;
 
-class DatabaseManager {
+public class DatabaseManager {
 
     private UserProfileDao mDao = null;
 
@@ -28,7 +28,7 @@ class DatabaseManager {
         mDao = session.getUserProfileDao();
     }
 
-    private UserProfileDao getDao() {
+    public UserProfileDao getDao() {
         return mDao;
     }
 
