@@ -1,11 +1,13 @@
 package com.asiainfo.latte.ec.laucher;
 
+import android.app.Activity;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.View;
 
+import com.asiainfo.latte.app.AccountManager;
+import com.asiainfo.latte.app.IUserChecker;
 import com.asiainfo.latte.delegates.LatteDelegate;
-import com.asiainfo.latte.ec.sign.SignInDelegate;
 import com.asiainfo.latte.ui.loader.LauncherHolderCreator;
 import com.asiainfo.latte.util.storage.LattePreference;
 import com.asiainfo.latte_ec.R;
@@ -23,11 +25,20 @@ public class LauncherScrollDelegate extends LatteDelegate implements OnItemClick
 
     private ConvenientBanner<Integer> mConvenientBanner = null;
     private List<Integer> INTEGERS = new ArrayList<>();
+    private ILauncherListener mILauncherListener;
 
     @Override
     public Object setLayout() {
         mConvenientBanner = new ConvenientBanner<>(getContext());
         return mConvenientBanner;
+    }
+
+    @Override
+    public void onAttach(Activity activity) {
+        super.onAttach(activity);
+        if (activity instanceof ILauncherListener) {
+            mILauncherListener = (ILauncherListener) activity;
+        }
     }
 
     @Override
@@ -57,7 +68,22 @@ public class LauncherScrollDelegate extends LatteDelegate implements OnItemClick
         if (position == INTEGERS.size() - 1) {
             LattePreference.setAppFlag(ScrollLauncherTag.HAS_FIRST_LAUNCHER_APP.name(), true);
             // 检查用户是否已经登录
-            getSupportDelegate().start(new SignInDelegate());
+
+            AccountManager.checkAccount(new IUserChecker() {
+                @Override
+                public void onSignIn() {
+                    if (mILauncherListener != null) {
+                        mILauncherListener.onLauncherFinish(OnLauncherFinishTag.SIGNED);
+                    }
+                }
+
+                @Override
+                public void onNotSignIn() {
+                    if (mILauncherListener != null) {
+                        mILauncherListener.onLauncherFinish(OnLauncherFinishTag.NOT_SIGNED);
+                    }
+                }
+            });
 
         }
     }

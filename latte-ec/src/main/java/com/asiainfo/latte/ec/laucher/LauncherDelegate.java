@@ -1,10 +1,13 @@
 package com.asiainfo.latte.ec.laucher;
 
+import android.app.Activity;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.AppCompatTextView;
 import android.view.View;
 
+import com.asiainfo.latte.app.AccountManager;
+import com.asiainfo.latte.app.IUserChecker;
 import com.asiainfo.latte.delegates.LatteDelegate;
 import com.asiainfo.latte.ec.sign.SignInDelegate;
 import com.asiainfo.latte.util.storage.LattePreference;
@@ -29,6 +32,8 @@ public class LauncherDelegate extends LatteDelegate implements ITimerListener {
 
     private Timer mTimer = null;
     private int mCount = 5;
+
+    private ILauncherListener mILauncherListener;
 
     @Override
     public void onTimer() {
@@ -69,6 +74,13 @@ public class LauncherDelegate extends LatteDelegate implements ITimerListener {
 
     }
 
+    @Override
+    public void onAttach(Activity activity) {
+        super.onAttach(activity);
+        if (activity instanceof ILauncherListener) {
+            mILauncherListener = (ILauncherListener) activity;
+        }
+    }
 
     // 判断是否展示欢迎页
     private void checkIsShowScroll() {
@@ -78,7 +90,21 @@ public class LauncherDelegate extends LatteDelegate implements ITimerListener {
         } else {
             // 检查用户是否已经登录App
             getSupportDelegate().start(new SignInDelegate());
+            AccountManager.checkAccount(new IUserChecker() {
+                @Override
+                public void onSignIn() {
+                    if (mILauncherListener != null) {
+                        mILauncherListener.onLauncherFinish(OnLauncherFinishTag.SIGNED);
+                    }
+                }
 
+                @Override
+                public void onNotSignIn() {
+                    if (mILauncherListener != null) {
+                        mILauncherListener.onLauncherFinish(OnLauncherFinishTag.NOT_SIGNED);
+                    }
+                }
+            });
 
         }
 
