@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+                                              android:orientation="vertical"
+                                              android:layout_width="match_parent"
+                                              android:layout_height="match_parent">
+
+    <Toolbar
+            android:background="@android:color/holo_orange_dark"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize">
+
+        <android.support.v7.widget.AppCompatTextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="@string/sign_in_title"
+                android:textColor="@android:color/white"
+                android:textSize="20sp"
+                />
+    </Toolbar>
+
+    <android.support.v4.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+
+        <android.support.v7.widget.LinearLayoutCompat
+                android:paddingLeft="24dp"
+                android:paddingRight="24dp"
+                android:paddingTop="36dp"
+                android:orientation="vertical"
+                android:fitsSystemWindows="true"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+            <android.support.v7.widget.AppCompatImageView
+                    android:layout_width="120dp"
+                    android:layout_height="120dp"
+                    android:layout_marginBottom="25dp"
+                    android:src="@mipmap/launcher"
+                    android:layout_gravity="center_horizontal"
+                    />
+
+
+            <!--邮箱-->
+            <android.support.design.widget.TextInputLayout
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                <android.support.design.widget.TextInputEditText
+                        android:inputType="textEmailAddress"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/sign_in_edit_email"
+                        android:hint="@string/sign_up_edit_email_hint"
+                        />
+            </android.support.design.widget.TextInputLayout>
+
+            <!--密码-->
+            <android.support.design.widget.TextInputLayout
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                <android.support.design.widget.TextInputEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/sign_in_edit_password"
+                        android:hint="@string/sign_up_edit_password_hint"
+                        android:inputType="textPassword"
+                        />
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.v7.widget.AppCompatButton
+                    android:text="@string/sign_in_title"
+                    android:layout_marginBottom="20dp"
+                    android:layout_marginTop="20dp"
+                    android:padding="12dp"
+                    android:gravity="center"
+                    android:id="@+id/btn_sign_in"
+                    android:background="@android:color/holo_orange_dark"
+                    android:layout_width="match_parent"
+                    android:textColor="@android:color/white"
+                    android:layout_height="wrap_content"/>
+
+            <android.support.v7.widget.AppCompatTextView
+                    android:text="@string/sign_in_link"
+                    android:id="@+id/tv_link_sign_in"
+                    android:textSize="14sp"
+                    android:gravity="center"
+                    android:layout_marginBottom="24dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+
+            <!--微信-->
+            <com.joanzapata.iconify.widget.IconTextView
+                    android:id="@+id/icon_sign_in_wechat"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:layout_gravity="center_horizontal"
+                    android:gravity="center"
+                    android:text="@string/sign_in_weixin"
+                    android:textColor="#04b00f"
+                    android:textSize="40dp"/>
+        </android.support.v7.widget.LinearLayoutCompat>
+
+    </android.support.v4.widget.NestedScrollView>
+
+</android.support.v7.widget.LinearLayoutCompat>

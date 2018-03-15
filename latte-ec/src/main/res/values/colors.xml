@@ -3,4 +3,5 @@
     <color name="colorCircleTimer">#64ffffff</color>
     <color name="colorDotNormal">#55000000</color>
     <color name="colorDotFocus">#aaFFFFFF</color>
+    <color name="holo_orange_dark">#ffff8800</color>
 </resources>
