@@ -5,7 +5,6 @@ import android.support.annotation.Nullable;
 import android.support.v7.widget.AppCompatTextView;
 import android.view.View;
 
-import com.asiainfo.latte.app.AccountManager;
 import com.asiainfo.latte.delegates.LatteDelegate;
 import com.asiainfo.latte.ec.sign.SignInDelegate;
 import com.asiainfo.latte.util.storage.LattePreference;
@@ -61,6 +60,7 @@ public class LauncherDelegate extends LatteDelegate implements ITimerListener {
         initTimer();
     }
 
+
     private void initTimer() {
 
         mTimer = new Timer();
@@ -77,9 +77,8 @@ public class LauncherDelegate extends LatteDelegate implements ITimerListener {
             getSupportDelegate().start(new LauncherScrollDelegate(), SINGLETASK);
         } else {
             // 检查用户是否已经登录App
-            if (!AccountManager.isSignIn()) {
-                getSupportDelegate().start(new SignInDelegate());
-            }
+            getSupportDelegate().start(new SignInDelegate());
+
 
         }
 

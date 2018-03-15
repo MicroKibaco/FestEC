@@ -70,26 +70,41 @@ public class SignInDelegate extends LatteDelegate {
         return isPass;
     }
 
-    @OnClick({R2.id.btn_sign_in, R2.id.tv_link_sign_up, R2.id.icon_sign_in_wechat})
-    public void onViewClicked(View view) {
-        switch (view.getId()) {
-            case R2.id.btn_sign_in:
-                Toast.makeText(getContext(), getString(R.string.sing_in_suc_tip), Toast.LENGTH_LONG).show();
+    @OnClick(R2.id.tv_link_sign_up)
+    void onClickLink() {
+        getSupportDelegate().start(new SignUpDelegate());
 
-                if (checkForm()) {
-                    // 调用注册接口在返回成功里面
+    }
 
-                    // 假成功，实际需要走网络请求
-                    AccountManager.setSignState(true);
-                    Toast.makeText(getContext(), getString(R.string.sing_in_suc_tip), Toast.LENGTH_LONG).show();
-                }
-                break;
-            case R2.id.tv_link_sign_up:
-                getSupportDelegate().start(new SignUpDelegate());
-                break;
-            case R2.id.icon_sign_in_wechat:
+    @OnClick(R2.id.btn_sign_in)
+    void onClickSignIn() {
+        if (checkForm()) {
+            //调用注册的接口在返回成功里面
+          /*  RestClient.builder()
+                    .url("http://192.168.0.114:8080/RestDataServer/api/user_profile.php")
+                    .params("email", mEmail.getText().toString())
+                    .params("password", mPassword.getText().toString())
+                    .success(new ISuccess() {
+                        @Override
+                        public void onSuccess(String response) {
+                            Lattelogger.json("USER_PROFILE", response);
+                            SignHandler.onSignIn(response, mISignListener);
+                        }
+                    })
+                    .build()
+                    .post();*/
+            //假成功，实际需要走网络请求
+            AccountManager.setSignState(true);
 
-                break;
+            Toast.makeText(getContext(), getString(R.string.sing_in_suc_tip), Toast.LENGTH_LONG).show();
+
+
+
         }
     }
+
+    @OnClick({R2.id.icon_sign_in_wechat})
+    void onClickWeChat() {
+    }
+
 }

@@ -92,20 +92,31 @@ public class SignUpDelegate extends LatteDelegate {
         return isPass;
     }
 
-
-    @OnClick({R2.id.btn_sign_up, R2.id.tv_link_sign_in})
-    public void onViewClicked(View view) {
-        switch (view.getId()) {
-            case R2.id.btn_sign_up:
-                // 调用注册接口返回成功里面
-                // SignHandler.onSignUp(response,mISignListener);
-                if (checkFrom()) {
-                    Toast.makeText(getContext(), getString(R.string.sign_up_suc_tip), Toast.LENGTH_LONG).show();
-                }
-                break;
-            case R2.id.tv_link_sign_in:
-                getSupportDelegate().start(new SignInDelegate());
-                break;
+    @OnClick({R2.id.btn_sign_up})
+    void onClickSignUp() {
+        // 调用注册接口返回成功里面
+        /**
+         *  RestClient.builder()
+         .url("http://192.168.0.114:8080/RestDataServer/api/user_profile.php")
+         .params("name", mName.getText().toString())
+         .params("email", mEmail.getText().toString())
+         .params("phone", mPhone.getText().toString())
+         .params("password", mPassword.getText().toString())
+         .success(new ISuccess() {
+        @Override public void onSuccess(String response) {
+        Lattelogger.json("USER_PROFILE", response);
+        SignHandler.onSignUp(response, mISignListener);
         }
+        })
+         .build();
+         */
+        if (checkFrom()) {
+            Toast.makeText(getContext(), getString(R.string.sign_up_suc_tip), Toast.LENGTH_LONG).show();
+        }
+    }
+
+    @OnClick({R2.id.tv_link_sign_in})
+    void onClickLink() {
+        getSupportDelegate().start(new SignInDelegate());
     }
 }
