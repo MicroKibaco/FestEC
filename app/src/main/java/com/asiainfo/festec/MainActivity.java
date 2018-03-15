@@ -35,12 +35,14 @@ public class MainActivity extends ProxyActivity implements
 
     @Override
     public void onSignInSuccess() {
+        Toast.makeText(this, getString(R.string.sign_in_success_tip), Toast.LENGTH_LONG).show();
 
     }
 
     @Override
     public void onSignUpSuccess() {
         Toast.makeText(this, getString(R.string.sign_up_success_tip), Toast.LENGTH_LONG).show();
+        getSupportDelegate().startWithPop(new SignInDelegate());
     }
 
     @Override

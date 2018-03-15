@@ -6,7 +6,6 @@ import android.support.annotation.Nullable;
 import android.support.design.widget.TextInputEditText;
 import android.util.Patterns;
 import android.view.View;
-import android.widget.Toast;
 
 import com.asiainfo.latte.delegates.LatteDelegate;
 import com.asiainfo.latte_ec.R;
@@ -111,12 +110,12 @@ public class SignUpDelegate extends LatteDelegate {
          .build();
          */
         if (checkFrom()) {
-            Toast.makeText(getContext(), getString(R.string.sign_up_suc_tip), Toast.LENGTH_LONG).show();
+            mISignListener.onSignUpSuccess();
         }
     }
 
     @OnClick({R2.id.tv_link_sign_in})
     void onClickLink() {
-        getSupportDelegate().start(new SignInDelegate());
+        getSupportDelegate().startWithPop(new SignInDelegate());
     }
 }

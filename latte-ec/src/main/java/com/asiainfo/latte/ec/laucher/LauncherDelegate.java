@@ -9,7 +9,6 @@ import android.view.View;
 import com.asiainfo.latte.app.AccountManager;
 import com.asiainfo.latte.app.IUserChecker;
 import com.asiainfo.latte.delegates.LatteDelegate;
-import com.asiainfo.latte.ec.sign.SignInDelegate;
 import com.asiainfo.latte.util.storage.LattePreference;
 import com.asiainfo.latte.util.timer.BaseTimerTask;
 import com.asiainfo.latte.util.timer.ITimerListener;
@@ -89,7 +88,6 @@ public class LauncherDelegate extends LatteDelegate implements ITimerListener {
             getSupportDelegate().start(new LauncherScrollDelegate(), SINGLETASK);
         } else {
             // 检查用户是否已经登录App
-            getSupportDelegate().start(new SignInDelegate());
             AccountManager.checkAccount(new IUserChecker() {
                 @Override
                 public void onSignIn() {

@@ -11,7 +11,6 @@
     <string name="sign_in_weixin">{fa-weixin}</string>
     <string name="sign_in_error_password">请填写至少六位数密码</string>
     <string name="sign_in_error_email">错误的邮箱格式</string>
-    <string name="sing_in_suc_tip">登陆成功</string>
     <string name="sign_up_edit_repassword_hint">验证密码</string>
     <string name="sign_up_error_name">请输入姓名</string>
     <string name="sign_up_error_email">错误的邮箱格式</string>

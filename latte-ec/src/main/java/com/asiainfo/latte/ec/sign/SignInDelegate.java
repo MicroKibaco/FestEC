@@ -6,7 +6,6 @@ import android.support.annotation.Nullable;
 import android.support.design.widget.TextInputEditText;
 import android.util.Patterns;
 import android.view.View;
-import android.widget.Toast;
 
 import com.asiainfo.latte.app.AccountManager;
 import com.asiainfo.latte.delegates.LatteDelegate;
@@ -14,7 +13,6 @@ import com.asiainfo.latte_ec.R;
 import com.asiainfo.latte_ec.R2;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 /**
@@ -36,6 +34,11 @@ public class SignInDelegate extends LatteDelegate {
     }
 
     @Override
+    public void onBindView(@Nullable Bundle savedInstanceState, View rootView) {
+
+    }
+
+    @Override
     public void onAttach(Activity activity) {
         super.onAttach(activity);
         if (activity instanceof ISignListener) {
@@ -43,10 +46,6 @@ public class SignInDelegate extends LatteDelegate {
         }
     }
 
-    @Override
-    public void onBindView(@Nullable Bundle savedInstanceState, View rootView) {
-        ButterKnife.bind(this, rootView);
-    }
 
     private boolean checkForm() {
         final String email = mEmail.getText().toString();
@@ -72,7 +71,7 @@ public class SignInDelegate extends LatteDelegate {
 
     @OnClick(R2.id.tv_link_sign_up)
     void onClickLink() {
-        getSupportDelegate().start(new SignUpDelegate());
+        getSupportDelegate().startWithPop(new SignUpDelegate());
 
     }
 
@@ -95,11 +94,7 @@ public class SignInDelegate extends LatteDelegate {
                     .post();*/
             //假成功，实际需要走网络请求
             AccountManager.setSignState(true);
-
-            Toast.makeText(getContext(), getString(R.string.sing_in_suc_tip), Toast.LENGTH_LONG).show();
-
-
-
+            mISignListener.onSignInSuccess();
         }
     }
 
