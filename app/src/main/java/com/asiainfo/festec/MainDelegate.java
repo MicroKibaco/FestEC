@@ -5,13 +5,13 @@ import android.support.annotation.Nullable;
 import android.view.View;
 import android.widget.Toast;
 
-import com.asiainfo.latte.delegates.LatteDelegate;
-import com.asiainfo.latte.net.RestCreator;
-import com.asiainfo.latte.net.callback.IError;
-import com.asiainfo.latte.net.callback.IFailure;
-import com.asiainfo.latte.net.callback.ISuccess;
-import com.asiainfo.latte.net.rt.RestClient;
-import com.asiainfo.latte.net.rx.RxRestClient;
+import com.asiainfo.latte_annotations.delegates.LatteDelegate;
+import com.asiainfo.latte_annotations.net.RestCreator;
+import com.asiainfo.latte_annotations.net.callback.IError;
+import com.asiainfo.latte_annotations.net.callback.IFailure;
+import com.asiainfo.latte_annotations.net.callback.ISuccess;
+import com.asiainfo.latte_annotations.net.rt.RestClient;
+import com.asiainfo.latte_annotations.net.rx.RxRestClient;
 
 import java.util.WeakHashMap;
 

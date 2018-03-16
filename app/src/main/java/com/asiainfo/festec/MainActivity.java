@@ -5,14 +5,14 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.ActionBar;
 import android.widget.Toast;
 
-import com.asiainfo.latte.activitys.ProxyActivity;
-import com.asiainfo.latte.delegates.LatteDelegate;
-import com.asiainfo.latte.ec.laucher.ILauncherListener;
-import com.asiainfo.latte.ec.laucher.LauncherDelegate;
-import com.asiainfo.latte.ec.laucher.OnLauncherFinishTag;
-import com.asiainfo.latte.ec.sign.ISignListener;
-import com.asiainfo.latte.ec.sign.SignInDelegate;
-import com.asiainfo.latte.ec.sign.SignUpDelegate;
+import com.asiainfo.latte_annotations.activitys.ProxyActivity;
+import com.asiainfo.latte_annotations.delegates.LatteDelegate;
+import com.asiainfo.latte_annotations.ec.laucher.ILauncherListener;
+import com.asiainfo.latte_annotations.ec.laucher.LauncherDelegate;
+import com.asiainfo.latte_annotations.ec.laucher.OnLauncherFinishTag;
+import com.asiainfo.latte_annotations.ec.sign.ISignListener;
+import com.asiainfo.latte_annotations.ec.sign.SignInDelegate;
+import com.asiainfo.latte_annotations.ec.sign.SignUpDelegate;
 
 public class MainActivity extends ProxyActivity implements
         ISignListener,

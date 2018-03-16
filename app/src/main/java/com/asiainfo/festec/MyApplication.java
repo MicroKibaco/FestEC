@@ -2,9 +2,9 @@ package com.asiainfo.festec;
 
 import android.app.Application;
 
-import com.asiainfo.latte.app.Latte;
-import com.asiainfo.latte.ec.icon.FontEcModel;
-import com.asiainfo.latte.net.interceptors.DebugInterceptor;
+import com.asiainfo.latte_annotations.app.Latte;
+import com.asiainfo.latte_annotations.ec.icon.FontEcModel;
+import com.asiainfo.latte_annotations.net.interceptors.DebugInterceptor;
 import com.joanzapata.iconify.fonts.FontAwesomeModule;
 
 /**
