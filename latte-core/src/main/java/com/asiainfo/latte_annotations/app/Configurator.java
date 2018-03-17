@@ -1,5 +1,7 @@
 package com.asiainfo.latte_annotations.app;
 
+import android.app.Activity;
+
 import com.joanzapata.iconify.IconFontDescriptor;
 import com.joanzapata.iconify.Iconify;
 
@@ -104,6 +106,10 @@ public class Configurator {
         return this;
     }
 
+    public final Configurator withActivity(Activity activity) {
+        LATTE_CONFIGS.put(ConfigKeys.ACTIVITY, activity);
+        return this;
+    }
 
     public final Configurator withWxChatAppId(String wxChatAppId) {
         LATTE_CONFIGS.put(ConfigKeys.WE_CHAT_APP_ID, wxChatAppId);

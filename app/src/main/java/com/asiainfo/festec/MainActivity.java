@@ -6,6 +6,7 @@ import android.support.v7.app.ActionBar;
 import android.widget.Toast;
 
 import com.asiainfo.latte_annotations.activitys.ProxyActivity;
+import com.asiainfo.latte_annotations.app.Latte;
 import com.asiainfo.latte_annotations.delegates.LatteDelegate;
 import com.asiainfo.latte_annotations.ec.laucher.ILauncherListener;
 import com.asiainfo.latte_annotations.ec.laucher.LauncherDelegate;
@@ -26,6 +27,7 @@ public class MainActivity extends ProxyActivity implements
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Latte.getConfigurator().withActivity(this);
         final ActionBar actionBar = getSupportActionBar();
 
         if (actionBar != null) {

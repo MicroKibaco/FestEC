@@ -24,6 +24,7 @@ public final class Latte {
         return Configurator.getInstance();
     }
 
+
     /**
      * 获取配置项参数集
      */
