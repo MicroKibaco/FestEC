@@ -127,7 +127,7 @@
                     android:layout_height="wrap_content"/>
 
             <android.support.v7.widget.AppCompatTextView
-                    android:text="@string/sign_up_link"
+                    android:text="@string/sign_in_link"
                     android:id="@+id/tv_link_sign_in"
                     android:textSize="14sp"
                     android:gravity="center"

@@ -9,6 +9,9 @@ import android.view.View;
 
 import com.asiainfo.latte_annotations.app.AccountManager;
 import com.asiainfo.latte_annotations.delegates.LatteDelegate;
+import com.asiainfo.latte_annotations.util.log.Lattelogger;
+import com.asiainfo.latte_annotations.wechat.LatteWeChat;
+import com.asiainfo.latte_annotations.wechat.callbacks.IWeChatSignInCallback;
 import com.asiainfo.latte_ec.R;
 import com.asiainfo.latte_ec.R2;
 
@@ -88,6 +91,7 @@ public class SignInDelegate extends LatteDelegate {
                         public void onSuccess(String response) {
                             Lattelogger.json("USER_PROFILE", response);
                             SignHandler.onSignIn(response, mISignListener);
+                            mISignListener.onSignInSuccess();
                         }
                     })
                     .build()
@@ -100,6 +104,13 @@ public class SignInDelegate extends LatteDelegate {
 
     @OnClick({R2.id.icon_sign_in_wechat})
     void onClickWeChat() {
+        LatteWeChat.getInstance().onSignSuccess(new IWeChatSignInCallback() {
+            @Override
+            public void onSignInSuccess(String userInfo) {
+                Lattelogger.e("sign_in_wechat", userInfo);
+            }
+        })
+                .signIn();
     }
 
 }

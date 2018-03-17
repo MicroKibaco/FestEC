@@ -3,6 +3,7 @@ package com.asiainfo.festec;
 import android.app.Application;
 
 import com.asiainfo.latte_annotations.app.Latte;
+import com.asiainfo.latte_annotations.ec.database.DatabaseManager;
 import com.asiainfo.latte_annotations.ec.icon.FontEcModel;
 import com.asiainfo.latte_annotations.net.interceptors.DebugInterceptor;
 import com.joanzapata.iconify.fonts.FontAwesomeModule;
@@ -21,7 +22,11 @@ public class MyApplication extends Application {
                 .withIcon(new FontAwesomeModule())
                 .withLoaderDelayed(2000)
                 .withIcon(new FontEcModel())
+                .withWxChatAppId("WE_CHAT_APP_ID")
+                .withWxChatAppSecret("WE_CHAT_APP_SECRET")
                 .withInterceptor(new DebugInterceptor("index", R.raw.test))
                 .configure();
+
+        DatabaseManager.getInstance().init(this);
     }
 }

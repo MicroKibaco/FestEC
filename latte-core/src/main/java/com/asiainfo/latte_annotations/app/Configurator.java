@@ -104,6 +104,17 @@ public class Configurator {
         return this;
     }
 
+
+    public final Configurator withWxChatAppId(String wxChatAppId) {
+        LATTE_CONFIGS.put(ConfigKeys.WE_CHAT_APP_ID, wxChatAppId);
+        return this;
+    }
+
+    public final Configurator withWxChatAppSecret(String wxChatAppSecret) {
+        LATTE_CONFIGS.put(ConfigKeys.WE_CHAT_APP_SECRET, wxChatAppSecret);
+        return this;
+    }
+
     private void initIcons() {
 
         if (ICONS.size() > 0) {

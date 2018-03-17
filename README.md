@@ -388,7 +388,7 @@ public class LauncherDelegate extends LatteDelegate implements ITimerListener {
 1.用户触发跳过,或计时器任务执行完毕,进入欢迎页.
 2.用户滑动到最后一张轮播图,记录当时的状态,作为下次启动程序是否开启欢迎页面的依据
 ### 2. 闪屏页
-
+再次感谢[saiwu-bigkoo的Android-ConvenientBanner](https://github.com/saiwu-bigkoo/Android-ConvenientBanner),自定义你的Holder，实现更多复杂的界面，不一定是图片翻页，其他任何控件翻页亦可
 ```java
 public class LauncherHolder implements Holder<Integer> {
 
@@ -408,6 +408,386 @@ public class LauncherHolder implements Holder<Integer> {
 
 
 }
+```
+采用代码分离技巧,构建Holder构建器,典型的MVC设计思想
+```java
+public class LauncherHolderCreator implements CBViewHolderCreator<LauncherHolder> {
+    @Override
+    public LauncherHolder createHolder() {
+        return new LauncherHolder();
+    }
+}
+```
+通过 **ConvenientBanner** 的 **setPageIndicator** 方法设置两个点图片作为翻页指示器，
+不设置则没有指示器，可以根据自己需求自行配合自己的指示器,
+不需要圆点指示器可用不设,**setPageIndicatorAlign** 方法 设置 指示器的方向,
+当然我们也需要 **setOnItemClickListener** 每一张轮播图的被点击的监听事件,如果点击的是最后一个,
+检查用户是否已经登录
+
+```java
+/**
+ * 欢迎界面轮播
+ */
+
+public class LauncherScrollDelegate extends LatteDelegate implements OnItemClickListener {
+
+    private ConvenientBanner<Integer> mConvenientBanner = null;
+    private List<Integer> INTEGERS = new ArrayList<>();
+    private ILauncherListener mILauncherListener;
+
+    @Override
+    public Object setLayout() {
+        mConvenientBanner = new ConvenientBanner<>(getContext());
+        return mConvenientBanner;
+    }
+
+    @Override
+    public void onAttach(Activity activity) {
+        super.onAttach(activity);
+        if (activity instanceof ILauncherListener) {
+            mILauncherListener = (ILauncherListener) activity;
+        }
+    }
+
+    @Override
+    public void onBindView(@Nullable Bundle savedInstanceState, View rootView) {
+        initBanner();
+    }
+
+    private void initBanner() {
+
+        INTEGERS.add(R.mipmap.launcher_01);
+        INTEGERS.add(R.mipmap.launcher_02);
+        INTEGERS.add(R.mipmap.launcher_03);
+        INTEGERS.add(R.mipmap.launcher_04);
+        INTEGERS.add(R.mipmap.launcher_05);
+        INTEGERS.add(R.mipmap.launcher_06);
+        mConvenientBanner.setPages(new LauncherHolderCreator(), INTEGERS)
+                .setPageIndicator(new int[]{R.drawable.dot_normal, R.drawable.dot_focus})
+                .setPageIndicatorAlign(ConvenientBanner.PageIndicatorAlign.CENTER_HORIZONTAL)
+                .setOnItemClickListener(this)
+                .setCanLoop(false);
+
+    }
+
+    @Override
+    public void onItemClick(int position) {
+        // 如果点击的是最后一个
+        if (position == INTEGERS.size() - 1) {
+            LattePreference.setAppFlag(ScrollLauncherTag.HAS_FIRST_LAUNCHER_APP.name(), true);
+            // 检查用户是否已经登录
+
+            AccountManager.checkAccount(new IUserChecker() {
+                @Override
+                public void onSignIn() {
+                    if (mILauncherListener != null) {
+                        mILauncherListener.onLauncherFinish(OnLauncherFinishTag.SIGNED);
+                    }
+                }
+
+                @Override
+                public void onNotSignIn() {
+                    if (mILauncherListener != null) {
+                        mILauncherListener.onLauncherFinish(OnLauncherFinishTag.NOT_SIGNED);
+                    }
+                }
+            });
+
+        }
+    }
+
+
+}
+
+```
+### 3. 登录
+登录分为普通用户登录和微信登录两种方式,接下来我们就先讲一下普通用户登录的方式
+### **① 普通用户登录**
+#### 一. 校验登录的合法性
+```java
+ private boolean checkForm() {
+        final String email = mEmail.getText().toString();
+        final String password = mPassword.getText().toString();
+
+        boolean isPass = true;
+        if (email.isEmpty() || !Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
+            mEmail.setError("错误的邮箱格式");
+            isPass = false;
+        } else {
+            mEmail.setError(null);
+        }
+
+        if (password.isEmpty() || password.length() < 6) {
+            mPassword.setError("请填写至少六位数密码");
+            isPass = false;
+        } else {
+            mPassword.setError(null);
+        }
+
+        return isPass;
+    }
+```
+#### 二. 在登录请求校验成功后,植入登录成功的共谋
+```java
+ RestClient.builder()
+                    .url("http://localhost:8080/RestDataServer/api/user_profile.php")
+                    .params("email", mEmail.getText().toString())
+                    .params("password", mPassword.getText().toString())
+                    .success(new ISuccess() {
+                        @Override
+                        public void onSuccess(String response) {
+                            Lattelogger.json("USER_PROFILE", response);
+                            SignHandler.onSignIn(response, mISignListener);
+                            mISignListener.onSignInSuccess();
+                        }
+                    })
+                    .build()
+                    .post();
+```
+下面我们就深入内部打探一下,AccountManager 到底是如何 对登录的数据进行解析的哈
+```java
+  public static void onSignUp(String response, ISignListener listener) {
+        final JSONObject profileJson = JSON.parseObject(response).getJSONObject("data");
+        final Long userId = profileJson.getLong("userId");
+        final String name = profileJson.getString("name");
+        final String avatar = profileJson.getString("avatar");
+        final String gender = profileJson.getString("gender");
+        final String address = profileJson.getString("address");
+        final UserProfile profile = new UserProfile(userId, name, avatar, gender, address);
+
+        DatabaseManager.getInstance().getDao().insert(profile);
+
+        // 已经注册表示登录成功
+        AccountManager.setSignState(true);
+        listener.onSignUpSuccess();
+
+    }
+```
+不得不提的是,在登录数据流管理过程中我们用到了 一款开源的面向Android 的轻便、快捷的ORM 框架 [GreenDao](http://www.jcodecraeer.com/a/anzhuokaifa/androidkaifa/2017/0703/8144.html)
+
+* 创建数据存储的实体类 UserProfile
+```java
+@Entity(nameInDb = "user_profile")
+public class UserProfile {
+    @Id
+    private long userId = 0;
+    private String name = null;
+    private String avatar = null;
+    private String gender = null;
+    private String address = null;
+
+    @Generated(hash = 1202698052)
+    public UserProfile(long userId, String name, String avatar, String gender, String address) {
+        this.userId = userId;
+        this.name = name;
+        this.avatar = avatar;
+        this.gender = gender;
+        this.address = address;
+    }
+
+    @Generated(hash = 968487393)
+    public UserProfile() {
+    }
+
+    public long getUserId() {
+        return userId;
+    }
+
+    public void setUserId(long userId) {
+        this.userId = userId;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getAvatar() {
+        return avatar;
+    }
+
+    public void setAvatar(String avatar) {
+        this.avatar = avatar;
+    }
+
+    public String getGender() {
+        return gender;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+}
+```
+
+- 数据库表结构创建我们用到的是 DaoMaster.OpenHelper
+```java
+public class ReleaseOpenHelper extends DaoMaster.OpenHelper {
+    public ReleaseOpenHelper(Context context, String name) {
+        super(context, name);
+    }
+
+    public ReleaseOpenHelper(Context context, String name, SQLiteDatabase.CursorFactory factory) {
+        super(context, name, factory);
+    }
+
+    @Override
+    public void onCreate(Database db) {
+        super.onCreate(db);
+    }
+}
+```
+- 封装数据管理工具 DatabaseManager 方便我们对 数据库 的 user_profile 这张表进行 任意增删改查操作
+```java
+public class DatabaseManager {
+
+    private UserProfileDao mDao = null;
+
+    private DatabaseManager() {
+    }
+
+    public static DatabaseManager getInstance() {
+        return Holder.INSTANCE;
+    }
+
+    public DatabaseManager init(Context context) {
+        initDao(context);
+        return this;
+    }
+
+    private void initDao(Context context) {
+        final ReleaseOpenHelper helper = new ReleaseOpenHelper(context, "fast_ec.db");
+        final Database db = helper.getWritableDb();
+        final DaoSession session = new DaoMaster(db).newSession();
+        mDao = session.getUserProfileDao();
+    }
+
+    public UserProfileDao getDao() {
+        return mDao;
+    }
+
+    private static final class Holder {
+        private static final DatabaseManager INSTANCE = new DatabaseManager();
+    }
+}
+```
+
+### **② 微信登录**
+引入微信登录依赖
+```groovy
+compile 'com.tencent.mm.opensdk:wechat-sdk-android-with-mta:+'
+```
+- #### 编写自己的元注解和annotationProcessor
+ 生成器注解
+```java
+@Target(ElementType.TYPE) // 声明注解作用范围是作用在类，接口，注解，枚举上
+@Retention(RetentionPolicy.SOURCE) // 声明注解的有效期为源码期
+public @interface EntryGenerator {
+    String packageName(); // 声明该注解所要生成的包名规则
+
+    Class<?> entryTemplate(); // 声明该注解所生成java类需要继承哪个父类
+}
+```
+因为微信有一个很霸权主义的协议,就是强制你在在自己的工程下面创建一个包名为 wxapi 的  WXEntryActivity,
+我不想改变工程的目录结构,我使用java注解的 
+```java
+public class EntryVisitor extends SimpleAnnotationValueVisitor7<Void, Void> {
+
+    private final Filer FILER;
+    private String mPackageName;
+
+    public EntryVisitor(Filer FILER) {
+        this.FILER = FILER;
+    }
+
+
+    @Override
+    public Void visitString(String s, Void v) {
+        this.mPackageName = s; // 解析得到包名
+        return v;
+    }
+
+    @Override
+    public Void visitType(TypeMirror t, Void v) {
+        generateJavaCode(t);
+        return v;
+    }
+
+    /**
+     * 生成Java类
+     */
+    private void generateJavaCode(TypeMirror t) {
+        // 创建类的描述
+        final TypeSpec targetActivity = TypeSpec.classBuilder("WXEntryActivity")
+                .addModifiers(Modifier.PUBLIC)
+                .addModifiers(Modifier.FINAL)
+                .superclass(TypeName.get(t))
+                .build();
+
+        // 创建java类文件
+        JavaFile javaFile = JavaFile
+                .builder(mPackageName + ".wxapi", targetActivity)
+                .addFileComment("微信入口文件")
+                .build();
+
+        try {
+            // 写入编译文档文件
+            javaFile.writeTo(FILER);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+    }
+}
+```
+- #### 通过注解生成指定模板的代码
+
+- #### 通过代码生成器，生成微信登录代码，绕过微信包名限制
+
+### 4. 注册
+```java
+ RestClient.builder()
+         .url("http://localhost:8080/RestDataServer/api/user_profile.php")
+         .params("name", mName.getText().toString())
+         .params("email", mEmail.getText().toString())
+         .params("phone", mPhone.getText().toString())
+         .params("password", mPassword.getText().toString())
+         .success(new ISuccess() {
+        @Override public void onSuccess(String response) {
+        Lattelogger.json("USER_PROFILE", response);
+        SignHandler.onSignUp(response, mISignListener);
+        }
+        })
+         .build();
+```
+注册成功以后,同样也需要对同一张数据表结构进行字段插入
+```java
+    public static void onSignIn(String response, ISignListener listener) {
+        final JSONObject profileJson = JSON.parseObject(response).getJSONObject("data");
+        final Long userId = profileJson.getLong("userId");
+        final String name = profileJson.getString("name");
+        final String avatar = profileJson.getString("avatar");
+        final String gender = profileJson.getString("gender");
+        final String address = profileJson.getString("address");
+        final UserProfile profile = new UserProfile(userId, name, avatar, gender, address);
+
+        DatabaseManager.getInstance().getDao().insert(profile);
+
+        // 已经注册表示登录成功
+        AccountManager.setSignState(true);
+        listener.onSignInSuccess();
+    }
 ```
 ## 第三方服务
 - [支付宝]()
