@@ -9,6 +9,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 
 import com.asiainfo.latte_core.delegates.bottom.BottomItemDelegate;
+import com.asiainfo.latte_core.ui.refresh.RefreshHandler;
 import com.asiainfo.latte_ec.R;
 import com.asiainfo.latte_ec.R2;
 import com.joanzapata.iconify.widget.IconTextView;
@@ -34,6 +35,8 @@ public class IndexDelegate extends BottomItemDelegate {
     @BindView(R2.id.et_search_view)
     AppCompatEditText mSearchView;
 
+    private RefreshHandler mRefreshHandler;
+
     @Override
     public Object setLayout() {
         return R.layout.delegate_index;
@@ -42,6 +45,13 @@ public class IndexDelegate extends BottomItemDelegate {
     @Override
     public void onBindView(@Nullable Bundle savedInstanceState, View rootView) {
         initRefreshLayout();
+        initRecyclerView();
+    }
+
+    private void initRecyclerView() {
+
+        mRefreshHandler.firstPage("index.php");
+
     }
 
     private void initRefreshLayout() {

@@ -1,6 +1,7 @@
 package com.asiainfo.latte_core.app;
 
 import android.content.Context;
+import android.os.Handler;
 
 /**
  * 配置项中央管理器
@@ -24,6 +25,10 @@ public final class Latte {
         return Configurator.getInstance();
     }
 
+
+    public static Handler getHandler() {
+        return getConfiguration(ConfigKeys.HANDLER);
+    }
 
     /**
      * 获取配置项参数集
