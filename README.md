@@ -11,13 +11,15 @@
 ## 应用部分截图
 
 ## 封装
-![项目目录结构](http://p2je16s75.bkt.clouddn.com/project.png)
+   <img width="200" height="360" src="http://p2je16s75.bkt.clouddn.com/project.png"/>
+
 ### 一.Fragment基类
 
 1) 引用来自[YoKey大牛](https://github.com/YoKeyword/Fragmentation)Fragmentation 开源库的 SwipeBackFragment,成功将[Fragment的各种坑](https://www.zhihu.com/question/39662488)顺利甩锅,构建基础Frgment
 2)  强制子Fragment 通过 setLayout 霸权主义 指定布局资源,onBindView 绑定子布局
 
-![BaseDelegate](http://p5do3ypyn.bkt.clouddn.com/BaseDelegate.png)
+  <img width="200" height="360" src="http://p5do3ypyn.bkt.clouddn.com/BaseDelegate.png"/>
+
 ### 二.单Activity架构，丝滑般享受
 
 1) 继承Fragmentation包下的SupportActivity,并不是每个妞都得泡,但是每个Activity子视图都有一个唯一id,SupportActivity的LoadRootFrgment方法 支持Fragment指定根布局加载
@@ -286,7 +288,9 @@ public abstract class BaseInterceptor implements Interceptor {
 - [文件下载](https://github.com/MicroKibaco/FestEC/blob/master/latte-core/src/main/java/com/asiainfo/latte/net/download/SaveFileTask.java): SaveFileTask类
 ### 三.业务开发
 #### 1. 计时器
-![计时器](http://p5do3ypyn.bkt.clouddn.com/LauncherDelegate.png)
+
+<img width="200" height="360" src="http://p5do3ypyn.bkt.clouddn.com/LauncherDelegate.png"/>
+
 android中创建定时器有三种方式,分别是: Timer、CountDownTimer 和 handler.postDelayed,这里我们使用的是Timer
 ```JAVA
 public class BaseTimerTask extends TimerTask {
@@ -429,7 +433,9 @@ public class LauncherHolderCreator implements CBViewHolderCreator<LauncherHolder
 
 ### 3. 登录
 登录分为普通用户登录和微信登录两种方式
-![登录](http://p5do3ypyn.bkt.clouddn.com/SignInDelegate.png)
+ 
+   <img width="200" height="360" src="http://p5do3ypyn.bkt.clouddn.com/SignInDelegate.png"/>
+
 ### **① 普通用户登录**
 #### 一. 校验登录的合法性
 ```java
@@ -486,9 +492,11 @@ compile 'com.tencent.mm.opensdk:wechat-sdk-android-with-mta:+'
 
 ### 4. 注册
 [注册成功以后,同样也需要对同一张数据表结构进行字段插入](https://github.com/MicroKibaco/FestEC/issues/6)
-![注册](http://p5do3ypyn.bkt.clouddn.com/SignUpDelegate.png)
+ 
+   <img width="200" height="360" src="http://p5do3ypyn.bkt.clouddn.com/SignUpDelegate.png"/>
+
 ### 5. 通用底部导航设计与一键式封装
-![主界面](http://p5do3ypyn.bkt.clouddn.com/EcBottomDelegate.png)
+  <img width="200" height="360" src="http://p5do3ypyn.bkt.clouddn.com/EcBottomDelegate.png"/>
 
 ## 第三方服务
 - [支付宝]()
