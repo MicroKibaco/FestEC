@@ -385,9 +385,9 @@ public class LauncherDelegate extends LatteDelegate implements ITimerListener {
 }
 
 ```
-1.用户触发跳过,或计时器任务执行完毕,进入欢迎页.
-2.用户滑动到最后一张轮播图,记录当时的状态,作为下次启动程序是否开启欢迎页面的依据
-### 2. 闪屏页
+1. 用户触发跳过,或计时器任务执行完毕,进入欢迎页.
+2. 用户滑动到最后一张轮播图,记录当时的状态,作为下次启动程序是否开启欢迎页面的依据
+#### 2. 闪屏页
 再次感谢[saiwu-bigkoo的Android-ConvenientBanner](https://github.com/saiwu-bigkoo/Android-ConvenientBanner),自定义你的Holder，实现更多复杂的界面，不一定是图片翻页，其他任何控件翻页亦可
 ```java
 public class LauncherHolder implements Holder<Integer> {

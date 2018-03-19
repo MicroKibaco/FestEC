@@ -5,15 +5,15 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.ActionBar;
 import android.widget.Toast;
 
-import com.asiainfo.latte_annotations.activitys.ProxyActivity;
-import com.asiainfo.latte_annotations.app.Latte;
-import com.asiainfo.latte_annotations.delegates.LatteDelegate;
-import com.asiainfo.latte_annotations.ec.laucher.ILauncherListener;
-import com.asiainfo.latte_annotations.ec.laucher.LauncherDelegate;
-import com.asiainfo.latte_annotations.ec.laucher.OnLauncherFinishTag;
-import com.asiainfo.latte_annotations.ec.sign.ISignListener;
-import com.asiainfo.latte_annotations.ec.sign.SignInDelegate;
-import com.asiainfo.latte_annotations.ec.sign.SignUpDelegate;
+import com.asiainfo.latte_core.activitys.ProxyActivity;
+import com.asiainfo.latte_core.app.Latte;
+import com.asiainfo.latte_core.delegates.LatteDelegate;
+import com.asiainfo.latte_ec.laucher.ILauncherListener;
+import com.asiainfo.latte_ec.laucher.LauncherDelegate;
+import com.asiainfo.latte_ec.laucher.OnLauncherFinishTag;
+import com.asiainfo.latte_ec.main.EcBottomDelegate;
+import com.asiainfo.latte_ec.sign.ISignListener;
+import com.asiainfo.latte_ec.sign.SignInDelegate;
 
 public class MainActivity extends ProxyActivity implements
         ISignListener,
@@ -51,10 +51,10 @@ public class MainActivity extends ProxyActivity implements
     public void onLauncherFinish(OnLauncherFinishTag tag) {
         switch (tag) {
             case SIGNED:
-                getSupportDelegate().startWithPop(new SignInDelegate());
+                getSupportDelegate().startWithPop(new EcBottomDelegate());
                 break;
             case NOT_SIGNED:
-                getSupportDelegate().startWithPop(new SignUpDelegate());
+                getSupportDelegate().startWithPop(new EcBottomDelegate());
                 break;
             default:
                 break;

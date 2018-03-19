@@ -2,10 +2,10 @@ package com.asiainfo.festec;
 
 import android.app.Application;
 
-import com.asiainfo.latte_annotations.app.Latte;
-import com.asiainfo.latte_annotations.ec.database.DatabaseManager;
-import com.asiainfo.latte_annotations.ec.icon.FontEcModel;
-import com.asiainfo.latte_annotations.net.interceptors.DebugInterceptor;
+import com.asiainfo.latte_core.app.Latte;
+import com.asiainfo.latte_core.net.interceptors.DebugInterceptor;
+import com.asiainfo.latte_ec.database.DatabaseManager;
+import com.asiainfo.latte_ec.icon.FontEcModel;
 import com.joanzapata.iconify.fonts.FontAwesomeModule;
 
 /**

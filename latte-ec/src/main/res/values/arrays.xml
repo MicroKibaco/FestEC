@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="bottom_nav_bar_title">
+        <item>主页</item>
+        <item>分类</item>
+        <item>发现</item>
+        <item>购物车</item>
+        <item>我的</item>
+    </string-array>
+    <string-array name="bottom_nav_bar_icon">
+        <item>{fa-home}</item>
+        <item>{fa-sort}</item>
+        <item>{fa-compass}</item>
+        <item>{fa-shopping-cart}</item>
+        <item>{fa-user}</item>
+    </string-array>
+</resources>

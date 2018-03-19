@@ -2,7 +2,7 @@ package com.asiainfo.festec.generators;
 
 
 import com.asiainfo.latte_annotations.annotations.EntryGenerator;
-import com.asiainfo.latte_annotations.wechat.templates.WXEntryTemplate;
+import com.asiainfo.latte_core.wechat.templates.WXEntryTemplate;
 
 @EntryGenerator(
         packageName = "com.asiainfo.festec",
