@@ -20,4 +20,5 @@
     <string name="sign_up_suc_tip">验证成功!</string>
     <string name="index_qr_code">{icon-scan}</string>
     <string name="index_message">{fa-bullhorn}</string>
+    <string name="index_search_hint">搜索</string>
 </resources>

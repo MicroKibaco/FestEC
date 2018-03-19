@@ -41,6 +41,15 @@ public class IndexDelegate extends BottomItemDelegate {
 
     @Override
     public void onBindView(@Nullable Bundle savedInstanceState, View rootView) {
+        initRefreshLayout();
+    }
 
+    private void initRefreshLayout() {
+        mRefreshLayout.setColorSchemeResources(
+                android.R.color.holo_blue_bright,
+                android.R.color.holo_red_dark,
+                android.R.color.holo_green_dark);
+
+        mRefreshLayout.setProgressViewOffset(true, 120, 250);
     }
 }
