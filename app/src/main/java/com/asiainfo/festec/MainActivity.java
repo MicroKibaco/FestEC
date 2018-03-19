@@ -11,9 +11,9 @@ import com.asiainfo.latte_core.delegates.LatteDelegate;
 import com.asiainfo.latte_ec.laucher.ILauncherListener;
 import com.asiainfo.latte_ec.laucher.LauncherDelegate;
 import com.asiainfo.latte_ec.laucher.OnLauncherFinishTag;
-import com.asiainfo.latte_ec.main.EcBottomDelegate;
 import com.asiainfo.latte_ec.sign.ISignListener;
 import com.asiainfo.latte_ec.sign.SignInDelegate;
+import com.asiainfo.latte_ec.sign.SignUpDelegate;
 
 public class MainActivity extends ProxyActivity implements
         ISignListener,
@@ -51,10 +51,10 @@ public class MainActivity extends ProxyActivity implements
     public void onLauncherFinish(OnLauncherFinishTag tag) {
         switch (tag) {
             case SIGNED:
-                getSupportDelegate().startWithPop(new EcBottomDelegate());
+                getSupportDelegate().startWithPop(new SignInDelegate());
                 break;
             case NOT_SIGNED:
-                getSupportDelegate().startWithPop(new EcBottomDelegate());
+                getSupportDelegate().startWithPop(new SignUpDelegate());
                 break;
             default:
                 break;

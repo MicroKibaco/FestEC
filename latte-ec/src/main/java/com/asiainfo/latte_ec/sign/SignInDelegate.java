@@ -14,6 +14,7 @@ import com.asiainfo.latte_core.wechat.LatteWeChat;
 import com.asiainfo.latte_core.wechat.callbacks.IWeChatSignInCallback;
 import com.asiainfo.latte_ec.R;
 import com.asiainfo.latte_ec.R2;
+import com.asiainfo.latte_ec.main.EcBottomDelegate;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -98,6 +99,7 @@ public class SignInDelegate extends LatteDelegate {
             //假成功，实际需要走网络请求
             AccountManager.setSignState(true);
             mISignListener.onSignInSuccess();
+            getSupportDelegate().startWithPop(new EcBottomDelegate());
         }
     }
 

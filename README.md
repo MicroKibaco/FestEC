@@ -1,6 +1,6 @@
 # 小购屋
 ## 声明
-本项目内容撸自 **傅令杰** 实战教程 ,纯项目练手之作，个人未从中获取任何利益，其所有内容均可在归于 IMOOC 所有。内容可能会侵犯到 IMOOC 的知识产权 ,若被告知需停止共享与使用，本人会立即删除整个项目。
+本项目内容撸自 Android大神 [傅令杰](https://github.com/FuLingjie/FastEC) 实战教程 ,纯项目练手之作，个人未从中获取任何利益，其所有内容均可在归于 原作者 所有。内容可能会侵犯到 原作者 的知识产权 ,若被告知需停止共享与使用，本人会立即删除整个项目。
 ## 简介
 项目采用 RxJava2.0 + retrofit2.0 + GreenDao 开发
 所有功能已经完成，如果对你有帮助的话不妨star一个o(￣▽￣)ブ
@@ -18,7 +18,7 @@
 2)  强制子Fragment 通过 setLayout 霸权主义 指定布局资源,onBindView 绑定子布局
 
 ![BaseDelegate](http://p5do3ypyn.bkt.clouddn.com/BaseDelegate.png)
-### 二.Activity基类
+### 二.单Activity架构，丝滑般享受
 
 1) 继承Fragmentation包下的SupportActivity,并不是每个妞都得泡,但是每个Activity子视图都有一个唯一id,SupportActivity的LoadRootFrgment方法 支持Fragment指定根布局加载
 2) 你那么孤单,却总说一个人挺好,每一块Fragment都不能独立存在,强制寻求与Fragment基类有血缘关系的子类,建立联系感(ProxyActivty),并将最终结果告诉Frgment的爸妈 MainActivity
@@ -286,6 +286,7 @@ public abstract class BaseInterceptor implements Interceptor {
 - [文件下载](https://github.com/MicroKibaco/FestEC/blob/master/latte-core/src/main/java/com/asiainfo/latte/net/download/SaveFileTask.java): SaveFileTask类
 ### 三.业务开发
 #### 1. 计时器
+![计时器](http://p5do3ypyn.bkt.clouddn.com/LauncherDelegate.png)
 android中创建定时器有三种方式,分别是: Timer、CountDownTimer 和 handler.postDelayed,这里我们使用的是Timer
 ```JAVA
 public class BaseTimerTask extends TimerTask {
@@ -427,7 +428,8 @@ public class LauncherHolderCreator implements CBViewHolderCreator<LauncherHolder
 检查用户是否已经登录
 
 ### 3. 登录
-登录分为普通用户登录和微信登录两种方式,接下来我们就先讲一下普通用户登录的方式
+登录分为普通用户登录和微信登录两种方式
+![登录](http://p5do3ypyn.bkt.clouddn.com/SignInDelegate.png)
 ### **① 普通用户登录**
 #### 一. 校验登录的合法性
 ```java
@@ -480,15 +482,23 @@ compile 'com.tencent.mm.opensdk:wechat-sdk-android-with-mta:+'
 ```
 - #### [编写自己的元注解和annotationProcessor](https://github.com/MicroKibaco/FestEC/issues/3)
 - #### [通过注解生成指定模板的代码](https://github.com/MicroKibaco/FestEC/issues/4)
-- #### 通过代码生成器，生成微信登录代码，绕过微信包名限制
+- #### [通过代码生成器，生成微信登录代码，绕过微信包名限制](https://github.com/MicroKibaco/FestEC/issues/9)
 
 ### 4. 注册
 [注册成功以后,同样也需要对同一张数据表结构进行字段插入](https://github.com/MicroKibaco/FestEC/issues/6)
+![注册](http://p5do3ypyn.bkt.clouddn.com/SignUpDelegate.png)
+### 5. 通用底部导航设计与一键式封装
+![主界面](http://p5do3ypyn.bkt.clouddn.com/EcBottomDelegate.png)
+
 ## 第三方服务
 - [支付宝]()
 - [ShareSDK]()
 - [JPush]()
 - [二维码]()
+
+
+
+
 
 ## 框架
 感谢这些开源框架的大力支持

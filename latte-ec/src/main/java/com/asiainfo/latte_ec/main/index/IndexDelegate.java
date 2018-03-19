@@ -50,7 +50,7 @@ public class IndexDelegate extends BottomItemDelegate {
 
     private void initRecyclerView() {
 
-        mRefreshHandler.firstPage("index.php");
+//        mRefreshHandler.firstPage("index.php");
 
     }
 

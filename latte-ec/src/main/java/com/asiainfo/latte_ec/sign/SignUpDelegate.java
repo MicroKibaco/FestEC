@@ -111,6 +111,7 @@ public class SignUpDelegate extends LatteDelegate {
          */
         if (checkFrom()) {
             mISignListener.onSignUpSuccess();
+            getSupportDelegate().startWithPop(new SignInDelegate());
         }
     }
 
