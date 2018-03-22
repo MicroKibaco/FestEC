@@ -1,4 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="divider">#dbe2e8</color>
+    <color name="colorDotNormal">#55000000</color>
+    <color name="colorDotFocus">#aaFFFFFF</color>
 </resources>

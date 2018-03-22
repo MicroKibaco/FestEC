@@ -3,6 +3,9 @@ package com.asiainfo.latte_core.app;
 import android.content.Context;
 import android.os.Handler;
 
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.bumptech.glide.request.RequestOptions;
+
 /**
  * 配置项中央管理器
  */
@@ -42,6 +45,19 @@ public final class Latte {
      */
     public static Context getApplicationContext() {
         return getConfiguration(ConfigKeys.APPLICATION_CONTEXT);
+    }
+
+    /**
+     * 设置图片加载策略
+     */
+
+    public static RequestOptions getRecyclerOptions() {
+
+        return new RequestOptions()
+                .centerCrop()
+                .diskCacheStrategy(DiskCacheStrategy.ALL)
+                .dontAnimate();
+
     }
 
 }

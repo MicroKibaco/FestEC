@@ -1,4 +1,4 @@
-package com.asiainfo.latte_ec.main.index;
+package com.asiainfo.latte_ec.main.sort;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;

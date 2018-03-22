@@ -7,11 +7,11 @@ import com.asiainfo.latte_core.delegates.bottom.BottomItemDelegate;
 import com.asiainfo.latte_core.delegates.bottom.BottomTabBean;
 import com.asiainfo.latte_core.delegates.bottom.ItemBuilder;
 import com.asiainfo.latte_ec.R;
-import com.asiainfo.latte_ec.main.index.DiscoverDelegate;
+import com.asiainfo.latte_ec.main.cart.ShopCartDelegate;
+import com.asiainfo.latte_ec.main.discover.DiscoverDelegate;
 import com.asiainfo.latte_ec.main.index.IndexDelegate;
-import com.asiainfo.latte_ec.main.index.PersonalDelegate;
-import com.asiainfo.latte_ec.main.index.ShopCartDelegate;
-import com.asiainfo.latte_ec.main.index.SortDelegate;
+import com.asiainfo.latte_ec.main.personal.PersonalDelegate;
+import com.asiainfo.latte_ec.main.sort.SortDelegate;
 
 import java.util.LinkedHashMap;
 

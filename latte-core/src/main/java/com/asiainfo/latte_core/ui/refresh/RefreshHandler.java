@@ -3,9 +3,15 @@ package com.asiainfo.latte_core.ui.refresh;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.RecyclerView;
 
+import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.asiainfo.latte_core.app.Latte;
+import com.asiainfo.latte_core.net.callback.ISuccess;
+import com.asiainfo.latte_core.net.rt.RestClient;
+import com.asiainfo.latte_core.ui.recycler.DataConverter;
+import com.asiainfo.latte_core.ui.recycler.MultipleRecyclerAdapter;
+import com.asiainfo.latte_core.util.log.Lattelogger;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 
 /**
@@ -17,12 +23,25 @@ public class RefreshHandler implements SwipeRefreshLayout.OnRefreshListener,
 
     private final SwipeRefreshLayout REFRESH_LAYOUT;
     private final RecyclerView RECYCLERVIEW;
+    private final DataConverter CONVERTER;
+    private final PagingBean BEAN;
+    private MultipleRecyclerAdapter mAdapter = null;
 
-    public RefreshHandler(SwipeRefreshLayout refresh_layout,
-                          RecyclerView recyclerview) {
-        this.REFRESH_LAYOUT = refresh_layout;
+    public RefreshHandler(SwipeRefreshLayout refreshLayout,
+                          RecyclerView recyclerview,
+                          DataConverter dataConverter,
+                          PagingBean bean) {
+        this.REFRESH_LAYOUT = refreshLayout;
         this.RECYCLERVIEW = recyclerview;
+        this.CONVERTER = dataConverter;
+        this.BEAN = bean;
         REFRESH_LAYOUT.setOnRefreshListener(this);
+    }
+
+    public static RefreshHandler create(SwipeRefreshLayout refreshLayout,
+                                        RecyclerView recyclerView,
+                                        DataConverter converter) {
+        return new RefreshHandler(refreshLayout, recyclerView, converter, new PagingBean());
     }
 
     @Override
@@ -39,11 +58,6 @@ public class RefreshHandler implements SwipeRefreshLayout.OnRefreshListener,
                 REFRESH_LAYOUT.setRefreshing(false);
             }
         }, 3000);
-    }
-
-    @Override
-    public void onLoadMoreRequested() {
-
     }
 
     /**
@@ -125,5 +139,60 @@ public class RefreshHandler implements SwipeRefreshLayout.OnRefreshListener,
         goodsTen.put("imageUrl", "https://img14.360buyimg.com/n0/jfs/t3274/258/2246320980/94882/2102bb8c/57de3529N45081a94.jpg");
         dataArray.add(goodsTen);
         data.put("data", dataArray);
+
+        BEAN.setDelayed(2000);
+        final JSONObject object = JSON.parseObject(data.toString());
+        BEAN.setTotal(object.getInteger("total"))
+                .setPageSize(object.getInteger("page_size"));
+
+        // 设置adapter
+        mAdapter = MultipleRecyclerAdapter.create(CONVERTER.setJsonData(data.toString()));
+        mAdapter.setOnLoadMoreListener(RefreshHandler.this, RECYCLERVIEW);
+        RECYCLERVIEW.setAdapter(mAdapter);
+        BEAN.addIndex();
     }
+
+
+    @Override
+    public void onLoadMoreRequested() {
+        paging("refresh.php?index=");
+    }
+
+    private void paging(final String url) {
+
+        final int pageSize = BEAN.getPageSize();
+        final int currentCount = BEAN.getCurrentCount();
+        final int total = BEAN.getTotal();
+        final int index = BEAN.getPageIndex();
+
+        if (mAdapter.getData().size() < pageSize || currentCount >= total) {
+            mAdapter.loadMoreEnd(true);
+        } else {
+            Latte.getHandler().postDelayed(new Runnable() {
+                @Override
+                public void run() {
+
+                    RestClient.builder().url(url + index).success(new ISuccess() {
+                        @Override
+                        public void onSuccess(String response) {
+
+                            Lattelogger.json("paging", response);
+                            CONVERTER.cleanData();
+                            mAdapter.addData(CONVERTER.setJsonData(response).converter());
+                            // 累加数量
+                            BEAN.setCurrentCount(mAdapter.getData().size());
+                            mAdapter.loadMoreComplete();
+                            BEAN.addIndex();
+                        }
+                    })
+                            .build()
+                            .get();
+
+                }
+            }, 1000);
+        }
+
+
+    }
+
 }

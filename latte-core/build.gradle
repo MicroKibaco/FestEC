@@ -60,6 +60,9 @@ dependencies {
     compile 'com.github.yalantis:ucrop:2.2.1-native'
     // 图片加载
     compile 'com.squareup.picasso:picasso:2.5.2'
+    compile 'com.github.bumptech.glide:glide:4.0.0-RC0'
+    compile 'com.github.bumptech.glide:okhttp-integration:4.0.0-RC0@aar'
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.0.0-RC0'
     // 微信（含统计）
     //noinspection GradleDynamicVersion
     compile 'com.tencent.mm.opensdk:wechat-sdk-android-with-mta:+'

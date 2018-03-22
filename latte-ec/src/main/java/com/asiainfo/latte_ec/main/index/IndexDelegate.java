@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.AppCompatEditText;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
@@ -13,6 +14,7 @@ import com.asiainfo.latte_core.ui.refresh.RefreshHandler;
 import com.asiainfo.latte_ec.R;
 import com.asiainfo.latte_ec.R2;
 import com.joanzapata.iconify.widget.IconTextView;
+import com.yqritc.recyclerviewflexibledivider.HorizontalDividerItemDecoration;
 
 import butterknife.BindView;
 
@@ -35,7 +37,7 @@ public class IndexDelegate extends BottomItemDelegate {
     @BindView(R2.id.et_search_view)
     AppCompatEditText mSearchView;
 
-    private RefreshHandler mRefreshHandler;
+    private RefreshHandler mRefreshHandler = null;
 
     @Override
     public Object setLayout() {
@@ -44,13 +46,22 @@ public class IndexDelegate extends BottomItemDelegate {
 
     @Override
     public void onBindView(@Nullable Bundle savedInstanceState, View rootView) {
+        mRefreshHandler = RefreshHandler.create(mRefreshLayout, mRecyclerView, new IndexDataConverter());
+    }
+
+    @Override
+    public void onLazyInitView(@Nullable Bundle savedInstanceState) {
+        super.onLazyInitView(savedInstanceState);
         initRefreshLayout();
         initRecyclerView();
     }
 
     private void initRecyclerView() {
 
-//        mRefreshHandler.firstPage("index.php");
+        final GridLayoutManager manager = new GridLayoutManager(getContext(), 4);
+        mRecyclerView.setLayoutManager(manager);
+        mRecyclerView.addItemDecoration(new HorizontalDividerItemDecoration.Builder(getContext()).build());
+        mRefreshHandler.firstPage("index.php");
 
     }
 

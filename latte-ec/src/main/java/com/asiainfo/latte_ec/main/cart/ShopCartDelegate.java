@@ -1,4 +1,4 @@
-package com.asiainfo.latte_ec.main.index;
+package com.asiainfo.latte_ec.main.cart;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -9,13 +9,13 @@ import com.asiainfo.latte_ec.R;
 
 
 /**
- * 发现
+ * 购物车
  */
 
-public class DiscoverDelegate extends BottomItemDelegate {
+public class ShopCartDelegate extends BottomItemDelegate {
     @Override
     public Object setLayout() {
-        return R.layout.delegate_discover;
+        return R.layout.delegate_shop_cart;
     }
 
     @Override
