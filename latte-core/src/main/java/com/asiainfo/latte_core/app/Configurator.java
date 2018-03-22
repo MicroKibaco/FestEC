@@ -1,6 +1,7 @@
 package com.asiainfo.latte_core.app;
 
 import android.app.Activity;
+import android.os.Handler;
 
 import com.joanzapata.iconify.IconFontDescriptor;
 import com.joanzapata.iconify.Iconify;
@@ -20,13 +21,14 @@ public class Configurator {
      */
     private static final WeakHashMap<Object, Object> LATTE_CONFIGS = new WeakHashMap<>();
     private static final ArrayList<IconFontDescriptor> ICONS = new ArrayList<>();
+    private static final Handler HANDLER = new Handler();
     private ArrayList<Interceptor> INTERCEPTORS = new ArrayList<>();
-
     /**
      * 初始化配置开关OFF
      */
     private Configurator() {
         LATTE_CONFIGS.put(ConfigKeys.CONFIG_READY, false);
+        LATTE_CONFIGS.put(ConfigKeys.HANDLER, HANDLER);
     }
 
     /**

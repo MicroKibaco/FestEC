@@ -18,7 +18,7 @@
 1) 引用来自[YoKey大牛](https://github.com/YoKeyword/Fragmentation)Fragmentation 开源库的 SwipeBackFragment,成功将[Fragment的各种坑](https://www.zhihu.com/question/39662488)顺利甩锅,构建基础Frgment
 2)  强制子Fragment 通过 setLayout 霸权主义 指定布局资源,onBindView 绑定子布局
 
-  <img width="200" height="360" src="http://p5do3ypyn.bkt.clouddn.com/BaseDelegate.png"/>
+  <img src="http://p5do3ypyn.bkt.clouddn.com/BaseDelegate.png"/>
 
 ### 二.单Activity架构，丝滑般享受
 
@@ -503,10 +503,6 @@ compile 'com.tencent.mm.opensdk:wechat-sdk-android-with-mta:+'
 - [ShareSDK]()
 - [JPush]()
 - [二维码]()
-
-
-
-
 
 ## 框架
 感谢这些开源框架的大力支持

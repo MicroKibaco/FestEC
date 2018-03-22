@@ -7,11 +7,8 @@ import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.asiainfo.latte_core.app.Latte;
-import com.asiainfo.latte_core.net.callback.ISuccess;
-import com.asiainfo.latte_core.net.rt.RestClient;
 import com.asiainfo.latte_core.ui.recycler.DataConverter;
 import com.asiainfo.latte_core.ui.recycler.MultipleRecyclerAdapter;
-import com.asiainfo.latte_core.util.log.Lattelogger;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 
 /**
@@ -164,19 +161,17 @@ public class RefreshHandler implements SwipeRefreshLayout.OnRefreshListener,
         final int currentCount = BEAN.getCurrentCount();
         final int total = BEAN.getTotal();
         final int index = BEAN.getPageIndex();
-
         if (mAdapter.getData().size() < pageSize || currentCount >= total) {
             mAdapter.loadMoreEnd(true);
         } else {
             Latte.getHandler().postDelayed(new Runnable() {
                 @Override
                 public void run() {
-
-                    RestClient.builder().url(url + index).success(new ISuccess() {
+                    // TODO: 模拟网络请求
+                 /*   RestClient.builder().url(url + index).success(new ISuccess() {
                         @Override
                         public void onSuccess(String response) {
 
-                            Lattelogger.json("paging", response);
                             CONVERTER.cleanData();
                             mAdapter.addData(CONVERTER.setJsonData(response).converter());
                             // 累加数量
@@ -186,7 +181,7 @@ public class RefreshHandler implements SwipeRefreshLayout.OnRefreshListener,
                         }
                     })
                             .build()
-                            .get();
+                            .get();*/
 
                 }
             }, 1000);

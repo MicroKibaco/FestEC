@@ -8,7 +8,6 @@ import java.util.LinkedHashMap;
 
 /**
  * 每一个item的控制
- * ② 多布局高可用性RecyclerView封装和灵活适配器打造
  */
 @SuppressWarnings("unchecked")
 public class MultipleItemEntity implements MultiItemEntity {
