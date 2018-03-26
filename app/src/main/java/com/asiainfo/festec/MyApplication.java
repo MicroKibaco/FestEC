@@ -8,9 +8,6 @@ import com.asiainfo.latte_ec.database.DatabaseManager;
 import com.asiainfo.latte_ec.icon.FontEcModel;
 import com.joanzapata.iconify.fonts.FontAwesomeModule;
 
-/**
- * Created by MicroKibaco on 03/03/2018.
- */
 
 public class MyApplication extends Application {
 
@@ -24,7 +21,7 @@ public class MyApplication extends Application {
                 .withIcon(new FontEcModel())
                 .withWxChatAppId("WE_CHAT_APP_ID")
                 .withWxChatAppSecret("WE_CHAT_APP_SECRET")
-                .withInterceptor(new DebugInterceptor("index", R.raw.test))
+                .withInterceptor(new DebugInterceptor("test", R.raw.test))
                 .configure();
 
         DatabaseManager.getInstance().init(this);

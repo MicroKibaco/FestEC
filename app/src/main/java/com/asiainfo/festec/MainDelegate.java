@@ -22,10 +22,6 @@ import io.reactivex.annotations.NonNull;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
 
-/**
- * Created by MicroKibaco on 03/03/2018.
- */
-
 public class MainDelegate extends LatteDelegate {
 
     private static final String URL = "index";

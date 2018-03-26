@@ -7,6 +7,8 @@ import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.asiainfo.latte_core.app.Latte;
+import com.asiainfo.latte_core.net.callback.ISuccess;
+import com.asiainfo.latte_core.net.rt.RestClient;
 import com.asiainfo.latte_core.ui.recycler.DataConverter;
 import com.asiainfo.latte_core.ui.recycler.MultipleRecyclerAdapter;
 import com.chad.library.adapter.base.BaseQuickAdapter;
@@ -168,7 +170,7 @@ public class RefreshHandler implements SwipeRefreshLayout.OnRefreshListener,
                 @Override
                 public void run() {
                     // TODO: 模拟网络请求
-                 /*   RestClient.builder().url(url + index).success(new ISuccess() {
+                    RestClient.builder().url(url + index).success(new ISuccess() {
                         @Override
                         public void onSuccess(String response) {
 
@@ -181,7 +183,7 @@ public class RefreshHandler implements SwipeRefreshLayout.OnRefreshListener,
                         }
                     })
                             .build()
-                            .get();*/
+                            .get();
 
                 }
             }, 1000);
