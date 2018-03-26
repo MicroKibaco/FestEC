@@ -2,7 +2,6 @@ package com.asiainfo.festec;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v7.app.ActionBar;
 import android.widget.Toast;
 
 import com.asiainfo.latte_core.activitys.ProxyActivity;
@@ -14,6 +13,8 @@ import com.asiainfo.latte_ec.laucher.OnLauncherFinishTag;
 import com.asiainfo.latte_ec.main.EcBottomDelegate;
 import com.asiainfo.latte_ec.sign.ISignListener;
 import com.asiainfo.latte_ec.sign.SignInDelegate;
+
+import qiu.niorgai.StatusBarCompat;
 
 public class MainActivity extends ProxyActivity implements
         ISignListener,
@@ -28,11 +29,7 @@ public class MainActivity extends ProxyActivity implements
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Latte.getConfigurator().withActivity(this);
-        final ActionBar actionBar = getSupportActionBar();
-
-        if (actionBar != null) {
-            actionBar.hide();
-        }
+        StatusBarCompat.translucentStatusBar(this, true);
     }
 
     @Override

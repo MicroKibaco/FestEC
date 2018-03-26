@@ -13,6 +13,7 @@ import com.asiainfo.latte_core.delegates.bottom.BottomItemDelegate;
 import com.asiainfo.latte_core.ui.refresh.RefreshHandler;
 import com.asiainfo.latte_ec.R;
 import com.asiainfo.latte_ec.R2;
+import com.asiainfo.latte_ec.main.EcBottomDelegate;
 import com.joanzapata.iconify.widget.IconTextView;
 import com.yqritc.recyclerviewflexibledivider.HorizontalDividerItemDecoration;
 
@@ -61,8 +62,9 @@ public class IndexDelegate extends BottomItemDelegate {
         final GridLayoutManager manager = new GridLayoutManager(getContext(), 4);
         mRecyclerView.setLayoutManager(manager);
         mRecyclerView.addItemDecoration(new HorizontalDividerItemDecoration.Builder(getContext()).build());
+        final EcBottomDelegate ecBottomDelegate = getParentDelegate();
+        mRecyclerView.addOnItemTouchListener(IndexItemClickListener.create(ecBottomDelegate));
         mRefreshHandler.firstPage("index.php");
-
     }
 
     private void initRefreshLayout() {
