@@ -1,7 +1,0 @@
-<resources>
-    <string name="app_name">小购屋</string>
-    <string name="sign_up_success_tip">注册成功</string>
-    <string name="sign_in_success_tip">登陆成功</string>
-    <string name="wx_callback">微信回调</string>
-
-</resources>

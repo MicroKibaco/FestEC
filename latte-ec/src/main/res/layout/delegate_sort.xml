@@ -12,7 +12,7 @@
         <android.support.v7.widget.AppCompatTextView
                 android:textSize="20sp"
                 android:textColor="@android:color/white"
-                android:text="@string/sort_text"
+                android:text="@string/sort_title"
                 android:paddingTop="6dp"
                 android:gravity="center"
                 android:layout_width="match_parent"
@@ -30,12 +30,10 @@
                 android:id="@+id/vertical_list_container"
                 android:layout_width="0dp"
                 android:layout_weight="1"
-                android:background="@android:color/holo_red_light"
                 android:layout_height="match_parent"/>
 
         <android.support.v7.widget.ContentFrameLayout
                 android:id="@+id/sort_content_container"
-                android:background="@android:color/holo_blue_dark"
                 android:layout_width="0dp"
                 android:layout_marginHorizontal="6dp"
                 android:layout_weight="2.5"
