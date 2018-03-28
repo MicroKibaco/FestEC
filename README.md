@@ -498,6 +498,230 @@ compile 'com.tencent.mm.opensdk:wechat-sdk-android-with-mta:+'
 ### 5. 通用底部导航设计与一键式封装
   <img width="200" height="360" src="http://p5do3ypyn.bkt.clouddn.com/EcBottomDelegate.png"/>
 
+一. 导航构建器动态配置BottomBar
+
+```java
+public class ItemBuilder {
+
+    private final LinkedHashMap<BottomTabBean, BottomItemDelegate> ITEMS = new LinkedHashMap<>();
+
+    static ItemBuilder builder() {
+        return new ItemBuilder();
+    }
+
+    public final ItemBuilder addItems(LinkedHashMap<BottomTabBean, BottomItemDelegate> items) {
+        ITEMS.putAll(items);
+        return this;
+    }
+
+    public final ItemBuilder addItem(BottomTabBean bean, BottomItemDelegate delegate) {
+        ITEMS.put(bean, delegate);
+        return this;
+    }
+
+    public final LinkedHashMap<BottomTabBean, BottomItemDelegate> build() {
+        return ITEMS;
+    }
+}
+```
+
+二. 实例化javaBean,控制导航卡的图标和文字
+
+```java
+public class BottomTabBean {
+    private final CharSequence ICON;
+    private final CharSequence TITLE;
+
+    public BottomTabBean(CharSequence icon, CharSequence title) {
+        this.ICON = icon;
+        this.TITLE = title;
+    }
+
+    public CharSequence getIcon() {
+        return ICON;
+    }
+
+    public CharSequence getTitle() {
+        return TITLE;
+    }
+}
+```
+
+三. 添加重复触发返回键页面退出控制器
+```java
+public abstract class BottomItemDelegate extends LatteDelegate {
+
+    // 再点一次退出程序时间设置
+    private static final long WAIT_TIME = 2000L;
+    private long TOUCH_TIME = 0;
+
+    @Override
+    public boolean onBackPressedSupport() {
+
+        if (System.currentTimeMillis() - TOUCH_TIME < WAIT_TIME) {
+            _mActivity.finish();
+        } else {
+            TOUCH_TIME = System.currentTimeMillis();
+            Toast.makeText(_mActivity,
+                    "双击退出" +
+                            Latte
+                                    .getApplicationContext()
+                                    .getString(R.string.app_name),
+                    Toast.LENGTH_LONG)
+                    .show();
+        }
+
+        return true;
+
+    }
+}
+```
+
+四.抽取底部导航器基础父类,提供动态配置默认勾选按钮角标,被勾选按钮背景色,和按钮配置方法
+```java
+public abstract class BaseBottomDelegate extends LatteDelegate implements View.OnClickListener {
+
+    private final ArrayList<BottomTabBean> TAB_BEANS = new ArrayList<>();
+    private final ArrayList<BottomItemDelegate> ITEM_DELEGATE = new ArrayList<>();
+    private final LinkedHashMap<BottomTabBean, BottomItemDelegate> ITEMS = new LinkedHashMap<>();
+    @BindView(R2.id.bottom_bar)
+    LinearLayoutCompat mBottomBar = null;
+    private int mCurrentDelegate = 0;
+    private int mIndexDelegate = 0;
+    private int mClickedColor = Color.RED;
+
+    public abstract LinkedHashMap<BottomTabBean, BottomItemDelegate> setItems(ItemBuilder builder);
+
+    public abstract int setIndexDelegate();
+
+    @ColorInt
+    public abstract int setClickedColor();
+
+    @Override
+    public Object setLayout() {
+        return R.layout.delegate_bottom;
+    }
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        mIndexDelegate = setIndexDelegate();
+        if (setClickedColor() != 0) {
+            mClickedColor = setClickedColor();
+        }
+
+        final ItemBuilder builder = ItemBuilder.builder();
+        final LinkedHashMap<BottomTabBean, BottomItemDelegate> items = setItems(builder);
+        ITEMS.putAll(items);
+        for (Map.Entry<BottomTabBean, BottomItemDelegate> item : ITEMS.entrySet()) {
+            final BottomTabBean key = item.getKey();
+            final BottomItemDelegate value = item.getValue();
+            TAB_BEANS.add(key);
+            ITEM_DELEGATE.add(value);
+        }
+    }
+
+    @Override
+    public void onBindView(@Nullable Bundle savedInstanceState, View rootView) {
+        final int size = ITEMS.size();
+        for (int i = 0; i < size; i++) {
+            LayoutInflater.from(getContext()).inflate(R.layout.bottom_item_icon_text_layout, mBottomBar);
+            final RelativeLayout item = (RelativeLayout) mBottomBar.getChildAt(i);
+            //设置每个焦点的点击事件
+            item.setTag(i);
+            item.setOnClickListener(this);
+            final IconTextView itemIcon = (IconTextView) item.getChildAt(0);
+            final AppCompatTextView itemTitle = (AppCompatTextView) item.getChildAt(1);
+            BottomTabBean bean = TAB_BEANS.get(i);
+            //初始化数据
+            itemIcon.setText(bean.getIcon());
+            itemTitle.setText(bean.getTitle());
+            if (i == mIndexDelegate) {
+                itemIcon.setTextColor(mClickedColor);
+                itemTitle.setTextColor(mClickedColor);
+            }
+        }
+        final ISupportFragment[] delegateArray = ITEM_DELEGATE.toArray(new ISupportFragment[size]);
+        getSupportDelegate().loadMultipleRootFragment(R.id.bottom_bar_delegate_container, mIndexDelegate, delegateArray);
+
+    }
+
+    private void resetColor() {
+        final int count = mBottomBar.getChildCount();
+        for (int i = 0; i < count; i++) {
+            final RelativeLayout item = (RelativeLayout) mBottomBar.getChildAt(i);
+            final IconTextView itemIcon = (IconTextView) item.getChildAt(0);
+            itemIcon.setTextColor(Color.GRAY);
+            final AppCompatTextView itemTitle = (AppCompatTextView) item.getChildAt(1);
+            itemTitle.setTextColor(Color.GRAY);
+        }
+    }
+
+
+    @Override
+    public void onClick(View view) {
+        final int tag = (int) view.getTag();
+        resetColor();
+        final RelativeLayout item = (RelativeLayout) view;
+        final IconTextView itemIcon = (IconTextView) item.getChildAt(0);
+        itemIcon.setTextColor(mClickedColor);
+        final AppCompatTextView itemTitle = (AppCompatTextView) item.getChildAt(1);
+        itemTitle.setTextColor(mClickedColor);
+        getSupportDelegate().showHideFragment(ITEM_DELEGATE.get(tag), ITEM_DELEGATE.get(mCurrentDelegate));
+        //注意先后顺序
+        mCurrentDelegate = tag;
+    }
+}
+```
+
+五. 默认选项卡文字标题数组
+```xml
+  <string-array name="bottom_nav_bar_title">
+        <item>主页</item>
+        <item>分类</item>
+        <item>发现</item>
+        <item>购物车</item>
+        <item>我的</item>
+    </string-array>
+    <string-array name="bottom_nav_bar_icon">
+        <item>{fa-home}</item>
+        <item>{fa-sort}</item>
+        <item>{fa-compass}</item>
+        <item>{fa-shopping-cart}</item>
+        <item>{fa-user}</item>
+    </string-array>
+```
+
+六. 导航栏动态填充
+
+```java
+public class EcBottomDelegate extends BaseBottomDelegate {
+    @Override
+    public LinkedHashMap<BottomTabBean, BottomItemDelegate> setItems(ItemBuilder builder) {
+        LinkedHashMap<BottomTabBean, BottomItemDelegate> items = new LinkedHashMap<>();
+        final String[] titles = getResources().getStringArray(R.array.bottom_nav_bar_title);
+        final String[] icons = getResources().getStringArray(R.array.bottom_nav_bar_icon);
+        items.put(new BottomTabBean(icons[0], titles[0]), new IndexDelegate());
+        items.put(new BottomTabBean(icons[1], titles[1]), new SortDelegate());
+        items.put(new BottomTabBean(icons[2], titles[2]), new DiscoverDelegate());
+        items.put(new BottomTabBean(icons[3], titles[3]), new ShopCartDelegate());
+        items.put(new BottomTabBean(icons[4], titles[4]), new PersonalDelegate());
+
+        return builder.addItems(items).build();
+    }
+
+    @Override
+    public int setIndexDelegate() {
+        return 0;
+    }
+
+    @Override
+    public int setClickedColor() {
+        return Color.parseColor("#ffff8800");
+    }
+}
+```
+###  [6. RecycleView一键式封装](https://github.com/MicroKibaco/FestEC/issues/12)
 ## 第三方服务
 - [支付宝]()
 - [ShareSDK]()

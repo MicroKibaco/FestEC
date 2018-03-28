@@ -1,0 +1,40 @@
+package com.asiainfo.latte_ec.main.sort.content;
+
+import android.widget.ImageView;
+
+import com.asiainfo.latte_core.app.Latte;
+import com.asiainfo.latte_ec.R;
+import com.bumptech.glide.Glide;
+import com.chad.library.adapter.base.BaseSectionQuickAdapter;
+import com.chad.library.adapter.base.BaseViewHolder;
+
+import java.util.List;
+
+public class SectionAdapter extends BaseSectionQuickAdapter<SectionBean, BaseViewHolder> {
+
+    public SectionAdapter(int layoutResId, int sectionHeadResId, List<SectionBean> data) {
+        super(layoutResId, sectionHeadResId, data);
+    }
+
+    @Override
+    protected void convertHead(BaseViewHolder helper, SectionBean item) {
+        helper.setText(R.id.header, item.header);
+        helper.setVisible(R.id.more, item.isMore());
+        helper.addOnClickListener(R.id.more);
+    }
+
+    @Override
+    protected void convert(BaseViewHolder helper, SectionBean item) {
+        // item.t返回SectionBean类型
+        final String thumb = item.t.getGoodsThumb();
+        final String name = item.t.getGoodsName();
+        final int goodsId = item.t.getGoodsId();
+        helper.setText(R.id.tv, name);
+        final ImageView goodsImageView = helper.getView(R.id.iv);
+        Glide
+                .with(mContext)
+                .load(thumb)
+                .apply(Latte.getRecyclerOptions())
+                .into(goodsImageView);
+    }
+}
