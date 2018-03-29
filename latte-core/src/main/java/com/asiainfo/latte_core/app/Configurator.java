@@ -2,6 +2,7 @@ package com.asiainfo.latte_core.app;
 
 import android.app.Activity;
 import android.os.Handler;
+import android.support.annotation.NonNull;
 
 import com.joanzapata.iconify.IconFontDescriptor;
 import com.joanzapata.iconify.Iconify;
@@ -131,6 +132,11 @@ public class Configurator {
                 initializer.with(ICONS.get(i));
             }
         }
+    }
+
+    public final Configurator withJavascriptInterface(@NonNull String name) {
+        LATTE_CONFIGS.put(ConfigKeys.JAVASCRIPT_INTERFACE, name);
+        return this;
     }
 
     /**

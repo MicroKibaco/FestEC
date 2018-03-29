@@ -21,6 +21,7 @@ public class MyApplication extends Application {
                 .withIcon(new FontEcModel())
                 .withWxChatAppId("WE_CHAT_APP_ID")
                 .withWxChatAppSecret("WE_CHAT_APP_SECRET")
+                .withJavascriptInterface("latte")
                 .withInterceptor(new DebugInterceptor("test", R.raw.test))
                 .configure();
 

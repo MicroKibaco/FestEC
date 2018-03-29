@@ -1,26 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:orientation="vertical"
-              android:background="@android:color/white"
-              android:layout_width="match_parent"
-              android:layout_height="wrap_content">
+<android.support.v7.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+                                              android:layout_width="match_parent"
+                                              android:layout_height="wrap_content"
+                                              android:layout_margin="1dp"
+                                              android:background="@android:color/white"
+                                              android:orientation="vertical">
 
     <android.support.v7.widget.AppCompatImageView
             android:id="@+id/iv"
-            android:scaleType="centerCrop"
-            android:layout_marginBottom="@dimen/dp_10"
-            android:layout_gravity="center"
             android:layout_width="match_parent"
-            android:layout_height="120dp"/>
+            android:layout_height="120dp"
+            android:layout_gravity="center"
+            android:layout_marginBottom="@dimen/dp_10"
+            android:scaleType="centerCrop"/>
 
     <android.support.v7.widget.AppCompatTextView
             android:id="@+id/tv"
-            android:textStyle="bold"
-            android:textColor="@color/we_chat_black"
-            android:layout_marginBottom="@dimen/dp_10"
-            android:layout_gravity="center|bottom"
-            android:gravity="start"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:gravity="left"
+            android:layout_gravity="center|bottom"
+            android:layout_marginBottom="10dp"
+            android:textColor="@color/we_chat_black"
+            android:textStyle="bold"/>
 
-</LinearLayout>
+</android.support.v7.widget.LinearLayoutCompat>
