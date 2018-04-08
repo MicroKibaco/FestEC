@@ -29,11 +29,10 @@ dependencies {
     })
     compile 'com.android.support:appcompat-v7:25.3.0'
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
-    // 字体图标
-    compile 'com.joanzapata.iconify:android-iconify-ionicons:2.2.2'
-    // (v2.0.1)
+    // 图标
     compile 'com.joanzapata.iconify:android-iconify-fontawesome:2.2.2'
-    // (v4.5)
+    compile 'com.joanzapata.iconify:android-iconify-ionicons:2.2.2'
+
     // 动态权限申请
     compile 'com.github.hotchemi:permissionsdispatcher:3.1.0'
     annotationProcessor "com.github.hotchemi:permissionsdispatcher-processor:3.1.0"

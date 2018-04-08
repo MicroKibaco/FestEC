@@ -4,9 +4,7 @@ import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.View;
-import android.webkit.WebChromeClient;
 import android.webkit.WebView;
-import android.webkit.WebViewClient;
 
 import com.asiainfo.latte_core.app.ConfigKeys;
 import com.asiainfo.latte_core.app.Latte;
@@ -34,6 +32,13 @@ public abstract class WebDelegate extends LatteDelegate implements IWebViewIniti
     public WebDelegate() {
     }
 
+    public WebView getWebView() {
+        if (mWebView == null) {
+            throw new NullPointerException("WebView is null ！");
+        }
+        return mIsWebViewAvailable ? mWebView : null;
+    }
+
     public abstract IWebViewInitializer setInitializer();
 
     @Override
@@ -45,7 +50,7 @@ public abstract class WebDelegate extends LatteDelegate implements IWebViewIniti
     }
 
     @SuppressLint("JavascriptInterface")
-    private void initWebView() {
+    protected void initWebView() {
         if (mWebView == null) {
             final IWebViewInitializer initializer = setInitializer();
             if (initializer == null) {
@@ -70,6 +75,17 @@ public abstract class WebDelegate extends LatteDelegate implements IWebViewIniti
     public void onDestroyView() {
         super.onDestroyView();
         mIsWebViewAvailable = false;
+    }
+
+    public LatteDelegate getTopDelegate() {
+        if (mTopDelegate == null) {
+            mTopDelegate = this;
+        }
+        return mTopDelegate;
+    }
+
+    public void setTopDelegate(LatteDelegate delegate) {
+        this.mTopDelegate = delegate;
     }
 
     @Override
@@ -108,18 +124,10 @@ public abstract class WebDelegate extends LatteDelegate implements IWebViewIniti
 
     }
 
-    @Override
-    public WebView initWebView(WebView webView) {
-        return null;
-    }
-
-    @Override
-    public WebViewClient initWebViewClient() {
-        return null;
-    }
-
-    @Override
-    public WebChromeClient initWebChromeClient() {
-        return null;
+    public String getUrl() {
+        if (mUrl == null) {
+            throw new NullPointerException(" URL is null !");
+        }
+        return mUrl;
     }
 }

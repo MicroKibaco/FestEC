@@ -24,4 +24,5 @@
     <string name="goods_detail_text">商品详情</string>
     <string name="sort_title">分类</string>
     <string name="section_header_text"><![CDATA[更多 >]]></string>
+    <string name="text_discover">发现</string>
 </resources>
