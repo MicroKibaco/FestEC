@@ -22,6 +22,7 @@ import com.asiainfo.latte_core.ui.recycler.MultipleItemEntity;
 import com.asiainfo.latte_core.util.log.Lattelogger;
 import com.asiainfo.latte_ec.R;
 import com.asiainfo.latte_ec.R2;
+import com.asiainfo.latte_ec.pay.FastPay;
 import com.asiainfo.latte_ec.pay.IAlPayResultListener;
 import com.joanzapata.iconify.widget.IconTextView;
 
@@ -137,6 +138,11 @@ public class ShopCartDelegate extends BottomItemDelegate implements ICartItemLis
                         //进行具体的支付
                         Lattelogger.e("ORDER", response);
                         final int orderId = JSON.parseObject(response).getInteger("result");
+                        FastPay
+                                .create(ShopCartDelegate.this)
+                                .setOrderId(orderId)
+                                .setIAlPayResultListener(ShopCartDelegate.this)
+                                .beginPayDialog();
 
                     }
                 }).build()
