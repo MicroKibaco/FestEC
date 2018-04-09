@@ -2,4 +2,7 @@
 <resources>
     <dimen name="dp_30">30dp</dimen>
     <dimen name="dp_50">50dp</dimen>
+    <dimen name="sp_18">18sp</dimen>
+    <dimen name="sp_20">20sp</dimen>
+    <dimen name="dp_0">0dp</dimen>
 </resources>

@@ -25,4 +25,12 @@
     <string name="sort_title">分类</string>
     <string name="section_header_text"><![CDATA[更多 >]]></string>
     <string name="text_discover">发现</string>
+    <string name="text_shop_cart_clear">清空</string>
+    <string name="text_shop_cart">购物车</string>
+    <string name="text_shop_cart_remove">删除</string>
+    <string name="stub_shop_cart">去购物</string>
+    <string name="text_shop_cart_pay">结算</string>
+    <string name="text_shop_cart_total_price">￥0.01</string>
+    <string name="text_shop_cart_total">合计</string>
+    <string name="text_selected_all">全选</string>
 </resources>
