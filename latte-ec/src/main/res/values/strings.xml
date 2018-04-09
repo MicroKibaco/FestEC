@@ -8,7 +8,6 @@
     <string name="sign_up_edit_password_hint">密码</string>
     <string name="sign_in_link">还没有注册？请先注册</string>
     <string name="sign_up_link">已有账号，请登录</string>
-    <string name="sign_in_weixin">{fa-weixin}</string>
     <string name="sign_in_error_password">请填写至少六位数密码</string>
     <string name="sign_in_error_email">错误的邮箱格式</string>
     <string name="sign_up_edit_repassword_hint">验证密码</string>
@@ -18,8 +17,6 @@
     <string name="sign_up_error_password">请填写至少6位数密码</string>
     <string name="sign_up_error_repassword">验证密码错误</string>
     <string name="sign_up_suc_tip">验证成功!</string>
-    <string name="index_qr_code">{icon-scan}</string>
-    <string name="index_message">{fa-bullhorn}</string>
     <string name="index_search_hint">搜索</string>
     <string name="goods_detail_text">商品详情</string>
     <string name="sort_title">分类</string>
@@ -33,4 +30,19 @@
     <string name="text_shop_cart_total_price">￥0.01</string>
     <string name="text_shop_cart_total">合计</string>
     <string name="text_selected_all">全选</string>
+    <string name="text_item_shop_cart_title">商品标题</string>
+    <string name="text_item_shop_cart_desc">商品描述</string>
+    <string name="text_item_shop_cart_price">2.00</string>
+
+    <string name="text_icon_item_minus">{fa-minus-square-o}</string>
+    <string name="text_icon_item_plus">{fa-plus-square-o}</string>
+    <string name="text_icon_item_shop_cart">{fa-check-circle}</string>
+    <string name="index_qr_code">{icon-scan}</string>
+    <string name="index_message">{fa-bullhorn}</string>
+    <string name="sign_in_weixin">{fa-weixin}</string>
+    <string name="text_icon_shop_cart_select_all">{fa-check-circle}</string>
+    <string name="text_item_shop_cart_count">1</string>
+    <string name="tip_check_count">你该购物啦！</string>
+
+
 </resources>

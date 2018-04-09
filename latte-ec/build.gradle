@@ -28,8 +28,10 @@ dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
     testCompile 'junit:junit:4.12'
     compile project(':latte-core')
+    compile 'com.android.support.constraint:constraint-layout:1.0.2'
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
     compile 'org.greenrobot:greendao:3.2.2'
-    compile 'net.zetetic:android-database-sqlcipher:3.5.6' // 加密库依赖
-
+    compile 'net.zetetic:android-database-sqlcipher:3.5.6'
+    // 加密库依赖
+    compile files('libs/alipaySdk-20161222.jar')
 }
