@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+                                              android:orientation="vertical"
+                                              android:background="@android:color/white"
+                                              android:layout_width="match_parent"
+                                              android:paddingBottom="@dimen/dp_20"
+                                              android:layout_height="wrap_content">
+
+    <android.support.v7.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:orientation="horizontal">
+
+        <com.joanzapata.iconify.widget.IconTextView
+                android:id="@+id/btn_dialog_pay_alpay"
+                android:layout_width="@dimen/dp_0"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="@string/text_ali_pay"
+                android:textColor="@android:color/holo_blue_bright"
+                android:textSize="@dimen/sp_50"
+                />
+
+        <com.joanzapata.iconify.widget.IconTextView
+                android:id="@+id/btn_dialog_pay_wechat"
+                android:layout_width="@dimen/dp_0"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="@string/text_pay_wechat"
+                android:textColor="@color/dialog_pay_wechat_background"
+                android:textSize="@dimen/sp_50"
+                />
+    </android.support.v7.widget.LinearLayoutCompat>
+
+    <android.support.v7.widget.AppCompatButton
+            android:id="@+id/btn_dialog_pay_cancel"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/def_height"
+            android:layout_marginLeft="@dimen/def_height"
+            android:layout_marginRight="@dimen/def_height"
+            android:background="@color/app_main"
+            android:gravity="center"
+            android:text="@string/text_btn_dialog_pay_cancel"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/sp_16"/>
+
+</android.support.v7.widget.LinearLayoutCompat>

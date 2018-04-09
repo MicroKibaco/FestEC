@@ -8,4 +8,5 @@
     <dimen name="dp_5">5dp</dimen>
     <dimen name="dp_120">120dp</dimen>
     <dimen name="sp_24">24sp</dimen>
+    <dimen name="sp_50">50sp</dimen>
 </resources>

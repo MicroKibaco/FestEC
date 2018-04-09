@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
                                              xmlns:app="http://schemas.android.com/apk/res-auto"
-                                             xmlns:tools="http://schemas.android.com/tools"
                                              android:layout_width="match_parent"
                                              android:layout_height="match_parent"
-                                             android:background="#1111">
+                                             android:background="@color/app_background">
 
     <android.support.v7.widget.Toolbar
             android:id="@+id/tool_bar"
@@ -25,12 +24,12 @@
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:layout_alignParentStart="true"
-                    android:layout_marginStart="20dp"
+                    android:layout_marginStart="@dimen/dp_20"
                     android:gravity="center"
                     android:text="@string/text_shop_cart_clear"
                     android:textColor="@android:color/white"
-                    android:textSize="18sp"
-                    tools:ignore="HardcodedText"/>
+                    android:textSize="@dimen/sp_18"
+                    />
 
             <android.support.v7.widget.AppCompatTextView
                     android:layout_width="wrap_content"
@@ -39,20 +38,20 @@
                     android:gravity="center"
                     android:text="@string/text_shop_cart"
                     android:textColor="@android:color/white"
-                    android:textSize="20sp"
-                    tools:ignore="HardcodedText"/>
+                    android:textSize="@dimen/sp_20"
+                    />
 
             <android.support.v7.widget.AppCompatTextView
                     android:id="@+id/tv_top_shop_cart_remove_selected"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:layout_alignParentEnd="true"
-                    android:layout_marginEnd="20dp"
+                    android:layout_marginEnd="@dimen/dp_20"
                     android:gravity="center"
                     android:text="@string/text_shop_cart_remove"
                     android:textColor="@android:color/white"
-                    android:textSize="18sp"
-                    tools:ignore="HardcodedText"/>
+                    android:textSize="@dimen/sp_18"
+                    />
 
         </RelativeLayout>
 
@@ -60,8 +59,8 @@
 
     <android.support.v7.widget.RecyclerView
             android:id="@+id/rv_shop_cart"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
+            android:layout_width="@dimen/dp_0"
+            android:layout_height="@dimen/dp_0"
             app:layout_constraintBottom_toTopOf="@+id/left_layout"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
@@ -69,11 +68,11 @@
 
     <ViewStub
             android:id="@+id/stub_no_item"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
+            android:layout_width="@dimen/dp_0"
+            android:layout_height="@dimen/dp_0"
             android:background="@android:color/white"
             android:layout="@layout/stub_shop_cart_no_item"
-            android:minHeight="50dp"
+            android:minHeight="@dimen/dp_50"
             android:orientation="horizontal"
             app:layout_constraintBottom_toTopOf="@id/left_layout"
             app:layout_constraintLeft_toLeftOf="parent"
@@ -83,8 +82,8 @@
     <!--底部左端-->
     <android.support.v7.widget.LinearLayoutCompat
             android:id="@+id/left_layout"
-            android:layout_width="0dp"
-            android:layout_height="50dp"
+            android:layout_width="@dimen/dp_0"
+            android:layout_height="@dimen/dp_50"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintHorizontal_weight="1"
             app:layout_constraintLeft_toLeftOf="parent"
@@ -92,71 +91,71 @@
 
         <com.joanzapata.iconify.widget.IconTextView
                 android:id="@+id/icon_shop_cart_select_all"
-                android:layout_width="0dp"
+                android:layout_width="@dimen/dp_0"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:gravity="center"
-                android:text="{fa-check-circle}"
+                android:text="@string/text_icon_item_shop_cart"
                 android:textColor="@android:color/darker_gray"
-                android:textSize="20sp"
-                tools:ignore="HardcodedText"/>
+                android:textSize="@dimen/sp_20"
+                />
 
         <android.support.v7.widget.AppCompatTextView
-                android:layout_width="0dp"
+                android:layout_width="@dimen/dp_0"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:gravity="center"
-                android:text="全选"
+                android:text="@string/text_selected_all"
                 android:textColor="@color/app_main"
-                tools:ignore="HardcodedText"/>
+                />
 
 
     </android.support.v7.widget.LinearLayoutCompat>
     <!--底部中部-->
     <android.support.v7.widget.LinearLayoutCompat
             android:id="@+id/center_layout"
-            android:layout_width="0dp"
-            android:layout_height="50dp"
+            android:layout_width="@dimen/dp_0"
+            android:layout_height="@dimen/dp_50"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintHorizontal_weight="2"
             app:layout_constraintLeft_toRightOf="@id/left_layout"
             app:layout_constraintRight_toLeftOf="@+id/tv_shop_cart_pay">
 
         <android.support.v7.widget.AppCompatTextView
-                android:layout_width="0dp"
+                android:layout_width="@dimen/dp_0"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:gravity="center"
-                android:text="合计"
+                android:text="@string/text_shop_cart_total"
                 android:textColor="@android:color/darker_gray"
-                tools:ignore="HardcodedText"/>
+                />
 
         <android.support.v7.widget.AppCompatTextView
                 android:id="@+id/tv_shop_cart_total_price"
-                android:layout_width="0dp"
+                android:layout_width="@dimen/dp_0"
                 android:layout_height="match_parent"
                 android:layout_weight="2"
                 android:gravity="center|left"
-                android:text="￥0.01"
+                android:text="@string/text_shop_cart_total_price"
                 android:textColor="@color/app_main"
-                android:textSize="20sp"
-                tools:ignore="HardcodedText,RtlHardcoded"/>
+                android:textSize="@dimen/sp_20"
+                />
 
     </android.support.v7.widget.LinearLayoutCompat>
     <!--底部右端-->
     <android.support.v7.widget.AppCompatTextView
             android:id="@+id/tv_shop_cart_pay"
-            android:layout_width="0dp"
-            android:layout_height="50dp"
+            android:layout_width="@dimen/dp_0"
+            android:layout_height="@dimen/dp_50"
             android:background="@color/app_main"
             android:gravity="center"
-            android:text="结算"
+            android:text="@string/text_shop_cart_pay"
             android:textColor="@android:color/white"
-            android:textSize="20sp"
+            android:textSize="@dimen/sp_20"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintHorizontal_weight="1"
             app:layout_constraintLeft_toRightOf="@id/center_layout"
             app:layout_constraintRight_toRightOf="parent"
-            tools:ignore="HardcodedText"/>
+            />
 
 </android.support.constraint.ConstraintLayout>

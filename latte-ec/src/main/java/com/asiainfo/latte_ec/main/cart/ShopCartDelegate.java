@@ -22,6 +22,7 @@ import com.asiainfo.latte_core.ui.recycler.MultipleItemEntity;
 import com.asiainfo.latte_core.util.log.Lattelogger;
 import com.asiainfo.latte_ec.R;
 import com.asiainfo.latte_ec.R2;
+import com.asiainfo.latte_ec.pay.IAlPayResultListener;
 import com.joanzapata.iconify.widget.IconTextView;
 
 import java.util.ArrayList;
@@ -36,7 +37,7 @@ import butterknife.OnClick;
  * 购物车
  */
 @SuppressWarnings("FieldCanBeLocal")
-public class ShopCartDelegate extends BottomItemDelegate implements ICartItemListener {
+public class ShopCartDelegate extends BottomItemDelegate implements ICartItemListener, IAlPayResultListener {
 
     @BindView(R2.id.rv_shop_cart)
     RecyclerView mRecyclerView = null;
@@ -228,5 +229,29 @@ public class ShopCartDelegate extends BottomItemDelegate implements ICartItemLis
     }
 
 
+    @Override
+    public void onPaySuccess() {
+
+    }
+
+    @Override
+    public void onPaying() {
+
+    }
+
+    @Override
+    public void onPayFail() {
+
+    }
+
+    @Override
+    public void onPayCancel() {
+
+    }
+
+    @Override
+    public void onPayConnectError() {
+
+    }
 }
 

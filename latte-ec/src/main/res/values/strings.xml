@@ -43,6 +43,9 @@
     <string name="text_icon_shop_cart_select_all">{fa-check-circle}</string>
     <string name="text_item_shop_cart_count">1</string>
     <string name="tip_check_count">你该购物啦！</string>
+    <string name="text_btn_dialog_pay_cancel">取消支付</string>
+    <string name="text_pay_wechat">{fa-weixin}</string>
+    <string name="text_ali_pay">{icon-ali-pay}</string>
 
 
 </resources>
