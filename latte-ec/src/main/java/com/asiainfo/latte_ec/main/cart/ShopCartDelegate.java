@@ -128,6 +128,7 @@ public class ShopCartDelegate extends BottomItemDelegate implements ICartItemLis
         final WeakHashMap<String, Object> orderParams = new WeakHashMap<>();
         //加入你的参数
 
+
         RestClient.builder()
                 .url(orderUrl)
                 .loader(getContext())
@@ -153,7 +154,8 @@ public class ShopCartDelegate extends BottomItemDelegate implements ICartItemLis
     @SuppressWarnings("RestrictedApi")
     private void checkItemCount() {
         final int count = mAdapter.getItemCount();
-        if (count == 0) {
+
+        if (count == 0 && mStubNoItem.getParent() != null) {
             final View studView = mStubNoItem.inflate();
             final AppCompatTextView tvToBuy = studView.findViewById(R.id.tv_stub_to_buy);
             tvToBuy.setOnClickListener(new View.OnClickListener() {
