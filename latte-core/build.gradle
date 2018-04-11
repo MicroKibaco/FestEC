@@ -92,7 +92,7 @@ dependencies {
     compile 'com.orhanobut:logger:2.1.1'
     // fastjson
     compile 'com.alibaba:fastjson:1.1.68.android'
-
+    compile 'de.hdodenhof:circleimageview:2.2.0'
     // Android support 包
     compile 'com.android.support:design:26.0.0-alpha1'
     compile 'com.android.support:support-v4:26.0.0-alpha1'

@@ -70,8 +70,6 @@ public class FastPay implements View.OnClickListener {
 
                     }
                 }).build().post();
-
-
     }
 
 

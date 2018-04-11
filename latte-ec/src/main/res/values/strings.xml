@@ -46,6 +46,18 @@
     <string name="text_btn_dialog_pay_cancel">取消支付</string>
     <string name="text_pay_wechat">{fa-weixin}</string>
     <string name="text_ali_pay">{icon-ali-pay}</string>
+    <string name="text_user_name">御弟哥哥</string>
+    <string name="text_my_order">我的订单</string>
+    <string name="text_all_order">全部订单</string>
+    <string name="text_after_sale">售后</string>
+    <string name="text_personal_icon">{fa-chevron-right}</string>
+    <string name="text_wait_pay">待付款</string>
+    <string name="text_wait_receive">待收货</string>
+    <string name="text_wait_rating">待评价</string>
+    <string name="fa_credit_card">{fa-credit-card}</string>
+    <string name="fa_truck">{fa-truck}</string>
+    <string name="fa_clone">{fa-clone}</string>
+    <string name="fa_comments_o">{fa-comments-o}</string>
 
 
 </resources>

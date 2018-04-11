@@ -1,7 +1,214 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v7.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
-                                              android:orientation="vertical"
-                                              android:layout_width="match_parent"
-                                              android:layout_height="match_parent">
+<android.support.v4.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+                                            xmlns:tools="http://schemas.android.com/tools"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="match_parent"
+                                            android:background="@color/app_background">
 
-</android.support.v7.widget.LinearLayoutCompat>
+    <android.support.v7.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+        <!--头像部分-->
+        <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:background="@android:color/holo_orange_dark">
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/img_user_avatar"
+                    android:layout_width="@dimen/dp_80"
+                    android:layout_height="@dimen/dp_80"
+                    android:src="@mipmap/launcher"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="@dimen/dp_30"/>
+
+            <android.support.v7.widget.AppCompatTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginBottom="@dimen/dp_20"
+                    android:text="@string/text_user_name"
+                    android:textColor="@android:color/white"
+                    android:textSize="@dimen/sp_16"
+                    />
+
+        </RelativeLayout>
+
+        <!--订单部分-->
+        <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp_50"
+                android:background="@android:color/white"
+                android:orientation="horizontal"
+                android:paddingLeft="@dimen/dp_10"
+                android:paddingRight="@dimen/dp_10">
+
+            <android.support.v7.widget.AppCompatTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentStart="true"
+                    android:gravity="center"
+                    android:text="@string/text_my_order"
+                    android:textColor="@android:color/black"
+                    />
+
+            <android.support.v7.widget.AppCompatTextView
+                    android:id="@+id/tv_all_order"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_toStartOf="@+id/tv_all_account_arrow"
+                    android:gravity="center"
+                    android:text="@string/text_all_order"
+                    android:textColor="@android:color/darker_gray"
+                    tools:ignore="RelativeOverlap"/>
+
+            <com.joanzapata.iconify.widget.IconTextView
+                    android:id="@+id/tv_all_account_arrow"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginStart="@dimen/dp_10"
+                    android:gravity="center"
+                    android:text="@string/text_personal_icon"
+                    android:textColor="@android:color/darker_gray"
+                    />
+
+        </RelativeLayout>
+
+        <android.support.v7.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp_80"
+                android:background="@android:color/white"
+                android:baselineAligned="true"
+                android:orientation="horizontal">
+
+            <android.support.v7.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+                                                          android:id="@+id/ll_pay"
+                                                          android:layout_width="@dimen/dp_0"
+                                                          android:layout_height="match_parent"
+                                                          android:layout_weight="1"
+                                                          android:gravity="center"
+                                                          android:orientation="vertical">
+
+                <com.joanzapata.iconify.widget.IconTextView
+                        android:layout_width="@dimen/dp_30"
+                        android:layout_height="@dimen/dp_30"
+                        android:layout_gravity="center_horizontal"
+                        android:gravity="center"
+                        android:text="@string/fa_credit_card"
+                        android:textSize="@dimen/sp_20"
+                        />
+
+                <android.support.v7.widget.AppCompatTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginTop="@dimen/dp_5"
+                        android:gravity="center"
+                        android:text="@string/text_wait_pay"
+                        android:textSize="@dimen/sp_10"
+                        />
+
+            </android.support.v7.widget.LinearLayoutCompat>
+
+            <android.support.v7.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+                                                          android:id="@+id/ll_receive"
+                                                          android:layout_width="@dimen/dp_0"
+                                                          android:layout_height="match_parent"
+                                                          android:layout_weight="1"
+                                                          android:gravity="center"
+                                                          android:orientation="vertical">
+
+                <com.joanzapata.iconify.widget.IconTextView
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_gravity="center_horizontal"
+                        android:gravity="center"
+                        android:text="@string/fa_truck"
+                        android:textSize="@dimen/sp_20"
+                        />
+
+                <android.support.v7.widget.AppCompatTextView
+                        android:id="@+id/textView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginTop="@dimen/dp_5"
+                        android:gravity="center"
+                        android:text="@string/text_wait_receive"
+                        android:textSize="@dimen/sp_10"
+                        />
+
+            </android.support.v7.widget.LinearLayoutCompat>
+
+            <android.support.v7.widget.LinearLayoutCompat
+                    android:id="@+id/ll_evaluate"
+                    android:layout_width="@dimen/dp_0"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                <com.joanzapata.iconify.widget.IconTextView
+                        android:layout_width="@dimen/dp_30"
+                        android:layout_height="@dimen/dp_30"
+                        android:layout_gravity="center_horizontal"
+                        android:gravity="center"
+                        android:text="@string/fa_clone"
+                        android:textSize="@dimen/sp_20"
+                        />
+
+                <android.support.v7.widget.AppCompatTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginTop="@dimen/dp_5"
+                        android:gravity="center"
+                        android:text="@string/text_wait_rating"
+                        android:textSize="@dimen/sp_10"
+                        />
+
+            </android.support.v7.widget.LinearLayoutCompat>
+
+            <android.support.v7.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+                                                          android:id="@+id/ll_after_market"
+                                                          android:layout_width="@dimen/dp_0"
+                                                          android:layout_height="match_parent"
+                                                          android:layout_weight="1"
+                                                          android:gravity="center"
+                                                          android:orientation="vertical">
+
+                <com.joanzapata.iconify.widget.IconTextView
+                        android:layout_width="@dimen/dp_30"
+                        android:layout_height="@dimen/dp_30"
+                        android:layout_gravity="center_horizontal"
+                        android:gravity="center"
+                        android:text="@string/fa_comments_o"
+                        android:textSize="@dimen/sp_20"
+                        />
+
+                <android.support.v7.widget.AppCompatTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginTop="@dimen/dp_5"
+                        android:gravity="center"
+                        android:text="@string/text_after_sale"
+                        android:textSize="@dimen/sp_10"
+                        />
+
+            </android.support.v7.widget.LinearLayoutCompat>
+
+        </android.support.v7.widget.LinearLayoutCompat>
+
+        <android.support.v7.widget.RecyclerView
+                android:id="@+id/rv_personal_setting"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="@dimen/dp_20"/>
+    </android.support.v7.widget.LinearLayoutCompat>
+</android.support.v4.widget.NestedScrollView>

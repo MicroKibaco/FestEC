@@ -9,6 +9,7 @@
             android:supportsRtl="true"
             >
 
+        <activity android:name="com.asiainfo.latte_core.wechat.BaseWXPayEntryActivity"/>
     </application>
 
 </manifest>
