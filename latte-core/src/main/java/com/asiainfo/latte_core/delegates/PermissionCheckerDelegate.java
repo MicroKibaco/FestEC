@@ -15,7 +15,6 @@ import com.asiainfo.latte_core.ui.callback.IGlobalCallback;
 import com.asiainfo.latte_core.ui.camera.CameraImageBean;
 import com.asiainfo.latte_core.ui.camera.LatteCamera;
 import com.asiainfo.latte_core.ui.camera.RequestCodes;
-import com.blankj.utilcode.util.ToastUtils;
 import com.yalantis.ucrop.UCrop;
 
 import permissions.dispatcher.NeedsPermission;
@@ -38,12 +37,12 @@ public abstract class PermissionCheckerDelegate extends BaseDelegate {
     // 这个是真正调用的方法
     @OnPermissionDenied(Manifest.permission.CAMERA)
     void onCameraDenied() {
-        ToastUtils.showLong(getString(R.string.tip_denied_camera));
+        tip(getString(R.string.tip_denied_camera));
     }
 
     @OnNeverAskAgain(Manifest.permission.CAMERA)
     void onCameraNever() {
-        ToastUtils.showLong(getString(R.string.tip_never_camera));
+        tip(getString(R.string.tip_never_camera));
     }
 
     @OnShowRationale(Manifest.permission.CAMERA)
@@ -64,20 +63,20 @@ public abstract class PermissionCheckerDelegate extends BaseDelegate {
 
     private void showRationaleDialog(final PermissionRequest request) {
         new AlertDialog.Builder(getContext())
-                .setPositiveButton(getString(R.string.agree_use), new DialogInterface.OnClickListener() {
+                .setPositiveButton(getString(R.string.btn_agree_use), new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int what) {
                         request.proceed();
                     }
                 })
-                .setNegativeButton(getString(R.string.disagree_use), new DialogInterface.OnClickListener() {
+                .setNegativeButton(getString(R.string.btn_disagree_use), new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int what) {
                         request.cancel();
                     }
                 })
                 .setCancelable(false)
-                .setMessage(getString(R.string.permission_manager))
+                .setMessage(getString(R.string.msg_permission_manager))
                 .show();
     }
 
@@ -116,7 +115,7 @@ public abstract class PermissionCheckerDelegate extends BaseDelegate {
                     }
                     break;
                 case RequestCodes.CROP_ERROR:
-                    ToastUtils.showLong(getString(R.string.crop_error));
+                    tip(getString(R.string.tip_crop_error));
                     break;
                 default:
                     break;

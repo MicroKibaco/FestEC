@@ -103,7 +103,7 @@ public class SignUpDelegate extends LatteDelegate {
          .params("password", mPassword.getText().toString())
          .success(new ISuccess() {
         @Override public void onSuccess(String response) {
-        Lattelogger.json("USER_PROFILE", response);
+        LatteLogger.json("USER_PROFILE", response);
         SignHandler.onSignUp(response, mISignListener);
         }
         })

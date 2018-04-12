@@ -19,7 +19,7 @@ import com.asiainfo.latte_core.delegates.bottom.BottomItemDelegate;
 import com.asiainfo.latte_core.net.callback.ISuccess;
 import com.asiainfo.latte_core.net.rt.RestClient;
 import com.asiainfo.latte_core.ui.recycler.MultipleItemEntity;
-import com.asiainfo.latte_core.util.log.Lattelogger;
+import com.asiainfo.latte_core.util.log.LatteLogger;
 import com.asiainfo.latte_ec.R;
 import com.asiainfo.latte_ec.R2;
 import com.asiainfo.latte_ec.pay.FastPay;
@@ -137,7 +137,7 @@ public class ShopCartDelegate extends BottomItemDelegate implements ICartItemLis
                     @Override
                     public void onSuccess(String response) {
                         //进行具体的支付
-                        Lattelogger.e("ORDER", response);
+                        LatteLogger.e("ORDER", response);
                         final int orderId = JSON.parseObject(response).getInteger("result");
                         FastPay
                                 .create(ShopCartDelegate.this)

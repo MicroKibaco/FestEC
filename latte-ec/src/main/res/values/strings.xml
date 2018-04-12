@@ -61,6 +61,12 @@
     <string name="text_arrow_no_setting">未设置</string>
     <string name="icon_arrow">{fa-chevron-right}</string>
     <string name="fa_chevron_right">{fa-chevron-right}</string>
+    <string name="name">姓名</string>
+    <string name="defined_name">未设置姓名</string>
+    <string name="sex">性别</string>
+    <string name="defined_sex">未设置性别</string>
+    <string name="birthday">生日</string>
+    <string name="defined_birthday">未设置生日</string>
 
 
 </resources>

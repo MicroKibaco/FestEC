@@ -18,7 +18,7 @@ import com.asiainfo.latte_core.delegates.LatteDelegate;
 import com.asiainfo.latte_core.net.callback.ISuccess;
 import com.asiainfo.latte_core.net.rt.RestClient;
 import com.asiainfo.latte_core.ui.launcher.LatteLoader;
-import com.asiainfo.latte_core.util.log.Lattelogger;
+import com.asiainfo.latte_core.util.log.LatteLogger;
 import com.asiainfo.latte_core.wechat.LatteWeChat;
 import com.asiainfo.latte_ec.R;
 import com.tencent.mm.opensdk.modelpay.PayReq;
@@ -63,7 +63,7 @@ public class FastPay implements View.OnClickListener {
                     @Override
                     public void onSuccess(String response) {
                         final String paySing = JSON.parseObject(response).getString("result");
-                        Lattelogger.e("PAY_SING", paySing);
+                        LatteLogger.e("PAY_SING", paySing);
                         //必须是异步的调用客户端支付接口
                         final PayAsyncTask payAsyncTask = new PayAsyncTask(mActivity, mIAlPayResultListener);
                         payAsyncTask.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, paySing);
@@ -76,7 +76,7 @@ public class FastPay implements View.OnClickListener {
     private void weChatPay(int orderId) {
         LatteLoader.stopLoading();
         final String weChatPrePayUrl = "服务器地址" + orderId;
-        Lattelogger.d("WX_PAY", weChatPrePayUrl);
+        LatteLogger.d("WX_PAY", weChatPrePayUrl);
 
         final IWXAPI iwxapi = LatteWeChat.getInstance().getWXAPI();
         final String appId = Latte.getConfiguration(ConfigKeys.WE_CHAT_APP_ID);

@@ -9,6 +9,7 @@ import android.support.v4.app.FragmentActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.asiainfo.latte_core.activitys.ProxyActivity;
 
@@ -203,5 +204,10 @@ public abstract class BaseDelegate extends Fragment implements ISupportFragment 
     @Override
     public void post(Runnable runnable) {
 
+    }
+
+    public void tip(String str) {
+        Toast.makeText(getActivity(), str, Toast.LENGTH_SHORT)
+                .show();
     }
 }

@@ -10,7 +10,7 @@ import com.asiainfo.latte_core.delegates.IPageLoadListener;
 import com.asiainfo.latte_core.delegates.web.WebDelegate;
 import com.asiainfo.latte_core.delegates.web.route.Router;
 import com.asiainfo.latte_core.ui.launcher.LatteLoader;
-import com.asiainfo.latte_core.util.log.Lattelogger;
+import com.asiainfo.latte_core.util.log.LatteLogger;
 
 /**
  * 实现类
@@ -31,7 +31,7 @@ public class WebViewClientImpl extends WebViewClient {
 
     @Override
     public boolean shouldOverrideUrlLoading(WebView view, String url) {
-        Lattelogger.e("shouldOverrideUrlLoading", url);
+        LatteLogger.e("shouldOverrideUrlLoading", url);
         return Router.getInstance().handleWebUrl(DELEGATE, url);
     }
 

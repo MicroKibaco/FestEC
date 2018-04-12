@@ -5,7 +5,7 @@ import com.asiainfo.latte_core.net.callback.IError;
 import com.asiainfo.latte_core.net.callback.IFailure;
 import com.asiainfo.latte_core.net.callback.ISuccess;
 import com.asiainfo.latte_core.net.rt.RestClient;
-import com.asiainfo.latte_core.util.log.Lattelogger;
+import com.asiainfo.latte_core.util.log.LatteLogger;
 import com.tencent.mm.opensdk.modelbase.BaseReq;
 import com.tencent.mm.opensdk.modelbase.BaseResp;
 import com.tencent.mm.opensdk.modelmsg.SendAuth;
@@ -44,7 +44,7 @@ public abstract class BaseWXEntryActivity extends BaseWXActivity {
                 .append("&code=")
                 .append(code)
                 .append("&grant_type=authorization_code");
-        Lattelogger.e("authUrl", authUrl.toString());
+        LatteLogger.e("authUrl", authUrl.toString());
         getAuth(authUrl.toString());
     }
 
@@ -68,7 +68,7 @@ public abstract class BaseWXEntryActivity extends BaseWXActivity {
                                 .append(openId)
                                 .append("&lang=")
                                 .append("zh_CN");
-                        Lattelogger.e("userInfoUrl", userInfoUrl.toString());
+                        LatteLogger.e("userInfoUrl", userInfoUrl.toString());
                         getUserInfo(userInfoUrl.toString());
                     }
                 })
@@ -89,7 +89,7 @@ public abstract class BaseWXEntryActivity extends BaseWXActivity {
                     @Override
                     public void onSuccess(String response) {
                         onSignInSuccess(response);
-                        Lattelogger.e("getUserInfo", "response: " + response);
+                        LatteLogger.e("getUserInfo", "response: " + response);
 
                     }
                 })
@@ -102,7 +102,7 @@ public abstract class BaseWXEntryActivity extends BaseWXActivity {
                 .error(new IError() {
                     @Override
                     public void onError(int code, String msg) {
-                        Lattelogger.e("getUserInfo" + code, msg);
+                        LatteLogger.e("getUserInfo" + code, msg);
                     }
                 })
                 .build()

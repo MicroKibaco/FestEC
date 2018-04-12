@@ -6,7 +6,7 @@ import com.orhanobut.logger.Logger;
  * Created by Administrator on 2017/12/23.
  */
 
-public class Lattelogger {
+public class LatteLogger {
     private static final int VERBOSE = 1;
     private static final int DEBUG = 2;
     private static final int INFO = 3;

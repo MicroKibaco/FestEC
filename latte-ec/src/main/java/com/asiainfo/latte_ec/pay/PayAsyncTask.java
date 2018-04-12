@@ -5,7 +5,7 @@ import android.os.AsyncTask;
 
 import com.alipay.sdk.app.PayTask;
 import com.asiainfo.latte_core.ui.launcher.LatteLoader;
-import com.asiainfo.latte_core.util.log.Lattelogger;
+import com.asiainfo.latte_core.util.log.LatteLogger;
 
 /**
  * 支付
@@ -47,8 +47,8 @@ public class PayAsyncTask extends AsyncTask<String, Void, String> {
         // 支付宝返回此次支付结构及加签，建议对支付宝签名信息拿签约是支付宝提供的公钥做验签
         final String resultInfo = payResult.getResult();
         final String resultStatus = payResult.getResultStatus();
-        Lattelogger.e("AL_PAY_RESULT", resultInfo);
-        Lattelogger.e("AL_PAY_RESULT", resultStatus);
+        LatteLogger.e("AL_PAY_RESULT", resultInfo);
+        LatteLogger.e("AL_PAY_RESULT", resultStatus);
 
         if (LISTENER == null) {
             return;
