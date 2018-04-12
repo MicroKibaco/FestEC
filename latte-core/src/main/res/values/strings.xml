@@ -1,3 +1,12 @@
 <resources>
     <string name="app_name">latte</string>
+    <string name="btn_text_take_photo">拍照</string>
+    <string name="btn_cancle">取消</string>
+    <string name="btn_native">本地</string>
+    <string name="tip_denied_camera">不允许使用相机！</string>
+    <string name="tip_never_camera">永久拒绝权限！ </string>
+    <string name="agree_use">同意使用</string>
+    <string name="disagree_use">拒绝使用</string>
+    <string name="permission_manager">权限管理</string>
+    <string name="crop_error">裁剪出错！</string>
 </resources>

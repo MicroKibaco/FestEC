@@ -3,4 +3,5 @@
     <color name="divider">#dbe2e8</color>
     <color name="colorDotNormal">#55000000</color>
     <color name="colorDotFocus">#aaFFFFFF</color>
+    <color name="colorBtnText">#323232</color>
 </resources>

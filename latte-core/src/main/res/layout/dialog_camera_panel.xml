@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.LinearLayoutCompat
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginLeft="@dimen/dp_10"
+        android:layout_marginRight="@dimen/dp_10"
+        android:orientation="vertical"
+        android:paddingBottom="@dimen/dp_10"
+        android:background="@android:color/transparent">
+
+    <android.support.v7.widget.AppCompatButton
+            android:id="@+id/photodialog_btn_take"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_50"
+            android:background="@drawable/btn_border_takephoto"
+            android:gravity="center"
+            android:text="@string/btn_text_take_photo"
+            android:textColor="@color/colorBtnText"
+            />
+
+    <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_0.5"
+            android:layout_gravity="center"
+            android:background="@android:color/transparent"
+            android:gravity="center"/>
+
+    <android.support.v7.widget.AppCompatButton
+            android:id="@+id/photodialog_btn_native"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_50"
+            android:layout_gravity="center"
+            android:background="@drawable/btn_border_nativephoto"
+            android:gravity="center"
+            android:text="@string/btn_native"
+            android:textColor="@color/colorBtnText"
+            />
+
+    <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_10"
+            android:layout_gravity="center"
+            android:background="@android:color/transparent"
+            android:gravity="center"/>
+
+    <android.support.v7.widget.AppCompatButton
+            android:id="@+id/photodialog_btn_cancel"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_50"
+            android:layout_gravity="center"
+            android:background="@drawable/btn_border"
+            android:gravity="center"
+            android:text="@string/btn_cancle"
+            android:textColor="@color/colorBtnText"
+            />
+
+</android.support.v7.widget.LinearLayoutCompat>
