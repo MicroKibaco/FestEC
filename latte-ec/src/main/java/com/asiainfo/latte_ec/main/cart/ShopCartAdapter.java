@@ -12,8 +12,8 @@ import com.asiainfo.latte_core.ui.recycler.MultipleItemEntity;
 import com.asiainfo.latte_core.ui.recycler.MultipleRecyclerAdapter;
 import com.asiainfo.latte_core.ui.recycler.MultipleViewHolder;
 import com.asiainfo.latte_ec.R;
+import com.bumptech.glide.Glide;
 import com.joanzapata.iconify.widget.IconTextView;
-import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
@@ -77,10 +77,10 @@ public class ShopCartAdapter extends MultipleRecyclerAdapter {
                 tvDesc.setText(desc);
                 tvPrice.setText(String.valueOf(price));
                 tvCount.setText(String.valueOf(count));
-
-                Picasso
+                Glide
                         .with(mContext)
                         .load(thumb)
+                        .apply(Latte.getRecyclerOptions())
                         .into(imgThumb);
 
                 //在左侧勾选渲染之前改变全选状态

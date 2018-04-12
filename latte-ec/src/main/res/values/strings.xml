@@ -46,7 +46,7 @@
     <string name="text_btn_dialog_pay_cancel">取消支付</string>
     <string name="text_pay_wechat">{fa-weixin}</string>
     <string name="text_ali_pay">{icon-ali-pay}</string>
-    <string name="text_user_name">御弟哥哥</string>
+    <string name="text_user_name">小木箱</string>
     <string name="text_my_order">我的订单</string>
     <string name="text_all_order">全部订单</string>
     <string name="text_after_sale">售后</string>
@@ -58,6 +58,9 @@
     <string name="fa_truck">{fa-truck}</string>
     <string name="fa_clone">{fa-clone}</string>
     <string name="fa_comments_o">{fa-comments-o}</string>
+    <string name="text_arrow_no_setting">未设置</string>
+    <string name="icon_arrow">{fa-chevron-right}</string>
+    <string name="fa_chevron_right">{fa-chevron-right}</string>
 
 
 </resources>
