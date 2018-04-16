@@ -2,7 +2,7 @@ package com.asiainfo.latte_core.delegates.bottom;
 
 import android.widget.Toast;
 
-import com.asiainfo.latte_annotations.R;
+import com.asiainfo.latte_core.R;
 import com.asiainfo.latte_core.app.Latte;
 import com.asiainfo.latte_core.delegates.LatteDelegate;
 

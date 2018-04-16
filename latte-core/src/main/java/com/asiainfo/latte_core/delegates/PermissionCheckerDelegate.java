@@ -8,13 +8,14 @@ import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AlertDialog;
 
-import com.asiainfo.latte_annotations.R;
+import com.asiainfo.latte_core.R;
 import com.asiainfo.latte_core.ui.callback.CallbackManager;
 import com.asiainfo.latte_core.ui.callback.CallbackType;
 import com.asiainfo.latte_core.ui.callback.IGlobalCallback;
 import com.asiainfo.latte_core.ui.camera.CameraImageBean;
 import com.asiainfo.latte_core.ui.camera.LatteCamera;
 import com.asiainfo.latte_core.ui.camera.RequestCodes;
+import com.asiainfo.latte_core.ui.scanner.ScannerDelegate;
 import com.yalantis.ucrop.UCrop;
 
 import permissions.dispatcher.NeedsPermission;
@@ -34,6 +35,12 @@ public abstract class PermissionCheckerDelegate extends BaseDelegate {
         LatteCamera.start(this);
     }
 
+    //扫描二维码(不直接调用)
+    @NeedsPermission(Manifest.permission.CAMERA)
+    void startScan(BaseDelegate delegate) {
+        delegate.getSupportDelegate().startForResult(new ScannerDelegate(), RequestCodes.SCAN);
+    }
+
     // 这个是真正调用的方法
     @OnPermissionDenied(Manifest.permission.CAMERA)
     void onCameraDenied() {
@@ -44,6 +51,7 @@ public abstract class PermissionCheckerDelegate extends BaseDelegate {
     void onCameraNever() {
         tip(getString(R.string.tip_never_camera));
     }
+
 
     @OnShowRationale(Manifest.permission.CAMERA)
     void onCameraRationale(PermissionRequest request) {

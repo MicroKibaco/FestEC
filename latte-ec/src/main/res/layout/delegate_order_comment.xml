@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+                                              android:orientation="vertical"
+                                              android:layout_width="match_parent"
+                                              android:layout_height="match_parent">
+
+    <android.support.v7.widget.Toolbar
+            android:id="@+id/tb_shop_cart"
+            android:layout_width="match_parent"
+            android:gravity="center"
+            android:background="@android:color/holo_orange_dark"
+            android:layout_height="@dimen/dp_75">
+
+        <android.support.v7.widget.AppCompatTextView
+                android:textColor="@android:color/white"
+                android:textSize="@dimen/sp_20"
+                android:text="@string/text_unbox"
+                android:gravity="center"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+        <android.support.v7.widget.AppCompatTextView
+                android:id="@+id/top_tv_comment_commit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:layout_marginEnd="@dimen/dp_20"
+                android:text="@string/text_commit"
+                android:textColor="@android:color/white"
+                android:textSize="@dimen/sp_20"/>
+    </android.support.v7.widget.Toolbar>
+
+    <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_100">
+
+        <android.support.v7.widget.AppCompatImageView
+                android:id="@+id/img_order_comment"
+                android:layout_width="@dimen/dp_80"
+                android:layout_height="@dimen/dp_80"
+                android:layout_centerVertical="true"
+                android:layout_marginEnd="@dimen/dp_10"/>
+
+        <android.support.v7.widget.AppCompatTextView
+                android:id="@+id/tv_comment_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/dp_20"
+                android:layout_marginTop="@dimen/dp_10"
+                android:layout_toEndOf="@id/img_order_comment"
+                android:text="@string/text_grade"
+                android:textColor="@color/colorBtnText"/>
+
+
+        <com.asiainfo.latte_core.ui.widget.StarLayout
+                android:id="@+id/custom_star_layout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@+id/tv_comment_title"
+                android:layout_toEndOf="@id/img_order_comment"/>
+
+    </RelativeLayout>
+
+</android.support.v7.widget.LinearLayoutCompat>

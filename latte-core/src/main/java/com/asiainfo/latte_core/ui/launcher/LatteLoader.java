@@ -6,7 +6,7 @@ import android.view.Gravity;
 import android.view.Window;
 import android.view.WindowManager;
 
-import com.asiainfo.latte_annotations.R;
+import com.asiainfo.latte_core.R;
 import com.asiainfo.latte_core.util.dimen.DimenUtil;
 import com.wang.avi.AVLoadingIndicatorView;
 

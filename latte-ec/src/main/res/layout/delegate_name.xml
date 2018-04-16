@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+                                              xmlns:tools="http://schemas.android.com/tools"
+                                              android:layout_width="match_parent"
+                                              android:layout_height="match_parent"
+                                              android:background="@color/app_background"
+                                              android:orientation="vertical">
+
+    <android.support.v7.widget.Toolbar
+            android:id="@+id/tb_name"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@android:color/holo_orange_dark">
+
+        <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+            <android.support.v7.widget.AppCompatTextView
+                    android:id="@+id/tv_top_shop_cart_clear"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentStart="true"
+                    android:layout_marginStart="@dimen/dp_20"
+                    android:gravity="center"
+                    android:text="@string/text_return"
+                    android:textColor="@android:color/white"
+                    android:textSize="@dimen/sp_18"
+                    />
+
+            <android.support.v7.widget.AppCompatTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_centerHorizontal="true"
+                    android:gravity="center"
+                    android:text="@string/text_shop_cart"
+                    android:textColor="@android:color/white"
+                    android:textSize="@dimen/sp_20"
+                    />
+
+            <android.support.v7.widget.AppCompatTextView
+                    android:id="@+id/tv_top_shop_cart_remove_selected"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginEnd="@dimen/dp_20"
+                    android:gravity="center"
+                    android:text="@string/text_shop_cart_remove"
+                    android:textColor="@android:color/white"
+                    android:textSize="@dimen/sp_18"
+                    />
+
+        </RelativeLayout>
+    </android.support.v7.widget.Toolbar>
+
+    <android.support.v7.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_50"
+            android:layout_marginTop="@dimen/dp_20"
+            android:background="@android:color/white"
+            android:orientation="horizontal">
+
+        <android.support.v7.widget.AppCompatTextView
+                android:layout_width="@dimen/dp_0"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center_vertical"
+                android:paddingStart="@dimen/dp_10"
+                android:text="@string/name"
+                tools:ignore="RtlSymmetry"/>
+
+        <android.support.v7.widget.AppCompatEditText
+                android:layout_width="@dimen/dp_0"
+                android:layout_height="match_parent"
+                android:layout_weight="6"
+                android:background="@null"
+                android:gravity="center"
+                android:hint="@string/name"
+                tools:ignore="RtlSymmetry"
+                android:paddingStart="@dimen/dp_20"/>
+
+    </android.support.v7.widget.LinearLayoutCompat>
+
+    <android.support.v7.widget.AppCompatButton
+            android:id="@+id/btn_name_submit"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_50"
+            android:layout_marginLeft="@dimen/dp_20"
+            android:layout_marginRight="@dimen/dp_20"
+            android:layout_marginTop="@dimen/dp_20"
+            android:background="@android:color/holo_orange_dark"
+            android:gravity="center"
+            android:text="@string/btn_name_submit"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/sp_20"/>
+
+</android.support.v7.widget.LinearLayoutCompat>

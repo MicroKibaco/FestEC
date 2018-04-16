@@ -12,6 +12,7 @@ import com.asiainfo.latte_ec.R2;
 import com.asiainfo.latte_ec.main.personal.list.ListAdapter;
 import com.asiainfo.latte_ec.main.personal.list.ListBean;
 import com.asiainfo.latte_ec.main.personal.list.ListItemType;
+import com.asiainfo.latte_ec.main.settings.NameDelegate;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -41,6 +42,7 @@ public class UserProfileDelegate extends LatteDelegate {
                 .setId(2)
                 .setText(getString(R.string.name))
                 .setValue(getString(R.string.defined_name))
+                .setDelegate(new NameDelegate())
                 .build();
 
         final ListBean gender = new ListBean.Builder()

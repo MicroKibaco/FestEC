@@ -1,7 +1,7 @@
 package com.asiainfo.latte_core.ui.banner;
 
 import com.ToxicBakery.viewpager.transforms.DefaultTransformer;
-import com.asiainfo.latte_annotations.R;
+import com.asiainfo.latte_core.R;
 import com.bigkoo.convenientbanner.ConvenientBanner;
 import com.bigkoo.convenientbanner.listener.OnItemClickListener;
 

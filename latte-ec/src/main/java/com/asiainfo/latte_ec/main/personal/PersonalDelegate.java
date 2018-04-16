@@ -8,6 +8,7 @@ import android.view.View;
 import com.asiainfo.latte_core.delegates.bottom.BottomItemDelegate;
 import com.asiainfo.latte_ec.R;
 import com.asiainfo.latte_ec.R2;
+import com.asiainfo.latte_ec.main.personal.order.OrderListDelegate;
 import com.asiainfo.latte_ec.main.personal.profile.UserProfileDelegate;
 
 import butterknife.BindView;
@@ -27,7 +28,7 @@ public class PersonalDelegate extends BottomItemDelegate {
 
     @OnClick(R2.id.img_user_avatar)
     void onClickAvatar() {
-        getParentDelegate().getSupportDelegate().start(new UserProfileDelegate());
+        getParentDelegate().getSupportDelegate().start(new UserProfileDelegate(), SINGLETASK);
     }
 
     @Override
@@ -44,7 +45,9 @@ public class PersonalDelegate extends BottomItemDelegate {
     }
 
     private void startOrderListByType() {
-
+        final OrderListDelegate delegate = new OrderListDelegate();
+        delegate.setArguments(mArgs);
+        getParentDelegate().getSupportDelegate().start(delegate);
     }
 
     @Override

@@ -67,6 +67,14 @@
     <string name="defined_sex">未设置性别</string>
     <string name="birthday">生日</string>
     <string name="defined_birthday">未设置生日</string>
+    <string name="btn_name_submit">提交</string>
+    <string name="text_return">返回</string>
+    <string name="title_order_list">订单列表</string>
+    <string name="time_order_list">time</string>
+    <string name="price_order_list">price</string>
+    <string name="text_unbox">评价晒单</string>
+    <string name="text_commit">提交</string>
+    <string name="text_grade">评分</string>
 
 
 </resources>

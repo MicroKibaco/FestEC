@@ -4,7 +4,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.ContentFrameLayout;
 
-import com.asiainfo.latte_annotations.R;
+import com.asiainfo.latte_core.R;
 import com.asiainfo.latte_core.delegates.LatteDelegate;
 
 import me.yokeyword.fragmentation.SupportActivity;

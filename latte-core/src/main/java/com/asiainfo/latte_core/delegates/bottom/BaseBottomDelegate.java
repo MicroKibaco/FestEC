@@ -11,8 +11,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.RelativeLayout;
 
-import com.asiainfo.latte_annotations.R;
-import com.asiainfo.latte_annotations.R2;
+import com.asiainfo.latte_core.R;
+import com.asiainfo.latte_core.R2;
 import com.asiainfo.latte_core.delegates.LatteDelegate;
 import com.joanzapata.iconify.widget.IconTextView;
 

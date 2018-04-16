@@ -178,12 +178,17 @@ public abstract class BaseDelegate extends Fragment implements ISupportFragment 
         } else if (setLayout() instanceof View) {
             rootView = (View) setLayout();
         } else {
-            throw new RuntimeException("setLayout() type must be int or View!");
+            throw new RuntimeException("type of setLayout() type must be int or View!");
         }
 
         mUnbinder = ButterKnife.bind(this, rootView);
         onBindView(savedInstanceState, rootView);
         return rootView;
+    }
+
+    @Override
+    public void post(Runnable runnable) {
+
     }
 
     /**
@@ -199,11 +204,6 @@ public abstract class BaseDelegate extends Fragment implements ISupportFragment 
 
     public final ProxyActivity getProxyActivity() {
         return (ProxyActivity) _mActivity;
-    }
-
-    @Override
-    public void post(Runnable runnable) {
-
     }
 
     public void tip(String str) {

@@ -4,7 +4,7 @@ import android.support.v7.widget.GridLayoutManager;
 import android.view.View;
 import android.widget.ImageView;
 
-import com.asiainfo.latte_annotations.R;
+import com.asiainfo.latte_core.R;
 import com.asiainfo.latte_core.app.Latte;
 import com.asiainfo.latte_core.ui.banner.BannerCreator;
 import com.bigkoo.convenientbanner.ConvenientBanner;
