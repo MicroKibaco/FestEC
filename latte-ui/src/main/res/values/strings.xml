@@ -1,3 +1,6 @@
 <resources>
     <string name="app_name">latte-ui</string>
+    <string name="clicked_btn_delete">删除</string>
+    <string name="clicked_btn_cancel">取消</string>
+    <string name="clicked_btn_undetermined">待定</string>
 </resources>

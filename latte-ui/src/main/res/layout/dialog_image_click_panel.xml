@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+                                              android:layout_width="match_parent"
+                                              android:layout_height="wrap_content"
+                                              android:layout_gravity="center"
+                                              android:layout_marginLeft="@dimen/dp_10"
+                                              android:layout_marginRight="@dimen/dp_10"
+                                              android:background="@android:color/transparent"
+                                              android:orientation="vertical"
+                                              android:paddingBottom="@dimen/dp_10">
+
+    <android.support.v7.widget.AppCompatButton
+            android:id="@+id/dialog_image_clicked_btn_delete"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_50"
+            android:background="@drawable/btn_border_takephoto"
+            android:gravity="center"
+            android:text="@string/clicked_btn_delete"
+            android:textColor="#323232"/>
+
+    <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:layout_gravity="center"
+            android:background="@android:color/transparent"
+            android:gravity="center"/>
+
+
+    <android.support.v7.widget.AppCompatButton
+            android:id="@+id/dialog_image_clicked_btn_undetermined"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_50"
+            android:layout_gravity="center"
+            android:background="@drawable/btn_border_nativephoto"
+            android:text="@string/clicked_btn_undetermined"
+            android:textColor="#323232"/>
+
+    <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_10"
+            android:layout_gravity="center"
+            android:background="@android:color/transparent"
+            android:gravity="center"/>
+
+    <android.support.v7.widget.AppCompatButton
+            android:id="@+id/dialog_image_clicked_btn_cancel"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_50"
+            android:layout_gravity="center"
+            android:background="@drawable/btn_border"
+            android:text="@string/clicked_btn_cancel"
+            android:textColor="#323232"/>
+
+</android.support.v7.widget.LinearLayoutCompat>
