@@ -4,7 +4,7 @@ import android.app.Activity;
 import android.os.AsyncTask;
 
 import com.alipay.sdk.app.PayTask;
-import com.asiainfo.latte_core.ui.launcher.LatteLoader;
+import com.asiainfo.latte_core.ui.loader.LatteLoader;
 import com.asiainfo.latte_core.util.log.LatteLogger;
 
 /**

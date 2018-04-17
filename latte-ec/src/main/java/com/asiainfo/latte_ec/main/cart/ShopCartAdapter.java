@@ -7,11 +7,11 @@ import android.support.v7.widget.AppCompatTextView;
 import android.view.View;
 
 import com.asiainfo.latte_core.app.Latte;
-import com.asiainfo.latte_core.ui.recycler.MultipleFields;
-import com.asiainfo.latte_core.ui.recycler.MultipleItemEntity;
-import com.asiainfo.latte_core.ui.recycler.MultipleRecyclerAdapter;
-import com.asiainfo.latte_core.ui.recycler.MultipleViewHolder;
 import com.asiainfo.latte_ec.R;
+import com.asiainfo.latte_ui.recycler.MultipleFields;
+import com.asiainfo.latte_ui.recycler.MultipleItemEntity;
+import com.asiainfo.latte_ui.recycler.MultipleRecyclerAdapter;
+import com.asiainfo.latte_ui.recycler.MultipleViewHolder;
 import com.bumptech.glide.Glide;
 import com.joanzapata.iconify.widget.IconTextView;
 

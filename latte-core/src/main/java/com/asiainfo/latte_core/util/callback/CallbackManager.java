@@ -1,4 +1,4 @@
-package com.asiainfo.latte_core.ui.callback;
+package com.asiainfo.latte_core.util.callback;
 
 import java.util.WeakHashMap;
 

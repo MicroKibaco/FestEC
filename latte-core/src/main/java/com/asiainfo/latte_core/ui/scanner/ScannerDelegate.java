@@ -5,9 +5,9 @@ import android.support.annotation.Nullable;
 import android.view.View;
 
 import com.asiainfo.latte_core.delegates.LatteDelegate;
-import com.asiainfo.latte_core.ui.callback.CallbackManager;
-import com.asiainfo.latte_core.ui.callback.CallbackType;
-import com.asiainfo.latte_core.ui.callback.IGlobalCallback;
+import com.asiainfo.latte_core.util.callback.CallbackManager;
+import com.asiainfo.latte_core.util.callback.CallbackType;
+import com.asiainfo.latte_core.util.callback.IGlobalCallback;
 
 import me.dm7.barcodescanner.zbar.Result;
 import me.dm7.barcodescanner.zbar.ZBarScannerView;

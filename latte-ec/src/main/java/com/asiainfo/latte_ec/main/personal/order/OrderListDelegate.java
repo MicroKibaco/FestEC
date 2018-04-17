@@ -9,10 +9,10 @@ import android.view.View;
 import com.asiainfo.latte_core.delegates.LatteDelegate;
 import com.asiainfo.latte_core.net.callback.ISuccess;
 import com.asiainfo.latte_core.net.rt.RestClient;
-import com.asiainfo.latte_core.ui.recycler.MultipleItemEntity;
 import com.asiainfo.latte_ec.R;
 import com.asiainfo.latte_ec.R2;
 import com.asiainfo.latte_ec.main.personal.PersonalDelegate;
+import com.asiainfo.latte_ui.recycler.MultipleItemEntity;
 
 import java.util.List;
 

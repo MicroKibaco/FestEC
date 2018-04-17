@@ -1,4 +1,4 @@
-package com.asiainfo.latte_core.ui.launcher;
+package com.asiainfo.latte_core.ui.loader;
 
 /**
  * Created by MicroKibaco on 05/03/2018.

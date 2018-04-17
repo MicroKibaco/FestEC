@@ -10,10 +10,10 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 
 import com.asiainfo.latte_core.delegates.bottom.BottomItemDelegate;
-import com.asiainfo.latte_core.ui.refresh.RefreshHandler;
 import com.asiainfo.latte_ec.R;
 import com.asiainfo.latte_ec.R2;
 import com.asiainfo.latte_ec.main.EcBottomDelegate;
+import com.asiainfo.latte_ui.refresh.RefreshHandler;
 import com.joanzapata.iconify.widget.IconTextView;
 import com.yqritc.recyclerviewflexibledivider.HorizontalDividerItemDecoration;
 

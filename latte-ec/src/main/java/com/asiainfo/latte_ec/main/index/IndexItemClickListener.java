@@ -3,9 +3,9 @@ package com.asiainfo.latte_ec.main.index;
 import android.view.View;
 
 import com.asiainfo.latte_core.delegates.LatteDelegate;
-import com.asiainfo.latte_core.ui.recycler.MultipleFields;
-import com.asiainfo.latte_core.ui.recycler.MultipleItemEntity;
 import com.asiainfo.latte_ec.detail.GoodsDetailDelegate;
+import com.asiainfo.latte_ui.recycler.MultipleFields;
+import com.asiainfo.latte_ui.recycler.MultipleItemEntity;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.listener.SimpleClickListener;
 

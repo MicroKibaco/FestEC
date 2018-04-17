@@ -6,14 +6,14 @@ import android.support.v7.widget.AppCompatTextView;
 import android.view.View;
 
 import com.asiainfo.latte_core.delegates.LatteDelegate;
-import com.asiainfo.latte_core.ui.recycler.ItemType;
-import com.asiainfo.latte_core.ui.recycler.MultipleFields;
-import com.asiainfo.latte_core.ui.recycler.MultipleItemEntity;
-import com.asiainfo.latte_core.ui.recycler.MultipleRecyclerAdapter;
-import com.asiainfo.latte_core.ui.recycler.MultipleViewHolder;
 import com.asiainfo.latte_ec.R;
 import com.asiainfo.latte_ec.main.sort.SortDelegate;
 import com.asiainfo.latte_ec.main.sort.content.ContentDelegate;
+import com.asiainfo.latte_ui.recycler.ItemType;
+import com.asiainfo.latte_ui.recycler.MultipleFields;
+import com.asiainfo.latte_ui.recycler.MultipleItemEntity;
+import com.asiainfo.latte_ui.recycler.MultipleRecyclerAdapter;
+import com.asiainfo.latte_ui.recycler.MultipleViewHolder;
 
 import java.util.List;
 

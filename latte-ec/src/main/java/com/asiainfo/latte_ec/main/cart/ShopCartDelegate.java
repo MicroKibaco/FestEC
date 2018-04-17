@@ -18,12 +18,12 @@ import com.alibaba.fastjson.JSONObject;
 import com.asiainfo.latte_core.delegates.bottom.BottomItemDelegate;
 import com.asiainfo.latte_core.net.callback.ISuccess;
 import com.asiainfo.latte_core.net.rt.RestClient;
-import com.asiainfo.latte_core.ui.recycler.MultipleItemEntity;
 import com.asiainfo.latte_core.util.log.LatteLogger;
 import com.asiainfo.latte_ec.R;
 import com.asiainfo.latte_ec.R2;
 import com.asiainfo.latte_ec.pay.FastPay;
 import com.asiainfo.latte_ec.pay.IAlPayResultListener;
+import com.asiainfo.latte_ui.recycler.MultipleItemEntity;
 import com.joanzapata.iconify.widget.IconTextView;
 
 import java.util.ArrayList;

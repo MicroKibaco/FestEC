@@ -8,9 +8,9 @@ import android.view.View;
 import com.asiainfo.latte_core.app.AccountManager;
 import com.asiainfo.latte_core.app.IUserChecker;
 import com.asiainfo.latte_core.delegates.LatteDelegate;
-import com.asiainfo.latte_core.ui.loader.LauncherHolderCreator;
 import com.asiainfo.latte_core.util.storage.LattePreference;
 import com.asiainfo.latte_ec.R;
+import com.asiainfo.latte_ui.launcher.LauncherHolderCreator;
 import com.bigkoo.convenientbanner.ConvenientBanner;
 import com.bigkoo.convenientbanner.listener.OnItemClickListener;
 

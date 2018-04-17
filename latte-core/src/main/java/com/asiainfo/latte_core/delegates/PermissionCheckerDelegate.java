@@ -9,13 +9,13 @@ import android.support.annotation.NonNull;
 import android.support.v7.app.AlertDialog;
 
 import com.asiainfo.latte_core.R;
-import com.asiainfo.latte_core.ui.callback.CallbackManager;
-import com.asiainfo.latte_core.ui.callback.CallbackType;
-import com.asiainfo.latte_core.ui.callback.IGlobalCallback;
 import com.asiainfo.latte_core.ui.camera.CameraImageBean;
 import com.asiainfo.latte_core.ui.camera.LatteCamera;
 import com.asiainfo.latte_core.ui.camera.RequestCodes;
 import com.asiainfo.latte_core.ui.scanner.ScannerDelegate;
+import com.asiainfo.latte_core.util.callback.CallbackManager;
+import com.asiainfo.latte_core.util.callback.CallbackType;
+import com.asiainfo.latte_core.util.callback.IGlobalCallback;
 import com.yalantis.ucrop.UCrop;
 
 import permissions.dispatcher.NeedsPermission;

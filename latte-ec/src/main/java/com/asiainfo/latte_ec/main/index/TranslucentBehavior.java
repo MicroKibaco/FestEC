@@ -7,8 +7,8 @@ import android.support.v7.widget.Toolbar;
 import android.util.AttributeSet;
 import android.view.View;
 
-import com.asiainfo.latte_core.ui.recycler.RgbValue;
 import com.asiainfo.latte_ec.R;
+import com.asiainfo.latte_ui.recycler.RgbValue;
 
 /**
  * 沉浸式处理状态栏

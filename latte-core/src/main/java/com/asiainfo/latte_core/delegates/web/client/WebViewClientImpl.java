@@ -9,7 +9,7 @@ import com.asiainfo.latte_core.app.Latte;
 import com.asiainfo.latte_core.delegates.IPageLoadListener;
 import com.asiainfo.latte_core.delegates.web.WebDelegate;
 import com.asiainfo.latte_core.delegates.web.route.Router;
-import com.asiainfo.latte_core.ui.launcher.LatteLoader;
+import com.asiainfo.latte_core.ui.loader.LatteLoader;
 import com.asiainfo.latte_core.util.log.LatteLogger;
 
 /**

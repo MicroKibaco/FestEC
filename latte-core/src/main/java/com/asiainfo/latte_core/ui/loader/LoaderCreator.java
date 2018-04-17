@@ -1,4 +1,4 @@
-package com.asiainfo.latte_core.ui.launcher;
+package com.asiainfo.latte_core.ui.loader;
 
 import android.content.Context;
 

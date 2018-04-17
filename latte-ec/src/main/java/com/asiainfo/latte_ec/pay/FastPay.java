@@ -17,7 +17,7 @@ import com.asiainfo.latte_core.app.Latte;
 import com.asiainfo.latte_core.delegates.LatteDelegate;
 import com.asiainfo.latte_core.net.callback.ISuccess;
 import com.asiainfo.latte_core.net.rt.RestClient;
-import com.asiainfo.latte_core.ui.launcher.LatteLoader;
+import com.asiainfo.latte_core.ui.loader.LatteLoader;
 import com.asiainfo.latte_core.util.log.LatteLogger;
 import com.asiainfo.latte_core.wechat.LatteWeChat;
 import com.asiainfo.latte_ec.R;

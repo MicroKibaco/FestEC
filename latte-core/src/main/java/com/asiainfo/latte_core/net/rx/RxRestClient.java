@@ -4,8 +4,8 @@ import android.content.Context;
 
 import com.asiainfo.latte_core.net.HttpMethod;
 import com.asiainfo.latte_core.net.RestCreator;
-import com.asiainfo.latte_core.ui.launcher.LatteLoader;
-import com.asiainfo.latte_core.ui.launcher.LoaderStyle;
+import com.asiainfo.latte_core.ui.loader.LatteLoader;
+import com.asiainfo.latte_core.ui.loader.LoaderStyle;
 
 import java.io.File;
 import java.util.Map;
