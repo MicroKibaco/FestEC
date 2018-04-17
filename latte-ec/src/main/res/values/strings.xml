@@ -86,6 +86,9 @@
     <string name="tip_open_push">打开推送</string>
     <string name="tip_close_push">关闭推送</string>
     <string name="msg_push">消息推送</string>
+    <string name="text_write_comment">写下评论</string>
+    <string name="tip_comment">评分：</string>
+    <string name="fa_chevron">{fa-chevron-right}</string>
 
 
 </resources>

@@ -21,7 +21,6 @@ public class StarLayout extends LinearLayoutCompat implements View.OnClickListen
     private static final int STAR_TOTAL_COUNT = 5;
     private static final ArrayList<IconTextView> STARS = new ArrayList<>();
 
-
     public StarLayout(Context context) {
         this(context, null);
     }
@@ -36,7 +35,6 @@ public class StarLayout extends LinearLayoutCompat implements View.OnClickListen
     }
 
     private void initStarIcon() {
-
         for (int i = 0; i < STAR_TOTAL_COUNT; i++) {
             final IconTextView star = new IconTextView(getContext());
             star.setGravity(Gravity.CENTER);
@@ -52,9 +50,7 @@ public class StarLayout extends LinearLayoutCompat implements View.OnClickListen
             STARS.add(star);
             this.addView(star);
         }
-
     }
-
 
     public int getStarCount() {
         int count = 0;
@@ -90,9 +86,17 @@ public class StarLayout extends LinearLayoutCompat implements View.OnClickListen
         }
     }
 
-
     @Override
     public void onClick(View v) {
-
+        final IconTextView star = (IconTextView) v;
+        //获取第几个星星
+        final int count = (int) star.getTag(R.id.star_count);
+        //获取点击状态
+        final boolean isSelect = (boolean) star.getTag(R.id.star_is_select);
+        if (!isSelect) {
+            selectStar(count);
+        } else {
+            unSelectStar(count);
+        }
     }
 }

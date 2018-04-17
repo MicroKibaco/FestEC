@@ -2,9 +2,9 @@
 <android.support.v7.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
                                               android:orientation="horizontal"
                                               android:background="@android:color/white"
-                                              android:layout_width="@dimen/dp_80"
+                                              android:layout_width="match_parent"
                                               android:layout_marginBottom="@dimen/dp_2"
-                                              android:layout_height="match_parent">
+                                              android:layout_height="@dimen/dp_80">
 
     <android.support.v7.widget.ContentFrameLayout
             android:layout_width="@dimen/dp_0"
@@ -61,4 +61,13 @@
                     />
         </android.support.v7.widget.LinearLayoutCompat>
     </android.support.v7.widget.LinearLayoutCompat>
+
+    <com.joanzapata.iconify.widget.IconTextView
+            android:layout_width="@dimen/dp_0"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="@string/fa_chevron"
+            android:textSize="@dimen/sp_18"
+            />
 </android.support.v7.widget.LinearLayoutCompat>

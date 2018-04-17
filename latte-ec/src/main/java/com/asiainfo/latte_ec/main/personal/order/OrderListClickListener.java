@@ -5,9 +5,6 @@ import android.view.View;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.listener.SimpleClickListener;
 
-/**
- * Created by MicroKibaco on 16/04/2018.
- */
 
 public class OrderListClickListener extends SimpleClickListener {
 

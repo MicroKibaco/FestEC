@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.v7.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+                                              xmlns:app="http://schemas.android.com/apk/res-auto"
                                               android:orientation="vertical"
                                               android:layout_width="match_parent"
                                               android:layout_height="match_parent">
@@ -57,7 +58,25 @@
                 android:layout_height="match_parent"
                 android:layout_below="@+id/tv_comment_title"
                 android:layout_toEndOf="@id/img_order_comment"/>
-
     </RelativeLayout>
+
+
+    <android.support.v7.widget.AppCompatEditText
+            android:padding="@dimen/dp_10"
+            android:hint="@string/text_write_comment"
+            android:gravity="top|start"
+            android:background="@android:color/white"
+            android:id="@+id/et_order_comment"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_120"/>
+
+    <com.asiainfo.latte_ui.widget.AutoPhotoLayout
+            android:id="@+id/custom_auto_photo_layout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:icon_size="@dimen/sp_10"
+            app:item_margin="3"
+            app:line_count="5"
+            app:max_count="5"/>
 
 </android.support.v7.widget.LinearLayoutCompat>
