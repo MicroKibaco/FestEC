@@ -41,8 +41,8 @@ public class SortRecyclerAdapter extends MultipleRecyclerAdapter {
         super.convert(holder, item);
         switch (holder.getItemViewType()) {
             case ItemType.VERTICAL_MENU_LIST:
-                final String text = item.getFiled(MultipleFields.NAME);
-                final boolean isClicked = item.getFiled(MultipleFields.TAG);
+                final String text = item.getField(MultipleFields.NAME);
+                final boolean isClicked = item.getField(MultipleFields.TAG);
                 final AppCompatTextView name = holder.getView(R.id.tv_vertical_item_name);
                 final View line = holder.getView(R.id.view_line);
                 final View itemView = holder.itemView;
@@ -58,7 +58,7 @@ public class SortRecyclerAdapter extends MultipleRecyclerAdapter {
                             item.setFields(MultipleFields.TAG, true);
                             notifyItemChanged(currentPosition);
                             mPrePosition = currentPosition;
-                            final int contentId = getData().get(currentPosition).getFiled(MultipleFields.ID);
+                            final int contentId = getData().get(currentPosition).getField(MultipleFields.ID);
                             showContent(contentId);
 
                         }

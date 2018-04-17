@@ -31,7 +31,7 @@ public class MultipleItemEntity implements MultiItemEntity {
         return (int) FIELDS_REFERENCE.get().get(MultipleFields.ITEM_TYPE);
     }
 
-    public final <T> T getFiled(Object key) {
+    public final <T> T getField(Object key) {
         return (T) FIELDS_REFERENCE.get().get(key);
     }
 

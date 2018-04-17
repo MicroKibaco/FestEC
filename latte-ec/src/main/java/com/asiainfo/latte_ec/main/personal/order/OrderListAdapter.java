@@ -32,10 +32,10 @@ public class OrderListAdapter extends MultipleRecyclerAdapter {
                 final AppCompatTextView price = holder.getView(R.id.tv_order_list_price);
                 final AppCompatTextView time = holder.getView(R.id.tv_order_list_time);
 
-                final String titleVal = item.getFiled(MultipleFields.TITLE);
-                final String timeVal = item.getFiled(OrderItemFields.TIME);
-                final double priceVal = item.getFiled(OrderItemFields.PRICE);
-                final String imageUrl = item.getFiled(MultipleFields.IMAGE_URL);
+                final String titleVal = item.getField(MultipleFields.TITLE);
+                final String timeVal = item.getField(OrderItemFields.TIME);
+                final double priceVal = item.getField(OrderItemFields.PRICE);
+                final String imageUrl = item.getField(MultipleFields.IMAGE_URL);
 
                 Glide.with(mContext)
                         .load(imageUrl)

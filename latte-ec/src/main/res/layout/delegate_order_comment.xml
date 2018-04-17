@@ -51,7 +51,6 @@
                 android:text="@string/text_grade"
                 android:textColor="@color/colorBtnText"/>
 
-
         <com.asiainfo.latte_core.ui.widget.StarLayout
                 android:id="@+id/custom_star_layout"
                 android:layout_width="match_parent"

@@ -46,7 +46,7 @@
                     android:layout_width="0dp"
                     android:layout_gravity="center"
                     android:gravity="center_vertical"
-                    android:paddingLeft="@dimen/dp_20"
+                    android:paddingStart="@dimen/dp_20"
                     android:background="@android:color/white"
                     android:layout_weight="4"
                     android:hint="@string/index_search_hint"

@@ -84,7 +84,7 @@ public class ShopCartDelegate extends BottomItemDelegate implements ICartItemLis
         final List<MultipleItemEntity> deleteEntities = new ArrayList<>();
 
         for (MultipleItemEntity entity : data) {
-            final boolean isSelected = entity.getFiled(ShopCartItemFields.IS_SELECTED);
+            final boolean isSelected = entity.getField(ShopCartItemFields.IS_SELECTED);
             if (isSelected) {
                 deleteEntities.add(entity);
             }
@@ -92,7 +92,7 @@ public class ShopCartDelegate extends BottomItemDelegate implements ICartItemLis
 
         for (MultipleItemEntity entity : deleteEntities) {
             int removePosition;
-            final int entityPosition = entity.getFiled(ShopCartItemFields.POSITION);
+            final int entityPosition = entity.getField(ShopCartItemFields.POSITION);
 
             if (entityPosition > mCurrentCount - 1) {
                 removePosition = entityPosition - (mTotalCount - mCurrentCount);

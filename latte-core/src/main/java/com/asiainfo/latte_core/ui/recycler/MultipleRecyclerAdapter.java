@@ -48,11 +48,11 @@ public class MultipleRecyclerAdapter extends
         final ArrayList<String> bannerImages;
         switch (holder.getItemViewType()) {
             case ItemType.TEXT:
-                text = item.getFiled(MultipleFields.TEXT);
+                text = item.getField(MultipleFields.TEXT);
                 holder.setText(R.id.text_single, text);
                 break;
             case ItemType.IMAGE:
-                imageUrl = item.getFiled(MultipleFields.IMAGE_URL);
+                imageUrl = item.getField(MultipleFields.IMAGE_URL);
                 Glide
                         .with(mContext)
                         .load(imageUrl)
@@ -60,8 +60,8 @@ public class MultipleRecyclerAdapter extends
                         .into((ImageView) holder.getView(R.id.image_single));
                 break;
             case ItemType.TEXT_IMAGE:
-                text = item.getFiled(MultipleFields.TEXT);
-                imageUrl = item.getFiled(MultipleFields.IMAGE_URL);
+                text = item.getField(MultipleFields.TEXT);
+                imageUrl = item.getField(MultipleFields.IMAGE_URL);
                 Glide
                         .with(mContext)
                         .load(imageUrl)
@@ -71,7 +71,7 @@ public class MultipleRecyclerAdapter extends
                 break;
             case ItemType.BANNER:
                 if (!mIsInitBanner) {
-                    bannerImages = item.getFiled(MultipleFields.BANNERS);
+                    bannerImages = item.getField(MultipleFields.BANNERS);
                     final ConvenientBanner<String> convenientBanner = holder.getView(R.id.banner_recycler_item);
                     BannerCreator.setDefault(convenientBanner, bannerImages, this);
                     mIsInitBanner = true;
@@ -100,7 +100,7 @@ public class MultipleRecyclerAdapter extends
 
     @Override
     public int getSpanSize(GridLayoutManager gridLayoutManager, int position) {
-        return getData().get(position).getFiled(MultipleFields.SPAN_SIZE);
+        return getData().get(position).getField(MultipleFields.SPAN_SIZE);
     }
 
     private void init() {

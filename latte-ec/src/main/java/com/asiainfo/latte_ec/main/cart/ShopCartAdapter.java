@@ -28,8 +28,8 @@ public class ShopCartAdapter extends MultipleRecyclerAdapter {
         super(data);
         //初始化总价
         for (MultipleItemEntity entity : data) {
-            final double price = entity.getFiled(ShopCartItemFields.PRICE);
-            final int count = entity.getFiled(ShopCartItemFields.COUNT);
+            final double price = entity.getField(ShopCartItemFields.PRICE);
+            final int count = entity.getField(ShopCartItemFields.COUNT);
             final double total = price * count;
             mTotalPrice = mTotalPrice + total;
         }
@@ -55,12 +55,12 @@ public class ShopCartAdapter extends MultipleRecyclerAdapter {
         switch (holder.getItemViewType()) {
             case ShopCartItemType.SHOP_CART_ITEM:
                 //先取出所有值
-                final int id = entity.getFiled(MultipleFields.ID);
-                final String thumb = entity.getFiled(MultipleFields.IMAGE_URL);
-                final String title = entity.getFiled(ShopCartItemFields.TITLE);
-                final String desc = entity.getFiled(ShopCartItemFields.DESC);
-                final int count = entity.getFiled(ShopCartItemFields.COUNT);
-                final double price = entity.getFiled(ShopCartItemFields.PRICE);
+                final int id = entity.getField(MultipleFields.ID);
+                final String thumb = entity.getField(MultipleFields.IMAGE_URL);
+                final String title = entity.getField(ShopCartItemFields.TITLE);
+                final String desc = entity.getField(ShopCartItemFields.DESC);
+                final int count = entity.getField(ShopCartItemFields.COUNT);
+                final double price = entity.getField(ShopCartItemFields.PRICE);
 
                 //取出所有控件
                 final AppCompatImageView imgThumb = holder.getView(R.id.image_item_shop_cart);
@@ -85,7 +85,7 @@ public class ShopCartAdapter extends MultipleRecyclerAdapter {
 
                 //在左侧勾选渲染之前改变全选状态
                 entity.setFields(ShopCartItemFields.IS_SELECTED, mIsSelectedAll);
-                final boolean isSelected = entity.getFiled(ShopCartItemFields.IS_SELECTED);
+                final boolean isSelected = entity.getField(ShopCartItemFields.IS_SELECTED);
 
                 //根据数据状态左侧勾勾点击事件
                 if (isSelected) {
@@ -100,7 +100,7 @@ public class ShopCartAdapter extends MultipleRecyclerAdapter {
                     @Override
                     public void onClick(View view) {
                         //每次点击取值 是动态赋值到entity里,所以点击时需要额外取一下
-                        final boolean currentSelected = entity.getFiled(ShopCartItemFields.IS_SELECTED);
+                        final boolean currentSelected = entity.getField(ShopCartItemFields.IS_SELECTED);
 
                         if (currentSelected) {
                             iconIsSelected.setTextColor(Color.GRAY);
@@ -117,7 +117,7 @@ public class ShopCartAdapter extends MultipleRecyclerAdapter {
                 iconMinus.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        final int currentCount = entity.getFiled(ShopCartItemFields.COUNT);
+                        final int currentCount = entity.getField(ShopCartItemFields.COUNT);
                         if (Integer.parseInt(tvCount.getText().toString()) > 1) {
                             //数量传给服务器 再实现本地加减逻辑
                             int countNum = Integer.parseInt(tvCount.getText().toString());
@@ -135,7 +135,7 @@ public class ShopCartAdapter extends MultipleRecyclerAdapter {
                 iconPlus.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        final int currentCount = entity.getFiled(ShopCartItemFields.COUNT);
+                        final int currentCount = entity.getField(ShopCartItemFields.COUNT);
                         //数量传给服务器 再实现本地加减逻辑
                         int countNum = Integer.parseInt(tvCount.getText().toString());
                         countNum++;

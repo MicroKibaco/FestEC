@@ -75,6 +75,17 @@
     <string name="text_unbox">评价晒单</string>
     <string name="text_commit">提交</string>
     <string name="text_grade">评分</string>
+    <string name="title_about">关于</string>
+    <string name="title_settings">设置</string>
+    <string name="text_address_manager">地址管理</string>
+    <string name="fa_plus_square_o">{fa-plus-square-o}</string>
+    <string name="text_phone">电话</string>
+    <string name="text_address_delete">删除</string>
+    <string name="address_shipping">收货地址</string>
+    <string name="system_settings">系统设置</string>
+    <string name="tip_open_push">打开推送</string>
+    <string name="tip_close_push">关闭推送</string>
+    <string name="msg_push">消息推送</string>
 
 
 </resources>
