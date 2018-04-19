@@ -90,6 +90,9 @@
     <string name="tip_comment">评分：</string>
     <string name="fa_chevron">{fa-chevron-right}</string>
     <string name="fa_clock_o">{fa-clock-o}</string>
+    <string name="fa_arrow_left">{fa-arrow-left}</string>
+    <string name="text_search_view">搜索</string>
+    <string name="text_get_qr_code">得到的二维码是</string>
 
 
 </resources>

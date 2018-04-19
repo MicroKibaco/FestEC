@@ -69,6 +69,10 @@ public abstract class PermissionCheckerDelegate extends BaseDelegate {
         PermissionCheckerDelegatePermissionsDispatcher.startCameraWithPermissionCheck(this);
     }
 
+    public void startScanWithCheck(BaseDelegate delegate) {
+        PermissionCheckerDelegatePermissionsDispatcher.startScanWithPermissionCheck(this, delegate);
+    }
+
     private void showRationaleDialog(final PermissionRequest request) {
         new AlertDialog.Builder(getContext())
                 .setPositiveButton(getString(R.string.btn_agree_use), new DialogInterface.OnClickListener() {

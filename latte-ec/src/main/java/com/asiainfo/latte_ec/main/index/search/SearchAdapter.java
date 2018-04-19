@@ -10,7 +10,6 @@ import com.asiainfo.latte_ui.recycler.MultipleViewHolder;
 
 import java.util.List;
 
-
 public class SearchAdapter extends MultipleRecyclerAdapter {
 
     protected SearchAdapter(List<MultipleItemEntity> data) {
