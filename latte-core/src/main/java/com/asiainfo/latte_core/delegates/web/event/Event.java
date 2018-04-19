@@ -1,6 +1,7 @@
 package com.asiainfo.latte_core.delegates.web.event;
 
 import android.content.Context;
+import android.webkit.WebView;
 
 import com.asiainfo.latte_core.delegates.web.WebDelegate;
 
@@ -10,6 +11,10 @@ public abstract class Event implements IEvent {
     private String mAction = null;
     private WebDelegate mDelegate = null;
     private String mUrl = null;
+
+    public WebView getWebView() {
+        return mDelegate.getWebView();
+    }
 
     public Context getContext() {
         return mContext;

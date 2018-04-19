@@ -4,6 +4,8 @@ import android.app.Activity;
 import android.os.Handler;
 import android.support.annotation.NonNull;
 
+import com.asiainfo.latte_core.delegates.web.event.Event;
+import com.asiainfo.latte_core.delegates.web.event.EventManager;
 import com.joanzapata.iconify.IconFontDescriptor;
 import com.joanzapata.iconify.Iconify;
 
@@ -24,6 +26,7 @@ public class Configurator {
     private static final ArrayList<IconFontDescriptor> ICONS = new ArrayList<>();
     private static final Handler HANDLER = new Handler();
     private ArrayList<Interceptor> INTERCEPTORS = new ArrayList<>();
+
     /**
      * 初始化配置开关OFF
      */
@@ -57,6 +60,12 @@ public class Configurator {
      */
     public final Configurator withApiHost(String host) {
         LATTE_CONFIGS.put(ConfigKeys.API_HOST, host);
+        return this;
+    }
+
+    public Configurator withWebEvent(@NonNull String name, @NonNull Event event) {
+        final EventManager manager = EventManager.getInstance();
+        manager.addEvent(name, event);
         return this;
     }
 

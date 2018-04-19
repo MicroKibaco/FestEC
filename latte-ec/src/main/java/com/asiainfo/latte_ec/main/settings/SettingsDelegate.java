@@ -8,6 +8,8 @@ import android.view.View;
 import android.widget.CompoundButton;
 
 import com.asiainfo.latte_core.delegates.LatteDelegate;
+import com.asiainfo.latte_core.util.callback.CallbackManager;
+import com.asiainfo.latte_core.util.callback.CallbackType;
 import com.asiainfo.latte_ec.R;
 import com.asiainfo.latte_ec.R2;
 import com.asiainfo.latte_ec.main.personal.address.AddressDelegate;
@@ -41,10 +43,10 @@ public class SettingsDelegate extends LatteDelegate {
                     @Override
                     public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                         if (isChecked) {
-                            //      CallbackManager.getInstance().getCallback(CallbackType.TAG_OPEN_PUSH).executeCallBack(null);
+                            CallbackManager.getInstance().getCallback(CallbackType.TAG_OPEN_PUSH).executeCallBack(null);
                             tip(getString(R.string.tip_open_push));
                         } else {
-                            //     CallbackManager.getInstance().getCallback(CallbackType.TAG_STOP_PUSH).executeCallBack(null);
+                            CallbackManager.getInstance().getCallback(CallbackType.TAG_STOP_PUSH).executeCallBack(null);
                             tip(getString(R.string.tip_close_push));
                         }
                     }
