@@ -12,7 +12,7 @@
     
 ## 应用部分Gif图
 
-   <img width="750" height="1334" src="http://p2je16s75.bkt.clouddn.com/festec.gif"/>
+   <img width="375" height="667" src="http://p2je16s75.bkt.clouddn.com/festec.gif"/>
 
 
 ## 封装
