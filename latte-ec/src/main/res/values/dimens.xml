@@ -23,4 +23,7 @@
     <dimen name="dp_6">6dp</dimen>
     <dimen name="dp_3">3dp</dimen>
     <dimen name="sp_25">25sp</dimen>
+    <dimen name="dp_260">260dp</dimen>
+    <dimen name="dp_12">12dp</dimen>
+    <dimen name="sp_26">26sp</dimen>
 </resources>

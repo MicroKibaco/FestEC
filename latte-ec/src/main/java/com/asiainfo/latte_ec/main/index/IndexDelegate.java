@@ -2,6 +2,7 @@ package com.asiainfo.latte_ec.main.index;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.content.ContextCompat;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.AppCompatEditText;
 import android.support.v7.widget.GridLayoutManager;
@@ -16,6 +17,7 @@ import com.asiainfo.latte_ec.R;
 import com.asiainfo.latte_ec.R2;
 import com.asiainfo.latte_ec.main.EcBottomDelegate;
 import com.asiainfo.latte_ec.main.index.search.SearchDelegate;
+import com.asiainfo.latte_ui.recycler.BaseDecoration;
 import com.asiainfo.latte_ui.refresh.RefreshHandler;
 import com.yqritc.recyclerviewflexibledivider.HorizontalDividerItemDecoration;
 
@@ -73,6 +75,8 @@ public class IndexDelegate extends BottomItemDelegate implements View.OnFocusCha
 
         final GridLayoutManager manager = new GridLayoutManager(getContext(), 4);
         mRecyclerView.setLayoutManager(manager);
+        mRecyclerView.addItemDecoration
+                (BaseDecoration.create(ContextCompat.getColor(getContext(), R.color.app_background), 5));
         mRecyclerView.addItemDecoration(new HorizontalDividerItemDecoration.Builder(getContext()).build());
         final EcBottomDelegate ecBottomDelegate = getParentDelegate();
         mRecyclerView.addOnItemTouchListener(IndexItemClickListener.create(ecBottomDelegate));

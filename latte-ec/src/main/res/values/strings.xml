@@ -93,6 +93,15 @@
     <string name="fa_arrow_left">{fa-arrow-left}</string>
     <string name="text_search_view">搜索</string>
     <string name="text_get_qr_code">得到的二维码是</string>
+    <string name="text_add_shop">加入购物车</string>
+    <string name="text_shop">购物车</string>
+    <string name="text_like">喜欢</string>
+    <string name="fa_heart_o">{fa-heart-o}</string>
+    <string name="fa_shopping_cart">{fa-shopping-cart}</string>
+    <string name="fa_chevron_left">{fa-chevron-left}</string>
+    <string name="text_goods_detail">商品详情</string>
+    <string name="text_goods_info_price">1299</string>
+    <string name="text_price_tag">￥</string>
 
 
 </resources>

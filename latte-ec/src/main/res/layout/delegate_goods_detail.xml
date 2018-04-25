@@ -1,13 +1,90 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v7.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
-                                              android:orientation="vertical"
-                                              android:layout_width="match_parent"
-                                              android:layout_height="match_parent">
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
 
-    <android.support.v7.widget.AppCompatTextView
-            android:gravity="center"
-            android:text="@string/goods_detail_text"
+    <android.support.design.widget.CoordinatorLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"/>
+            android:layout_height="match_parent">
 
-</android.support.v7.widget.LinearLayoutCompat>
+        <android.support.design.widget.AppBarLayout
+                android:id="@+id/app_bar_detail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+            <android.support.design.widget.CollapsingToolbarLayout
+                    android:id="@+id/collapsing_toolbar_detail"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layout_scrollFlags="scroll|exitUntilCollapsed"
+                    app:statusBarScrim="@android:color/transparent">
+
+                <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                    <com.bigkoo.convenientbanner.ConvenientBanner
+                            android:id="@+id/detail_banner"
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/dp_260"/>
+
+                    <android.support.v7.widget.ContentFrameLayout
+                            android:id="@+id/frame_goods_info"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_below="@+id/detail_banner"/>
+                </RelativeLayout>
+
+                <!--要放在下面-->
+                <android.support.v7.widget.Toolbar
+                        android:id="@+id/goods_detail_toolbar"
+                        android:layout_width="match_parent"
+                        android:layout_height="?android:attr/actionBarSize"
+                        app:layout_collapseMode="pin">
+
+                    <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+
+                        <com.joanzapata.iconify.widget.IconTextView
+                                android:id="@+id/icon_goods_back"
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:layout_marginLeft="@dimen/dp_12"
+                                android:gravity="center"
+                                android:text="@string/fa_chevron_left"
+                                android:textColor="@android:color/black"
+                                android:textSize="@dimen/sp_26"/>
+
+                        <android.support.v7.widget.AppCompatTextView
+                                android:id="@+id/tv_detail_title_text"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerInParent="true"
+                                android:text="@string/text_goods_detail"
+                                android:textColor="@android:color/black"
+                                android:textSize="@dimen/sp_20"/>
+                    </RelativeLayout>
+                </android.support.v7.widget.Toolbar>
+
+            </android.support.design.widget.CollapsingToolbarLayout>
+
+            <android.support.design.widget.TabLayout
+                    android:id="@+id/tab_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="?attr/actionBarSize"/>
+        </android.support.design.widget.AppBarLayout>
+
+        <android.support.v4.view.ViewPager
+                android:id="@+id/view_pager"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
+
+
+    </android.support.design.widget.CoordinatorLayout>
+
+    <include layout="@layout/layout_goods_detail_bottom"/>
+
+</RelativeLayout>
