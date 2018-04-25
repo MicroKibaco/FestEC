@@ -12,8 +12,8 @@
     
 ## 应用部分Gif图
 
-   <img width="375" height="667" src="http://p2je16s75.bkt.clouddn.com/festec.gif"/>
-
+   <img width="375" height="667" src="./android.gif"/>
+ 
 
 ## 封装
    <img width="200" height="360" src="http://p2je16s75.bkt.clouddn.com/project.png"/>
