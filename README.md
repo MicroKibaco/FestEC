@@ -6,9 +6,14 @@
 所有功能已经完成，如果对你有帮助的话不妨star一个o(￣▽￣)ブ
 
 下面我就来总结一下哈哈哈哈
-下载地址,召唤术: [传送门](http://www.github.com/MicroKibaco/FestEC/apks/FestEC.apk)
+下载地址,召唤术:
+ 
+   <img width="460" height="460" src="http://p2je16s75.bkt.clouddn.com/1524639044.png"/>
+    
+## 应用部分Gif图
 
-## 应用部分截图
+   <img width="750" height="1334" src="http://p2je16s75.bkt.clouddn.com/festec.gif"/>
+
 
 ## 封装
    <img width="200" height="360" src="http://p2je16s75.bkt.clouddn.com/project.png"/>
